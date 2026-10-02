@@ -1,6 +1,6 @@
 // AFK Eventi: mostra sempre la versione più recente, e funziona anche offline.
-const CACHE = "afk-eventi-v1";
-self.addEventListener("install", e => { self.skipWaiting(); e.waitUntil(caches.open(CACHE).then(c => c.addAll(["./", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png"]))); });
+const CACHE = "afk-eventi-v2";
+self.addEventListener("install", e => { self.skipWaiting(); e.waitUntil(caches.open(CACHE).then(c => c.addAll(["./", "manifest.webmanifest", "icon-192.png", "icon-512.png"]))); });
 self.addEventListener("activate", e => { e.waitUntil(self.clients.claim()); });
 self.addEventListener("fetch", e => {
   if (e.request.method !== "GET") return;
