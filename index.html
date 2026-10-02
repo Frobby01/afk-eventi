@@ -281,6 +281,8 @@ var HEAD_HTML = Array.prototype.map.call(document.head.querySelectorAll("[data-a
 var DATA;
 try { DATA = JSON.parse(document.getElementById("afk-data").textContent); } catch(e){ DATA = {updatedAt:"", events:[]}; }
 if (!Array.isArray(DATA.events)) DATA.events = [];
+/* true when the page is hosted as its own site (GitHub Pages), false inside the claude.ai viewer or opened as a file */
+var STANDALONE = /^https?:$/.test(location.protocol) && !/claude|anthropic/i.test(location.hostname);
 
 var PW_HASH = "991ad442b7bfb7a693c61a1c47ff5b5b6658260f11e313c2160287a323fee124"; /* replaced at build time */
 
@@ -669,6 +671,10 @@ function renderAdmin(){
   h += '<button class="btn small px" type="button" data-act="exit">Esci</button></header>';
   h += '<main class="adm"><h1>Gestisci eventi</h1>';
   h += '<p class="hint">Aggiungi o modifica gli eventi qui sotto, poi premi <b>Pubblica</b>: il calendario si aggiorna per tutti. Finché non pubblichi, le modifiche restano solo su questo dispositivo.</p>';
+  if (STANDALONE && !caps.artifact){
+    var g = ghCfg();
+    h += '<p class="hint">'+(g && g.token ? 'Pubblicazione collegata a GitHub ('+esc(g.owner)+'/'+esc(g.repo)+'). ' : '<b>Prima pubblicazione:</b> serve collegare GitHub una volta su questo dispositivo. ')+'<button class="btn ghost small" type="button" data-act="ghsetup" style="min-height:0;padding:0">'+(g && g.token ? 'Impostazioni GitHub' : 'Collega GitHub')+'</button></p>';
+  }
   if (caps.readOnly) h += '<p class="hint" style="color:#d1004f"><b>Questa vista è di sola lettura:</b> per pubblicare apri il sito dal tuo account Claude.</p>';
   h += '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px"><button class="btn primary px" type="button" data-act="new">+ Nuovo evento</button></div>';
   if (!list.length) h += '<div class="empty px"><p>Ancora nessun evento.</p><button class="btn primary px" type="button" data-act="new">Aggiungi il primo evento</button></div>';
@@ -683,7 +689,7 @@ function renderAdmin(){
   var n = changesCount();
   h += '<div class="admin-bar"><div class="wrap"><span>'+(n ? n+(n===1?' modifica da pubblicare':' modifiche da pubblicare') : 'Tutto pubblicato')+'</span><span style="display:flex;gap:10px;flex-wrap:wrap">';
   if (n) h += '<button class="btn small px" type="button" data-act="discard" style="background:transparent;color:inherit;text-decoration:underline">Annulla modifiche</button>';
-  if (caps.artifact && !caps.readOnly) h += '<button class="btn lime px" type="button" data-act="publish"'+(n?'':' disabled')+'>Pubblica</button>';
+  if ((caps.artifact && !caps.readOnly) || STANDALONE) h += '<button class="btn lime px" type="button" data-act="publish"'+(n?'':' disabled')+'>Pubblica</button>';
   else h += '<button class="btn lime px" type="button" data-act="export"'+(n?'':' disabled')+'>Scarica il sito aggiornato</button>';
   h += '</span></div></div>';
   app.innerHTML = h;
@@ -744,8 +750,86 @@ function buildDocument(data){
 function nextData(){
   return {updatedAt: new Date().toISOString(), events: draft.events.slice().sort(sortEv)};
 }
+function b64(str){ return btoa(unescape(encodeURIComponent(str))); }
+function ghCfg(){ try { return JSON.parse(load("afk-gh") || "null"); } catch(e){ return null; } }
+function ghDefaults(){
+  var owner = location.hostname.split(".")[0] || "";
+  var repo = location.pathname.split("/").filter(Boolean)[0] || (owner+".github.io");
+  if (/\.html?$/i.test(repo)) repo = owner+".github.io";
+  return {owner:owner, repo:repo, branch:"main", token:""};
+}
+function ghHeaders(token){ return {"Authorization":"Bearer "+token, "Accept":"application/vnd.github+json", "X-GitHub-Api-Version":"2022-11-28"}; }
+function ghSetup(thenPublish){
+  var c = ghCfg() || ghDefaults();
+  var h = '<div class="dlg"><div class="dlg-top"><h2 style="margin:0">Collega GitHub</h2><button class="x" type="button" data-close aria-label="Chiudi">×</button></div>';
+  h += '<p>Serve una sola volta per dispositivo: dopo, il tasto Pubblica aggiorna il sito da solo.</p>';
+  h += '<ol style="padding-left:1.2em;margin:0 0 14px">';
+  h += '<li>Apri <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">questa pagina di GitHub</a>.</li>';
+  h += '<li>Nome: <b>AFK eventi</b>. Scadenza: scegli quella più lunga che ti propone.</li>';
+  h += '<li>In <b>Repository access</b> scegli <b>Only select repositories</b> e seleziona <b>'+esc(c.repo)+'</b>.</li>';
+  h += '<li>In <b>Permissions</b>, alla voce <b>Contents</b>, scegli <b>Read and write</b>.</li>';
+  h += '<li>Premi <b>Generate token</b>, copia il codice e incollalo qui sotto.</li></ol>';
+  h += '<form class="ef" data-gh novalidate style="grid-template-columns:1fr 1fr">';
+  h += '<label class="full">Token GitHub<input name="token" type="password" autocomplete="off" value="'+esc(c.token||"")+'" placeholder="github_pat_…" autofocus></label>';
+  h += '<label>Utente GitHub<input name="owner" value="'+esc(c.owner)+'"></label>';
+  h += '<label>Repository<input name="repo" value="'+esc(c.repo)+'"></label>';
+  h += '<p class="err full" data-err hidden></p>';
+  h += '<div class="full" style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary px" type="submit">Collega e verifica</button>'+(c.token ? '<button class="btn px" type="button" data-act="ghforget">Scollega questo dispositivo</button>' : '')+'</div>';
+  h += '<p class="full" style="margin:0;color:var(--muted);font-size:.9rem">Il token resta salvato solo su questo dispositivo e può modificare solo il repository del sito.</p>';
+  h += '</form></div>';
+  var d = showDialog(h);
+  d.querySelector("[data-gh]").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var f = ev.target, err = f.querySelector("[data-err]"), btn = f.querySelector('button[type="submit"]');
+    var cfg = {owner:f.elements.owner.value.trim(), repo:f.elements.repo.value.trim(), branch:"main", token:f.elements.token.value.trim()};
+    if (!cfg.token){ err.textContent = "Incolla il token generato su GitHub."; err.hidden = false; return; }
+    btn.disabled = true; btn.textContent = "Verifico…"; err.hidden = true;
+    fetch("https://api.github.com/repos/"+encodeURIComponent(cfg.owner)+"/"+encodeURIComponent(cfg.repo), {headers:ghHeaders(cfg.token), cache:"no-store"})
+      .then(function(r){ if (!r.ok) throw r; return r.json(); })
+      .then(function(j){
+        if (j.permissions && j.permissions.push === false) throw {status:403};
+        cfg.branch = j.default_branch || "main"; cfg.owner = j.owner && j.owner.login || cfg.owner; cfg.repo = j.name || cfg.repo;
+        store("afk-gh", JSON.stringify(cfg)); closeDialog(); render(); toast("GitHub collegato.");
+        if (thenPublish && changesCount()) publish();
+      })
+      .catch(function(r){
+        var st = r && r.status;
+        err.textContent = st === 401 ? "Token non valido o scaduto: generane uno nuovo." : st === 404 ? "Repository non trovato: controlla utente e nome, e che il token abbia accesso a questo repository." : st === 403 ? "Il token non ha il permesso Contents: Read and write." : "Connessione a GitHub non riuscita. Riprova.";
+        err.hidden = false; btn.disabled = false; btn.textContent = "Collega e verifica";
+      });
+  });
+}
+function ghPublish(){
+  var cfg = ghCfg(); if (!cfg || !cfg.token) return ghSetup(true);
+  var btn = app.querySelector('[data-act="publish"]'); if (btn){ btn.disabled = true; btn.textContent = "Pubblico…"; }
+  var data = nextData(), body = JSON.stringify(data, null, 1)+"\n";
+  var api = "https://api.github.com/repos/"+encodeURIComponent(cfg.owner)+"/"+encodeURIComponent(cfg.repo)+"/contents/events.json";
+  var H = ghHeaders(cfg.token);
+  fetch(api+"?ref="+encodeURIComponent(cfg.branch)+"&t="+Date.now(), {headers:H, cache:"no-store"})
+    .then(function(r){ if (r.status === 404) return null; if (!r.ok) throw r; return r.json(); })
+    .then(function(cur){
+      var payload = {message:"Aggiorna eventi AFK", content:b64(body), branch:cfg.branch};
+      if (cur && cur.sha) payload.sha = cur.sha;
+      return fetch(api, {method:"PUT", headers:H, body:JSON.stringify(payload)});
+    })
+    .then(function(r){
+      if (!r.ok) throw r;
+      DATA = data;
+      draft = {base: DATA.updatedAt, events: JSON.parse(JSON.stringify(DATA.events)), dirty:false};
+      store("afk-draft", null); render();
+      toast("Pubblicato. Il sito si aggiorna per tutti entro un paio di minuti.");
+    })
+    .catch(function(r){
+      var st = r && r.status;
+      if (st === 401){ toast("Il token GitHub non è più valido: collegalo di nuovo."); ghSetup(true); }
+      else if (st === 403 || st === 404){ toast("Il token non può scrivere su questo repository. Controlla le impostazioni."); ghSetup(true); }
+      else if (st === 409){ toast("Il file era cambiato nel frattempo: premi di nuovo Pubblica."); }
+      else toast("Pubblicazione non riuscita. Le modifiche sono salve: riprova tra poco.");
+      if (btn){ btn.disabled = false; btn.textContent = "Pubblica"; }
+    });
+}
 function publish(){
-  if (!caps.artifact) return;
+  if (!caps.artifact){ if (STANDALONE) ghPublish(); return; }
   var btn = app.querySelector('[data-act="publish"]'); if (btn){ btn.disabled = true; btn.textContent = "Pubblico…"; }
   sstore("afk-admin","1");
   caps.artifact.publish(buildDocument(nextData())).then(function(){
@@ -795,6 +879,8 @@ app.addEventListener("click", function(ev){
     case "new": editForm(null); break;
     case "publish": publish(); break;
     case "export": exportSite(); break;
+    case "ghsetup": ghSetup(false); break;
+    case "ghforget": if (confirm("Scollegare GitHub da questo dispositivo?")){ store("afk-gh", null); closeDialog(); render(); toast("GitHub scollegato da questo dispositivo."); } break;
     case "discard": if (confirm("Annullare tutte le modifiche non pubblicate?")){ draft = {base: DATA.updatedAt, events: JSON.parse(JSON.stringify(DATA.events)), dirty:false}; store("afk-draft", null); render(); } break;
     case "reset": ui.cats = []; ui.city = ""; render(); break;
     case "showpast": ui.past = true; render(); break;
@@ -809,9 +895,19 @@ app.addEventListener("change", function(ev){
 window.addEventListener("hashchange", function(){ if (location.hash === "#admin") askPassword(); });
 
 /* ---------- boot ---------- */
-render();
-if (sload("afk-admin") === "1") enterAdmin();
-else if (location.hash === "#admin") askPassword();
+function boot(){
+  render();
+  if (sload("afk-admin") === "1") enterAdmin();
+  else if (location.hash === "#admin") askPassword();
+}
+if (STANDALONE){
+  render();
+  fetch("events.json?t="+Date.now(), {cache:"no-store"})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(j){ if (j && Array.isArray(j.events)) DATA = j; })
+    .catch(function(){})
+    .then(boot);
+} else boot();
 
 function hookClaude(tries){
   if (!(window.claude && typeof window.claude.use === "function")){ if (tries < 30) setTimeout(function(){ hookClaude(tries+1); }, 200); return; }
