@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" data-afk>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" data-afk>
+<title data-afk>AFK Palermo · Eventi</title>
+<meta name="description" content="Il calendario degli eventi indie e videoludici in Sicilia, curato da AFK Palermo." data-afk>
+<meta name="theme-color" content="#FFEEFB" media="(prefers-color-scheme: light)" data-afk>
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" data-afk>
+<meta name="apple-mobile-web-app-capable" content="yes" data-afk>
+<meta name="mobile-web-app-capable" content="yes" data-afk>
+<meta name="apple-mobile-web-app-title" content="AFK Eventi" data-afk>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" data-afk>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23E933D3'/%3E%3Cg transform='translate(16 10) scale(8.4)'%3E%3Cg fill='%231F1F1F' transform='translate(-.32 .16)'%3E%3Crect width='1' height='5'/%3E%3Crect x='1' y='2' width='1' height='1'/%3E%3Crect x='2' y='1' width='1' height='1'/%3E%3Crect x='3' width='1' height='1'/%3E%3Crect x='2' y='3' width='1' height='1'/%3E%3Crect x='3' y='4' width='1' height='1'/%3E%3C/g%3E%3Cg fill='%23FFEEFB'%3E%3Crect width='1' height='5'/%3E%3Crect x='1' y='2' width='1' height='1'/%3E%3Crect x='2' y='1' width='1' height='1'/%3E%3Crect x='3' width='1' height='1'/%3E%3Crect x='2' y='3' width='1' height='1'/%3E%3Crect x='3' y='4' width='1' height='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E" data-afk>
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACJElEQVR42u3dP2rCYBjA4Vh0cXLJqri5ieDgCQo9QekBeo4ewLVbD1B6goIn6FBw7VY6i0cQu7bkGxKCMd/L84xi/yT8eL8MLzo4H08FpNy4BYgDcSAOxIE4EAfiQByIA3GAOBAH4kAciANxIA7EgTgQB4gDcSAOxIE4EAfiQByIA3GAOBAH4kAcdGHYn3/lcPvV8jeUu0XuVzFajifbqcmBYwXHSiOz1bz64mf5nte9i3EVJgfiQByIA3EgDsSBOBAH4gBxIA7EgTgQB+JAHORv6Bb81Wg9OLn0tT7c1fzxn/23yYFjBXHgmSO+C+2O9/9JwuRAHIgDcSAOxIE4EAfiAHEgDsSBOBAH4kAciINwQm2Cdbk7XsRa+jI5EAfiwDNHp8I/RpgciANxIA7EgTgQB+JAHCAOxIE4EAfiQByIA3EQUahNsPa7443215PK3cLkwLGCYyWGt5fX+m++f3yovvhcPGkiZhyb9ab+mz9ScRSlJBwriANxIA7EgTgQB+JAHIgDxIE4EAfiQByIA3GQHZ9D+s/V99dHy/FkOzU5cKzgWMlO+0+ynq3m1ReT39RhcuBYQRwgDsSBOBAH4kAciANxIA7EgThAHIgDcXBJg/Px1P1fTe5QNdJ+j+vqV9GHSzA5EAfiIPgzByYH4kAciAPEgTgQB+JAHIgDcSAOxIE4EIdbgDgQB+JAHIgDcSAOxIE4EAeIA3EgDsSBOBAHefgFNENJeAANA48AAAAASUVORK5CYII=" data-afk>
+<link rel="manifest" href="manifest.webmanifest" data-afk>
+<link rel="preconnect" href="https://fonts.googleapis.com" data-afk>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin data-afk>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@900&family=Silkscreen:wght@400;700&display=swap" data-afk>
+<style data-afk>
+:root{
+  --bg:#FFEEFB; --surface:#FFFFFF; --surface-2:#FBDDF5; --ink:#1F1F1F; --muted:#5E4A5A;
+  --magenta:#E933D3; --magenta-ink:#A3138F; --lime:#C6FF00; --on-accent:#1F1F1F;
+  --line:rgba(31,31,31,.16); --line-strong:#1F1F1F; --dot:rgba(31,31,31,.07);
+  --c-expo:#E933D3; --c-jam:#9ED600; --c-talk:#3FA9F5; --c-party:#FF8A1F;
+  --pixel:3px;
+  --f-pixel:"Silkscreen","Courier New",monospace;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif;
+  --f-mark:"Montserrat","Arial Black","Helvetica Neue",sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#000000; --surface:#151217; --surface-2:#221B24; --ink:#F2EAF0; --muted:#B9A9B5;
+    --magenta:#F04BDC; --magenta-ink:#FF86EC; --lime:#C6FF00; --on-accent:#000000;
+    --line:rgba(255,238,251,.14); --line-strong:#F2EAF0; --dot:rgba(255,238,251,.07);
+    --c-expo:#F04BDC; --c-jam:#C6FF00; --c-talk:#5CC0FF; --c-party:#FF9F45;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#000000; --surface:#151217; --surface-2:#221B24; --ink:#F2EAF0; --muted:#B9A9B5;
+  --magenta:#F04BDC; --magenta-ink:#FF86EC; --lime:#C6FF00; --on-accent:#000000;
+  --line:rgba(255,238,251,.14); --line-strong:#F2EAF0; --dot:rgba(255,238,251,.07);
+  --c-expo:#F04BDC; --c-jam:#C6FF00; --c-talk:#5CC0FF; --c-party:#FF9F45;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:1.0625rem;line-height:1.6;min-height:100vh;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(var(--dot) 1.4px,transparent 1.6px);background-size:9px 9px;
+  -webkit-mask-image:linear-gradient(125deg,transparent 30%,#000 75%);mask-image:linear-gradient(125deg,transparent 30%,#000 75%)}
+#app{position:relative;z-index:1}
+img,svg{max-width:100%}
+a{color:var(--magenta-ink);text-underline-offset:3px}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--magenta);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* pixel border: notched corners, like the posters */
+.px{box-shadow:0 calc(-1*var(--pixel)) 0 0 var(--pc,var(--line-strong)),0 var(--pixel) 0 0 var(--pc,var(--line-strong)),calc(-1*var(--pixel)) 0 0 0 var(--pc,var(--line-strong)),var(--pixel) 0 0 0 var(--pc,var(--line-strong))}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 0 8px}
+.mark{display:flex;align-items:flex-end;gap:2px;text-decoration:none;color:var(--ink)}
+.mark b{font-family:var(--f-mark);font-weight:900;font-size:30px;line-height:.8;letter-spacing:-.01em}
+.mark svg{height:23px;width:auto;margin-bottom:1px}
+.mark span{font-family:var(--f-pixel);font-size:13px;margin-left:10px;color:var(--muted);line-height:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 16px;border:0;background:var(--surface);color:var(--ink);cursor:pointer;font-family:var(--f-pixel);font-size:14px;text-decoration:none;line-height:1.1}
+.btn:hover{background:var(--surface-2)}
+.btn.primary{background:var(--magenta);color:#000}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn.lime{background:var(--lime);color:#000}
+.btn.ghost{background:transparent;box-shadow:none;text-decoration:underline;text-underline-offset:4px}
+.btn.small{min-height:36px;padding:6px 12px;font-size:12px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+
+/* hero */
+.hero{position:relative;padding:28px 0 36px}
+.hero h1{font-family:var(--f-pixel);font-weight:700;font-size:clamp(2.1rem,7.4vw,4.6rem);line-height:.98;margin:0 0 14px;letter-spacing:-.02em;max-width:13ch}
+.hero h1 .l2{color:var(--magenta)}
+.hero p.lead{max-width:46ch;margin:0;color:var(--muted);font-size:1.125rem}
+.spark{position:absolute;color:var(--magenta);pointer-events:none}
+.spark.a{right:4%;top:18px;width:54px}
+.spark.b{right:22%;top:120px;width:22px;opacity:.8}
+.spark.c{right:9%;top:170px;width:30px}
+@media (max-width:640px){.spark.b,.spark.c{display:none}.spark.a{width:36px;right:2%}}
+
+.next{margin-top:30px;display:grid;grid-template-columns:auto 1fr;gap:0;background:var(--surface);max-width:760px}
+.next .when{background:var(--lime);color:#000;padding:16px 18px;font-family:var(--f-pixel);display:flex;flex-direction:column;justify-content:center;min-width:140px;text-align:center}
+.next .when .d{font-size:2.1rem;line-height:1;font-weight:700}
+.next .when .m{font-size:.95rem;margin-top:6px}
+.next .body{padding:16px 20px;min-width:0}
+.next .flag{font-family:var(--f-pixel);font-size:13px;color:var(--magenta-ink);display:flex;align-items:center;gap:8px}
+.next .flag .live{width:9px;height:9px;background:var(--magenta);display:inline-block;animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.next h2{font-family:var(--f-pixel);font-size:1.45rem;line-height:1.15;margin:6px 0 4px}
+.next .meta{margin:0;color:var(--muted)}
+.next .meta em{font-style:normal;font-weight:700;color:var(--magenta-ink)}
+.next .body .btn{margin-top:12px}
+@media (max-width:560px){.next{grid-template-columns:1fr}.next .when{flex-direction:row;gap:10px;align-items:baseline;justify-content:flex-start;text-align:left;padding:12px 16px}.next .when .m{margin:0}}
+
+/* controls */
+.controls{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:14px 0 12px;border-bottom:1px solid var(--line);padding-top:calc(14px + env(safe-area-inset-top,0px));margin-top:calc(-1*env(safe-area-inset-top,0px))}
+.controls .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.controls .row + .row{margin-top:12px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 4px 6px;scrollbar-width:none;flex:1 1 100%;margin:-4px -4px 0}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:6px 14px;background:var(--surface);border:0;cursor:pointer;font-size:.95rem;white-space:nowrap;--pc:var(--line)}
+.chip .sq{width:10px;height:10px;background:var(--cc);flex:0 0 auto}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);--pc:var(--ink)}
+.chip[aria-pressed="true"] .sq{box-shadow:0 0 0 2px var(--bg)}
+.select{min-height:40px;padding:6px 36px 6px 12px;background:var(--surface);border:0;appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);
+  background-position:calc(100% - 18px) 55%,calc(100% - 12px) 55%;background-size:6px 6px;background-repeat:no-repeat;--pc:var(--line)}
+.seg{display:inline-flex;background:var(--surface);--pc:var(--line)}
+.seg button{min-height:40px;padding:6px 14px;border:0;background:transparent;cursor:pointer;font-family:var(--f-pixel);font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--magenta);color:#000}
+.check{display:inline-flex;align-items:center;gap:8px;font-size:.95rem;cursor:pointer;min-height:40px}
+.check input{width:18px;height:18px;accent-color:var(--magenta)}
+.spacer{flex:1}
+
+/* list */
+main{padding:24px 0 60px}
+.month-h{font-family:var(--f-pixel);font-size:1.15rem;margin:34px 0 14px;display:flex;align-items:center;gap:12px;color:var(--ink)}
+.month-h::after{content:"";flex:1;height:3px;background:repeating-linear-gradient(90deg,var(--magenta) 0 6px,transparent 6px 10px)}
+.month-h:first-child{margin-top:4px}
+.ev{display:grid;grid-template-columns:88px 1fr;gap:18px;padding:16px 18px;margin:0 0 16px;background:var(--surface);cursor:pointer;width:100%;text-align:left;border:0;color:inherit;--pc:var(--line)}
+.ev:hover{--pc:var(--magenta)}
+.ev.past{opacity:.62}
+.ev .date{font-family:var(--f-pixel);text-align:center;border-right:3px dotted var(--line);padding-right:14px}
+.ev .date .d{font-size:1.65rem;line-height:1;font-weight:700}
+.ev .date .d2{font-size:1rem;line-height:1.1;margin-top:4px;color:var(--magenta-ink);font-weight:700}
+.ev .date .m{font-size:.8rem;color:var(--muted);margin-top:6px}
+.ev .tag{display:inline-flex;align-items:center;gap:7px;font-size:.85rem;color:var(--muted)}
+.ev .tag .sq{width:10px;height:10px;background:var(--cc)}
+.ev h3{font-family:var(--f-pixel);font-size:1.3rem;line-height:1.2;margin:4px 0 2px;font-weight:700}
+.ev .by{margin:0;font-size:1rem}
+.ev .by em{font-style:normal;color:var(--magenta-ink);font-weight:700}
+.ev .where{margin:4px 0 0;color:var(--muted);font-size:.95rem}
+.badge{display:inline-block;font-family:var(--f-pixel);font-size:11px;padding:3px 7px;margin-left:8px;background:var(--magenta);color:#000;vertical-align:2px}
+.badge.past{background:var(--surface-2);color:var(--muted)}
+@media (max-width:520px){.ev{grid-template-columns:64px 1fr;gap:14px;padding:14px}.ev .date{padding-right:10px}.ev .date .d{font-size:1.35rem}.ev h3{font-size:1.12rem}}
+
+.empty{padding:40px 24px;text-align:center;background:var(--surface);--pc:var(--line)}
+.empty p{margin:0 0 14px;color:var(--muted)}
+
+/* month grid */
+.cal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.cal-head h2{font-family:var(--f-pixel);font-size:1.3rem;margin:0;text-transform:none}
+.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.grid .dow{font-family:var(--f-pixel);font-size:12px;text-align:center;color:var(--muted);padding:4px 0}
+.cell{min-height:104px;background:var(--surface);padding:6px;border:0;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:3px;color:inherit;min-width:0}
+.cell.out{background:transparent;opacity:.4;cursor:default}
+.cell .n{font-family:var(--f-pixel);font-size:13px}
+.cell.today .n{background:var(--lime);color:#000;padding:0 5px;align-self:flex-start}
+.cell.sel{outline:3px solid var(--magenta);outline-offset:-3px}
+.cell .bar{display:block;font-size:.75rem;line-height:1.25;padding:2px 5px;background:var(--cc);color:#000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cell .more{font-size:.75rem;color:var(--muted)}
+.cell .dots{display:none;gap:3px;flex-wrap:wrap}
+.cell .dots i{width:8px;height:8px;background:var(--cc);display:block}
+@media (max-width:700px){.cell{min-height:58px;padding:4px}.cell .bar,.cell .more{display:none}.cell .dots{display:flex}.grid{gap:3px}}
+.day-list{margin-top:24px}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:.95rem}
+footer .row{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between}
+
+/* dialogs */
+dialog{border:0;padding:0;background:var(--surface);color:var(--ink);max-width:min(620px,calc(100vw - 24px));width:100%;max-height:calc(100dvh - 32px);overflow:auto}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+.dlg{padding:22px 22px 24px}
+.dlg-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.x{min-width:44px;min-height:44px;border:0;background:var(--surface-2);cursor:pointer;font-family:var(--f-pixel);font-size:18px}
+.dlg h2{font-family:var(--f-pixel);font-size:1.6rem;line-height:1.15;margin:8px 0 6px}
+.facts{margin:16px 0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px}
+.facts dt{font-family:var(--f-pixel);font-size:12px;color:var(--muted);padding-top:4px}
+.facts dd{margin:0}
+.desc{margin:0 0 18px;max-width:60ch}
+.addcal{background:var(--surface-2);padding:14px;margin-top:6px}
+.addcal p{margin:0 0 10px;font-family:var(--f-pixel);font-size:13px}
+.addcal .btns{display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:560px){
+  dialog{max-width:100vw;margin:auto 0 0;max-height:92dvh}
+  dialog .dlg{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+}
+
+/* admin */
+.admin-bar{position:sticky;bottom:0;z-index:6;background:var(--ink);color:var(--bg);padding:12px 0;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+.admin-bar .wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.admin-bar .btn{--pc:transparent}
+.adm h1{font-family:var(--f-pixel);font-size:1.8rem;margin:10px 0 4px}
+.adm .hint{color:var(--muted);margin:0 0 20px;max-width:60ch}
+.adm-row{display:flex;align-items:center;gap:14px;padding:12px 14px;background:var(--surface);margin-bottom:12px;--pc:var(--line)}
+.adm-row .sq{width:12px;height:12px;background:var(--cc);flex:0 0 auto}
+.adm-row .t{flex:1;min-width:0}
+.adm-row .t b{display:block;font-family:var(--f-pixel);font-size:1rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.adm-row .t small{color:var(--muted);font-size:.9rem}
+.adm-row .acts{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+form.ef{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px;margin-top:14px}
+form.ef .full{grid-column:1/-1}
+form.ef label{display:flex;flex-direction:column;gap:6px;font-size:.95rem;font-weight:700}
+form.ef label small{font-weight:400;color:var(--muted)}
+form.ef input,form.ef select,form.ef textarea{min-height:44px;padding:8px 12px;background:var(--bg);border:2px solid var(--line);font-weight:400;width:100%}
+form.ef textarea{min-height:110px;resize:vertical}
+form.ef input:focus,form.ef select:focus,form.ef textarea:focus{border-color:var(--magenta);outline:none}
+form.ef .cb{flex-direction:row;align-items:center;gap:10px;font-weight:400}
+form.ef .cb input{width:20px;min-height:20px;accent-color:var(--magenta)}
+form.ef .err{color:#d1004f;font-weight:700;margin:0}
+@media (max-width:560px){form.ef{grid-template-columns:1fr}}
+.pw{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.pw input{min-height:48px;padding:10px 12px;background:var(--bg);border:2px solid var(--line)}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;z-index:50;font-size:.95rem;max-width:calc(100vw - 32px)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="application/json" id="afk-data">{
+ "updatedAt": "2026-10-03T09:00:00.000Z",
+ "events": [
+  {
+   "id": "perla-comix-2026",
+   "title": "Area Indie",
+   "org": "AFK",
+   "host": "Perla Comix",
+   "category": "expo",
+   "city": "Palermo",
+   "venue": "Fiera Pala Giotto",
+   "start": "2026-10-01",
+   "end": "2026-10-04",
+   "timeStart": "",
+   "timeEnd": "",
+   "desc": "L'area dedicata ai videogiochi indipendenti siciliani dentro Perla Comix, la nuova fiera di fumetti, giochi e cultura pop di Palermo. Prova i giochi, conosci chi li sviluppa e scopri la scena indie dell'isola.",
+   "link": ""
+  },
+  {
+   "id": "game-jam-ostello-2026",
+   "title": "Game Jam",
+   "org": "Kemonia Games",
+   "host": "",
+   "category": "jam",
+   "city": "Palermo",
+   "venue": "Ostello Bello",
+   "start": "2026-11-02",
+   "end": "2026-11-05",
+   "timeStart": "",
+   "timeEnd": "",
+   "desc": "Quattro giorni per creare un videogioco da zero, in squadra, partendo da un tema svelato all'inizio. Aperta a programmatori, artisti, musicisti e game designer di ogni livello.",
+   "link": ""
+  },
+  {
+   "id": "sicilia-game-expo-2026",
+   "title": "Area Indie",
+   "org": "Kemonia Games",
+   "host": "Sicilian Game Expo",
+   "category": "expo",
+   "city": "Catania",
+   "venue": "SiciliaFiera, Misterbianco",
+   "start": "2026-11-13",
+   "end": "2026-11-15",
+   "timeStart": "",
+   "timeEnd": "",
+   "desc": "Lo spazio dedicato agli sviluppatori indipendenti dentro Sicilian Game Expo, la fiera del gioco in tutte le sue forme: videogiochi, giochi da tavolo, cosplay e incontri con gli ospiti.",
+   "link": ""
+  }
+ ]
+}</script>
+<script>
+(function(){
+"use strict";
+/* ---------- capture the page source before anything changes ---------- */
+var SCRIPT_HTML = document.currentScript ? document.currentScript.outerHTML : "";
+var HEAD_HTML = Array.prototype.map.call(document.head.querySelectorAll("[data-afk]"), function(n){ return n.outerHTML; }).join("\n");
+
+var DATA;
+try { DATA = JSON.parse(document.getElementById("afk-data").textContent); } catch(e){ DATA = {updatedAt:"", events:[]}; }
+if (!Array.isArray(DATA.events)) DATA.events = [];
+
+var PW_HASH = "991ad442b7bfb7a693c61a1c47ff5b5b6658260f11e313c2160287a323fee124"; /* replaced at build time */
+
+var CATS = {
+  expo:  {label:"Area Indie e fiere", short:"Fiere", color:"var(--c-expo)"},
+  jam:   {label:"Game jam", short:"Game jam", color:"var(--c-jam)"},
+  talk:  {label:"Talk, workshop e meetup", short:"Talk e workshop", color:"var(--c-talk)"},
+  party: {label:"Party e serate AFK", short:"Party", color:"var(--c-party)"}
+};
+var CITIES = ["Palermo","Catania","Messina","Siracusa","Trapani","Agrigento","Ragusa","Caltanissetta","Enna"];
+var MONTHS = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+var MON3 = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"];
+var DOW = ["lun","mar","mer","gio","ven","sab","dom"];
+
+var app = document.getElementById("app");
+var ui = { view:"list", cats:[], city:"", past:false, cursor:null, selDay:null, mode:"public" };
+var caps = { artifact:null, downloads:null, owner:false, readOnly:false };
+var draft = null; /* admin working copy */
+
+/* ---------- helpers ---------- */
+function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+function pad(n){ return (n<10?"0":"")+n; }
+function ymd(d){ return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()); }
+function parse(s){ var p = String(s||"").split("-"); return new Date(+p[0], (+p[1]||1)-1, +p[2]||1); }
+function today(){ return ymd(new Date()); }
+function endOf(e){ return e.end && e.end >= e.start ? e.end : e.start; }
+function status(e){ var t = today(); if (endOf(e) < t) return "past"; if (e.start <= t) return "live"; return "next"; }
+function sortEv(a,b){ return a.start < b.start ? -1 : a.start > b.start ? 1 : (a.title||"").localeCompare(b.title||""); }
+function store(k,v){ try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch(e){} }
+function load(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+function sstore(k,v){ try { if (v == null) sessionStorage.removeItem(k); else sessionStorage.setItem(k, v); } catch(e){} }
+function sload(k){ try { return sessionStorage.getItem(k); } catch(e){ return null; } }
+
+function dayNums(e){
+  var s = parse(e.start), en = parse(endOf(e));
+  if (e.start === endOf(e)) return {d: pad(s.getDate()), d1: pad(s.getDate()), d2: "", m: MON3[s.getMonth()]};
+  var m = s.getMonth() === en.getMonth() ? MON3[s.getMonth()] : MON3[s.getMonth()]+"–"+MON3[en.getMonth()];
+  return {d: pad(s.getDate())+"–"+pad(en.getDate()), d1: pad(s.getDate()), d2: "–"+pad(en.getDate()), m: m};
+}
+function rangeText(e){
+  var s = parse(e.start), en = parse(endOf(e));
+  var t;
+  if (e.start === endOf(e)) t = s.getDate()+" "+MONTHS[s.getMonth()]+" "+s.getFullYear();
+  else if (s.getMonth() === en.getMonth() && s.getFullYear() === en.getFullYear()) t = s.getDate()+"–"+en.getDate()+" "+MONTHS[s.getMonth()]+" "+s.getFullYear();
+  else t = s.getDate()+" "+MONTHS[s.getMonth()]+" – "+en.getDate()+" "+MONTHS[en.getMonth()]+" "+en.getFullYear();
+  return t;
+}
+function timeText(e){
+  if (e.timeStart && e.timeEnd) return "dalle "+e.timeStart+" alle "+e.timeEnd;
+  if (e.timeStart) return "dalle "+e.timeStart;
+  return "";
+}
+function catOf(e){ return CATS[e.category] || CATS.expo; }
+function byLine(e){
+  var parts = [];
+  if (e.org) parts.push("powered by <em>"+esc(e.org)+"</em>");
+  if (e.host) parts.push("@ "+esc(e.host));
+  return parts.join(" ");
+}
+function whereLine(e){ return [e.venue, e.city].filter(Boolean).map(esc).join(", "); }
+
+function kSvg(stemColor, accent){
+  return '<svg viewBox="0 0 4 5" aria-hidden="true" shape-rendering="crispEdges"><rect width="1" height="5" fill="'+stemColor+'"/><g fill="'+accent+'"><rect x="1" y="2" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/><rect x="3" width="1" height="1"/><rect x="2" y="3" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/></g></svg>';
+}
+var SPARK = '<svg viewBox="0 0 9 9" shape-rendering="crispEdges" aria-hidden="true"><g fill="currentColor"><rect x="4" width="1" height="9"/><rect y="4" width="9" height="1"/><rect x="3" y="3" width="3" height="3"/><rect x="1" y="1" width="1" height="1"/><rect x="7" y="1" width="1" height="1"/><rect x="1" y="7" width="1" height="1"/><rect x="7" y="7" width="1" height="1"/></g></svg>';
+var DIAMOND = '<svg viewBox="0 0 7 7" shape-rendering="crispEdges" aria-hidden="true"><g fill="currentColor"><rect x="3" width="1" height="7"/><rect y="3" width="7" height="1"/><rect x="2" y="2" width="3" height="3"/></g></svg>';
+
+function toast(msg){
+  var t = document.createElement("div"); t.className = "toast px"; t.setAttribute("role","status"); t.textContent = msg;
+  app.appendChild(t); setTimeout(function(){ t.remove(); }, 3800);
+}
+
+/* ---------- filtering ---------- */
+function visibleEvents(){
+  var t = today();
+  return DATA.events.slice().sort(sortEv).filter(function(e){
+    if (!ui.past && endOf(e) < t) return false;
+    if (ui.cats.length && ui.cats.indexOf(e.category) < 0) return false;
+    if (ui.city && e.city !== ui.city) return false;
+    return true;
+  });
+}
+function cityOptions(){
+  var set = {};
+  CITIES.forEach(function(c){ set[c] = 1; });
+  DATA.events.forEach(function(e){ if (e.city) set[e.city] = 1; });
+  var used = {}; DATA.events.forEach(function(e){ if (e.city) used[e.city] = 1; });
+  /* cities with events first, then the rest of Sicily */
+  return Object.keys(set).sort(function(a,b){ return (used[b]?1:0)-(used[a]?1:0) || a.localeCompare(b); }).map(function(c){ return {name:c, has:!!used[c]}; });
+}
+
+/* ---------- render: public ---------- */
+function render(){
+  if (ui.mode === "admin") return renderAdmin();
+  var ev = visibleEvents();
+  var featured = DATA.events.filter(function(e){ return status(e) !== "past"; }).sort(function(a,b){
+    var sa = status(a)==="live"?0:1, sb = status(b)==="live"?0:1;
+    return sa-sb || sortEv(a,b);
+  })[0];
+
+  var h = '';
+  h += '<div class="wrap"><header class="top">';
+  h += '<a class="mark" href="#" aria-label="AFK Palermo, eventi"><b>AF</b>'+kSvg("currentColor","var(--magenta)")+'<span>Palermo</span></a>';
+  h += '<button class="btn small px" type="button" data-act="install">Installa l\u2019app</button>';
+  h += '</header>';
+  h += '<section class="hero">';
+  h += '<span class="spark a">'+SPARK+'</span><span class="spark b">'+DIAMOND+'</span><span class="spark c">'+SPARK+'</span>';
+  h += '<h1>Eventi indie <span class="l2">in Sicilia</span></h1>';
+  h += '<p class="lead">Fiere, game jam, talk e serate dedicate ai videogiochi indipendenti, raccolte da AFK Palermo in un unico calendario.</p>';
+  if (featured){
+    var st = status(featured), dn = dayNums(featured);
+    h += '<div class="next px">';
+    h += '<div class="when"><span class="d">'+esc(dn.d)+'</span><span class="m">'+esc(dn.m)+'</span></div>';
+    h += '<div class="body"><div class="flag">'+(st==="live" ? '<i class="live" aria-hidden="true"></i>In corso adesso' : 'Prossimo evento')+'</div>';
+    h += '<h2>'+esc(featured.title)+'</h2>';
+    h += '<p class="meta">'+byLine(featured)+(whereLine(featured) ? '<br>'+whereLine(featured) : '')+'</p>';
+    h += '<button class="btn primary small px" type="button" data-open="'+esc(featured.id)+'">Vedi dettagli</button>';
+    h += '</div></div>';
+  }
+  h += '</section></div>';
+
+  /* controls */
+  h += '<div class="controls"><div class="wrap">';
+  h += '<div class="row"><div class="chips" role="group" aria-label="Filtra per categoria">';
+  h += '<button class="chip px" type="button" data-cat="" aria-pressed="'+(ui.cats.length===0)+'">Tutti</button>';
+  Object.keys(CATS).forEach(function(k){
+    h += '<button class="chip px" type="button" data-cat="'+k+'" aria-pressed="'+(ui.cats.indexOf(k)>=0)+'" style="--cc:'+CATS[k].color+'"><i class="sq" aria-hidden="true"></i>'+esc(CATS[k].label)+'</button>';
+  });
+  h += '</div></div>';
+  h += '<div class="row">';
+  h += '<label class="sr" for="city">Città</label><select id="city" class="select px" data-city>';
+  h += '<option value="">Tutta la Sicilia</option>';
+  cityOptions().forEach(function(c){ h += '<option value="'+esc(c.name)+'"'+(ui.city===c.name?' selected':'')+'>'+esc(c.name)+(c.has?'':' (nessun evento)')+'</option>'; });
+  h += '</select>';
+  h += '<label class="check"><input type="checkbox" data-past'+(ui.past?' checked':'')+'> Mostra eventi passati</label>';
+  h += '<span class="spacer"></span>';
+  h += '<div class="seg px" role="group" aria-label="Vista"><button type="button" data-view="list" aria-pressed="'+(ui.view==="list")+'">Lista</button><button type="button" data-view="month" aria-pressed="'+(ui.view==="month")+'">Mese</button></div>';
+  h += '</div></div></div>';
+
+  h += '<main class="wrap" id="main">';
+  h += ui.view === "month" ? monthView(ev) : listView(ev);
+  h += '</main>';
+
+  h += '<footer><div class="wrap row"><span>AFK Palermo · videogiochi, musica e arte indipendente siciliana.</span>';
+  h += '<button class="btn ghost small" type="button" data-act="admin">Area organizzatore</button></div></footer>';
+  app.innerHTML = h;
+}
+
+function evCard(e){
+  var c = catOf(e), dn = dayNums(e), st = status(e);
+  var h = '<button type="button" class="ev px'+(st==="past"?' past':'')+'" data-open="'+esc(e.id)+'" style="--cc:'+c.color+'">';
+  h += '<div class="date"><div class="d">'+esc(dn.d1)+'</div>'+(dn.d2?'<div class="d2">'+esc(dn.d2)+'</div>':'')+'<div class="m">'+esc(dn.m)+'</div></div>';
+  h += '<div><span class="tag"><i class="sq"></i>'+esc(c.label)+'</span>';
+  h += '<h3>'+esc(e.title)+(st==="live"?'<span class="badge">In corso</span>':st==="past"?'<span class="badge past">Concluso</span>':'')+'</h3>';
+  if (e.org || e.host) h += '<p class="by">'+byLine(e)+'</p>';
+  var w = whereLine(e), tt = timeText(e);
+  if (w || tt) h += '<p class="where">'+[w, esc(tt)].filter(Boolean).join(" · ")+'</p>';
+  h += '</div></button>';
+  return h;
+}
+
+function listView(ev){
+  if (!ev.length) return emptyState();
+  var h = '', cur = '';
+  ev.forEach(function(e){
+    var s = parse(e.start), key = MONTHS[s.getMonth()]+" "+s.getFullYear();
+    if (key !== cur){ h += '<h2 class="month-h">'+esc(key.charAt(0).toUpperCase()+key.slice(1))+'</h2>'; cur = key; }
+    h += evCard(e);
+  });
+  return h;
+}
+function emptyState(){
+  var filtered = ui.cats.length || ui.city;
+  return '<div class="empty px"><p>'+(filtered ? 'Nessun evento per questi filtri.' : 'Non ci sono eventi in programma al momento.')+'</p>'+
+    (filtered ? '<button class="btn primary px" type="button" data-act="reset">Mostra tutti gli eventi</button>' : (!ui.past ? '<button class="btn px" type="button" data-act="showpast">Guarda gli eventi passati</button>' : ''))+'</div>';
+}
+
+function monthView(ev){
+  if (!ui.cursor){
+    var first = ev.find(function(e){ return status(e) !== "past"; }) || ev[0];
+    var base = first ? parse(first.start < today() ? today() : first.start) : new Date();
+    ui.cursor = new Date(base.getFullYear(), base.getMonth(), 1);
+  }
+  var y = ui.cursor.getFullYear(), m = ui.cursor.getMonth();
+  var start = new Date(y, m, 1), offset = (start.getDay()+6)%7;
+  var gridStart = new Date(y, m, 1-offset);
+  var days = new Date(y, m+1, 0).getDate();
+  var cells = Math.ceil((offset+days)/7)*7;
+  var t = today();
+  var h = '<div class="cal-head"><button class="btn small px" type="button" data-month="-1" aria-label="Mese precedente">&lt;</button>';
+  h += '<h2>'+esc(MONTHS[m].charAt(0).toUpperCase()+MONTHS[m].slice(1))+' '+y+'</h2>';
+  h += '<button class="btn small px" type="button" data-month="1" aria-label="Mese successivo">&gt;</button></div>';
+  h += '<div class="grid">';
+  DOW.forEach(function(d){ h += '<div class="dow">'+d+'</div>'; });
+  for (var i=0;i<cells;i++){
+    var d = new Date(gridStart.getFullYear(), gridStart.getMonth(), gridStart.getDate()+i), key = ymd(d);
+    var inMonth = d.getMonth() === m;
+    var todays = ev.filter(function(e){ return e.start <= key && endOf(e) >= key; });
+    var cls = 'cell'+(inMonth?'':' out')+(key===t?' today':'')+(ui.selDay===key?' sel':'');
+    var label = d.getDate()+' '+MONTHS[d.getMonth()]+(todays.length? ', '+todays.length+(todays.length===1?' evento':' eventi'):'');
+    h += '<button type="button" class="'+cls+'" data-day="'+key+'" aria-label="'+esc(label)+'"'+(inMonth?'':' tabindex="-1"')+'><span class="n">'+d.getDate()+'</span>';
+    todays.slice(0,2).forEach(function(e){ h += '<span class="bar" style="--cc:'+catOf(e).color+'">'+esc(e.title)+'</span>'; });
+    if (todays.length>2) h += '<span class="more">+'+(todays.length-2)+'</span>';
+    if (todays.length){ h += '<span class="dots">'; todays.slice(0,4).forEach(function(e){ h += '<i style="--cc:'+catOf(e).color+'"></i>'; }); h += '</span>'; }
+    h += '</button>';
+  }
+  h += '</div>';
+  var monthKey = y+"-"+pad(m+1);
+  var list;
+  if (ui.selDay){
+    list = ev.filter(function(e){ return e.start <= ui.selDay && endOf(e) >= ui.selDay; });
+    var sd = parse(ui.selDay);
+    h += '<div class="day-list"><h2 class="month-h">'+sd.getDate()+' '+MONTHS[sd.getMonth()]+'</h2>';
+    h += list.length ? list.map(evCard).join('') : '<div class="empty px"><p>Nessun evento in questo giorno.</p></div>';
+  } else {
+    list = ev.filter(function(e){ return e.start.slice(0,7) <= monthKey && endOf(e).slice(0,7) >= monthKey; });
+    h += '<div class="day-list"><h2 class="month-h">Questo mese</h2>';
+    h += list.length ? list.map(evCard).join('') : '<div class="empty px"><p>Nessun evento in questo mese.</p></div>';
+  }
+  h += '</div>';
+  return h;
+}
+
+/* ---------- event detail ---------- */
+function openEvent(id){
+  var e = DATA.events.find(function(x){ return x.id === id; }); if (!e) return;
+  var c = catOf(e), past = status(e) === "past";
+  var h = '<div class="dlg"><div class="dlg-top"><span class="tag" style="--cc:'+c.color+';display:inline-flex;gap:8px;align-items:center;color:var(--muted)"><i class="sq" style="width:10px;height:10px;background:var(--cc);display:inline-block"></i>'+esc(c.label)+'</span><button class="x" type="button" data-close aria-label="Chiudi">×</button></div>';
+  h += '<h2>'+esc(e.title)+'</h2>';
+  if (e.org || e.host) h += '<p class="by" style="margin:0">'+byLine(e).replace(/<em>/g,'<b style="color:var(--magenta-ink)">').replace(/<\/em>/g,'</b>')+'</p>';
+  h += '<dl class="facts"><dt>Quando</dt><dd>'+esc(rangeText(e))+(timeText(e)?'<br>'+esc(timeText(e)):'')+'</dd>';
+  if (e.venue || e.city){
+    var q = encodeURIComponent([e.venue, e.city, "Sicilia"].filter(Boolean).join(", "));
+    h += '<dt>Dove</dt><dd>'+whereLine(e)+'<br><a href="https://www.google.com/maps/search/?api=1&query='+q+'" target="_blank" rel="noopener">Apri in Mappe</a></dd>';
+  }
+  if (e.link) h += '<dt>Info</dt><dd><a href="'+esc(e.link)+'" target="_blank" rel="noopener">'+esc(e.link.replace(/^https?:\/\//,'').replace(/\/$/,''))+'</a></dd>';
+  h += '</dl>';
+  if (e.desc) h += '<p class="desc">'+esc(e.desc).replace(/\n/g,'<br>')+'</p>';
+  if (!past){
+    h += '<div class="addcal px" style="--pc:transparent"><p>Aggiungi al tuo calendario</p><div class="btns">';
+    h += '<a class="btn primary small px" href="'+esc(gcalUrl(e))+'" target="_blank" rel="noopener">Google Calendar</a>';
+    h += '<button class="btn small px" type="button" data-ics="'+esc(e.id)+'">Apple / iPhone (.ics)</button>';
+    h += '<a class="btn small px" href="'+esc(outlookUrl(e))+'" target="_blank" rel="noopener">Outlook</a>';
+    h += '</div></div>';
+  }
+  h += '</div>';
+  showDialog(h);
+}
+
+var dlgEl = null;
+function showDialog(html, onClose){
+  closeDialog();
+  dlgEl = document.createElement("dialog");
+  dlgEl.className = "px"; dlgEl.style.setProperty("--pc","var(--line-strong)");
+  dlgEl.innerHTML = html;
+  app.appendChild(dlgEl);
+  dlgEl.addEventListener("close", function(){ var d = dlgEl; dlgEl = null; if (d) d.remove(); if (onClose) onClose(); });
+  dlgEl.addEventListener("click", function(ev){ if (ev.target === dlgEl) dlgEl.close(); });
+  if (dlgEl.showModal) dlgEl.showModal(); else dlgEl.setAttribute("open","");
+  var f = dlgEl.querySelector("[autofocus]"); if (f) f.focus();
+  return dlgEl;
+}
+function closeDialog(){ if (dlgEl){ try { dlgEl.close(); } catch(e){ dlgEl.remove(); dlgEl = null; } } }
+
+/* ---------- calendar export ---------- */
+function compact(s){ return s.replace(/-/g,""); }
+function addDay(s){ var d = parse(s); d.setDate(d.getDate()+1); return ymd(d); }
+function hm(t){ return String(t||"").replace(":","")+"00"; }
+function calDetails(e){
+  return [e.org ? "Powered by "+e.org : "", e.host ? "@ "+e.host : "", e.desc || "", e.link || "", "Dal calendario di AFK Palermo"].filter(Boolean).join("\n");
+}
+function calLocation(e){ return [e.venue, e.city].filter(Boolean).join(", "); }
+function calTitle(e){ return e.title + (e.host ? " @ "+e.host : ""); }
+function gcalUrl(e){
+  var dates = e.timeStart
+    ? compact(e.start)+"T"+hm(e.timeStart)+"/"+compact(endOf(e))+"T"+hm(e.timeEnd || e.timeStart)
+    : compact(e.start)+"/"+compact(addDay(endOf(e)));
+  return "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(calTitle(e))+"&dates="+dates+"&ctz=Europe%2FRome&details="+encodeURIComponent(calDetails(e))+"&location="+encodeURIComponent(calLocation(e));
+}
+function outlookUrl(e){
+  var s = e.timeStart ? e.start+"T"+e.timeStart+":00" : e.start;
+  var en = e.timeStart ? endOf(e)+"T"+(e.timeEnd||e.timeStart)+":00" : addDay(endOf(e));
+  return "https://outlook.live.com/calendar/0/deeplink/compose?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&subject="+encodeURIComponent(calTitle(e))+"&startdt="+encodeURIComponent(s)+"&enddt="+encodeURIComponent(en)+(e.timeStart?"":"&allday=true")+"&location="+encodeURIComponent(calLocation(e))+"&body="+encodeURIComponent(calDetails(e));
+}
+function icsEsc(s){ return String(s||"").replace(/\\/g,"\\\\").replace(/\n/g,"\\n").replace(/,/g,"\\,").replace(/;/g,"\\;"); }
+function icsFor(e){
+  var now = new Date(), stamp = now.getUTCFullYear()+pad(now.getUTCMonth()+1)+pad(now.getUTCDate())+"T"+pad(now.getUTCHours())+pad(now.getUTCMinutes())+"00Z";
+  var L = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//AFK Palermo//Eventi//IT","CALSCALE:GREGORIAN","METHOD:PUBLISH",
+    "BEGIN:VEVENT","UID:"+e.id+"@afk-palermo","DTSTAMP:"+stamp];
+  if (e.timeStart){
+    L.push("DTSTART;TZID=Europe/Rome:"+compact(e.start)+"T"+hm(e.timeStart));
+    L.push("DTEND;TZID=Europe/Rome:"+compact(endOf(e))+"T"+hm(e.timeEnd||e.timeStart));
+  } else {
+    L.push("DTSTART;VALUE=DATE:"+compact(e.start));
+    L.push("DTEND;VALUE=DATE:"+compact(addDay(endOf(e))));
+  }
+  L.push("SUMMARY:"+icsEsc(calTitle(e)));
+  if (calLocation(e)) L.push("LOCATION:"+icsEsc(calLocation(e)));
+  L.push("DESCRIPTION:"+icsEsc(calDetails(e)));
+  if (e.link) L.push("URL:"+e.link);
+  L.push("END:VEVENT","END:VCALENDAR");
+  return L.join("\r\n")+"\r\n";
+}
+function slug(s){ return String(s||"evento").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,48) || "evento"; }
+function saveFile(name, data, type){
+  if (caps.downloads){
+    return caps.downloads.save({filename:name, data:new Blob([data],{type:type})}).catch(function(err){
+      if (err && err.code && err.code !== "declined" && err.code !== "cancelled") blobDownload(name, data, type);
+    });
+  }
+  blobDownload(name, data, type);
+}
+function blobDownload(name, data, type){
+  try {
+    var url = URL.createObjectURL(new Blob([data],{type:type}));
+    var a = document.createElement("a"); a.href = url; a.download = name; document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); }, 2000);
+  } catch(e){ toast("Download non riuscito in questa vista. Usa Google Calendar o Outlook."); }
+}
+
+/* ---------- install as app ---------- */
+var deferredPrompt = null;
+window.addEventListener("beforeinstallprompt", function(e){ e.preventDefault(); deferredPrompt = e; });
+function install(){
+  if (deferredPrompt){ deferredPrompt.prompt(); deferredPrompt.userChoice.finally(function(){ deferredPrompt = null; }); return; }
+  var ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  showDialog('<div class="dlg"><div class="dlg-top"><h2 style="margin:0">Metti AFK nella home</h2><button class="x" type="button" data-close aria-label="Chiudi">×</button></div>'+
+    '<p>Così trovi il calendario come un\u2019app, con l\u2019icona AFK, senza cercarlo ogni volta.</p>'+
+    (ios
+      ? '<p><b>iPhone e iPad (Safari):</b> tocca il pulsante Condividi, poi <b>Aggiungi alla schermata Home</b> e conferma con Aggiungi.</p>'
+      : '<p><b>Android (Chrome):</b> apri il menu ⋮ in alto a destra e scegli <b>Aggiungi a schermata Home</b> oppure <b>Installa app</b>.</p><p><b>iPhone e iPad (Safari):</b> pulsante Condividi, poi <b>Aggiungi alla schermata Home</b>.</p><p><b>Computer (Chrome o Edge):</b> clicca l\u2019icona di installazione nella barra degli indirizzi.</p>')+
+    '</div>');
+}
+
+/* ---------- admin ---------- */
+/* minimal SHA-256, used only to compare the password without storing it in clear */
+function sha256(ascii){
+  function rr(v,a){ return (v>>>a)|(v<<(32-a)); }
+  var mp = Math.pow, max = mp(2,32), result = "", words = [], bitLen = ascii.length*8, hash = [], k = [], pc = 0, isC = {}, i, j;
+  for (var c=2; pc<64; c++){ if (!isC[c]){ for (i=0;i<313;i+=c) isC[i]=c; hash[pc] = (mp(c,.5)*max)|0; k[pc++] = (mp(c,1/3)*max)|0; } }
+  hash = hash.slice(0,8);
+  ascii += "\x80"; while (ascii.length%64 - 56) ascii += "\x00";
+  for (i=0;i<ascii.length;i++){ j = ascii.charCodeAt(i); words[i>>2] |= j << ((3-i)%4)*8; }
+  words[words.length] = ((bitLen/max)|0); words[words.length] = bitLen;
+  for (j=0;j<words.length;){
+    var w = words.slice(j, j+=16), old = hash; hash = hash.slice(0,8);
+    for (i=0;i<64;i++){
+      var w15 = w[i-15], w2 = w[i-2], a = hash[0], e = hash[4];
+      var t1 = hash[7] + (rr(e,6)^rr(e,11)^rr(e,25)) + ((e&hash[5])^((~e)&hash[6])) + k[i] + (w[i] = (i<16) ? w[i] : (w[i-16] + (rr(w15,7)^rr(w15,18)^(w15>>>3)) + w[i-7] + (rr(w2,17)^rr(w2,19)^(w2>>>10)))|0);
+      var t2 = (rr(a,2)^rr(a,13)^rr(a,22)) + ((a&hash[1])^(a&hash[2])^(hash[1]&hash[2]));
+      hash = [(t1+t2)|0].concat(hash); hash[4] = (hash[4]+t1)|0;
+    }
+    for (i=0;i<8;i++) hash[i] = (hash[i]+old[i])|0;
+  }
+  for (i=0;i<8;i++) for (j=3;j+1;j--){ var b = (hash[i]>>(j*8))&255; result += ((b<16)?0:"")+b.toString(16); }
+  return result;
+}
+function utf8(s){ return unescape(encodeURIComponent(s)); }
+
+function askPassword(){
+  if (sload("afk-admin") === "1") return enterAdmin();
+  var d = showDialog('<div class="dlg"><div class="dlg-top"><h2 style="margin:0">Area organizzatore</h2><button class="x" type="button" data-close aria-label="Chiudi">×</button></div>'+
+    '<form class="pw" data-pwform><label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password" autofocus required>'+
+    '<p class="err" data-pwerr hidden style="color:#d1004f;margin:0;font-weight:700">Password sbagliata. Riprova.</p>'+
+    '<button class="btn primary px" type="submit">Entra</button></form></div>');
+  d.querySelector("[data-pwform]").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var v = d.querySelector("#pw").value;
+    if (sha256(utf8(v)) === PW_HASH){ sstore("afk-admin","1"); closeDialog(); enterAdmin(); }
+    else { d.querySelector("[data-pwerr]").hidden = false; d.querySelector("#pw").select(); }
+  });
+}
+function enterAdmin(){
+  var saved = load("afk-draft"), parsed = null;
+  try { parsed = saved ? JSON.parse(saved) : null; } catch(e){}
+  if (parsed && parsed.base === DATA.updatedAt && Array.isArray(parsed.events)) draft = parsed;
+  else { draft = {base: DATA.updatedAt, events: JSON.parse(JSON.stringify(DATA.events)), dirty:false}; store("afk-draft", null); }
+  ui.mode = "admin"; render(); window.scrollTo(0,0);
+}
+function exitAdmin(){ ui.mode = "public"; sstore("afk-admin", null); render(); window.scrollTo(0,0); }
+function saveDraft(){ draft.dirty = true; store("afk-draft", JSON.stringify(draft)); }
+
+function renderAdmin(){
+  var list = draft.events.slice().sort(sortEv);
+  var h = '<div class="wrap"><header class="top"><a class="mark" href="#" data-act="exit" aria-label="Torna al calendario"><b>AF</b>'+kSvg("currentColor","var(--magenta)")+'<span>Organizzatore</span></a>';
+  h += '<button class="btn small px" type="button" data-act="exit">Esci</button></header>';
+  h += '<main class="adm"><h1>Gestisci eventi</h1>';
+  h += '<p class="hint">Aggiungi o modifica gli eventi qui sotto, poi premi <b>Pubblica</b>: il calendario si aggiorna per tutti. Finché non pubblichi, le modifiche restano solo su questo dispositivo.</p>';
+  if (caps.readOnly) h += '<p class="hint" style="color:#d1004f"><b>Questa vista è di sola lettura:</b> per pubblicare apri il sito dal tuo account Claude.</p>';
+  h += '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px"><button class="btn primary px" type="button" data-act="new">+ Nuovo evento</button></div>';
+  if (!list.length) h += '<div class="empty px"><p>Ancora nessun evento.</p><button class="btn primary px" type="button" data-act="new">Aggiungi il primo evento</button></div>';
+  var t = today();
+  list.forEach(function(e){
+    var c = catOf(e);
+    h += '<div class="adm-row px" style="--cc:'+c.color+(endOf(e)<t?';opacity:.65':'')+'"><i class="sq"></i><div class="t"><b>'+esc(e.title)+(e.host?' @ '+esc(e.host):'')+'</b><small>'+esc(rangeText(e))+(e.city?' · '+esc(e.city):'')+(endOf(e)<t?' · concluso':'')+'</small></div>';
+    h += '<div class="acts"><button class="btn small px" type="button" data-edit="'+esc(e.id)+'">Modifica</button><button class="btn small px" type="button" data-dup="'+esc(e.id)+'">Duplica</button><button class="btn small px" type="button" data-del="'+esc(e.id)+'">Elimina</button></div></div>';
+  });
+  h += '<p class="hint" style="margin-top:30px">Ultima pubblicazione: '+(DATA.updatedAt ? esc(new Date(DATA.updatedAt).toLocaleString("it-IT",{dateStyle:"long",timeStyle:"short"})) : "mai")+'.</p>';
+  h += '</main></div>';
+  var n = changesCount();
+  h += '<div class="admin-bar"><div class="wrap"><span>'+(n ? n+(n===1?' modifica da pubblicare':' modifiche da pubblicare') : 'Tutto pubblicato')+'</span><span style="display:flex;gap:10px;flex-wrap:wrap">';
+  if (n) h += '<button class="btn small px" type="button" data-act="discard" style="background:transparent;color:inherit;text-decoration:underline">Annulla modifiche</button>';
+  if (caps.artifact && !caps.readOnly) h += '<button class="btn lime px" type="button" data-act="publish"'+(n?'':' disabled')+'>Pubblica</button>';
+  else h += '<button class="btn lime px" type="button" data-act="export"'+(n?'':' disabled')+'>Scarica il sito aggiornato</button>';
+  h += '</span></div></div>';
+  app.innerHTML = h;
+}
+function changesCount(){
+  if (!draft) return 0;
+  var a = {}, b = {}, n = 0;
+  DATA.events.forEach(function(e){ a[e.id] = JSON.stringify(e); });
+  draft.events.forEach(function(e){ b[e.id] = JSON.stringify(e); if (a[e.id] !== b[e.id]) n++; });
+  Object.keys(a).forEach(function(id){ if (!(id in b)) n++; });
+  return n;
+}
+
+function editForm(id, copyFrom){
+  var src = id ? draft.events.find(function(x){ return x.id === id; }) : (copyFrom || null);
+  var e = src ? JSON.parse(JSON.stringify(src)) : {id:"", title:"", org:"AFK", host:"", category:"expo", city:"Palermo", venue:"", start:today(), end:"", timeStart:"", timeEnd:"", desc:"", link:""};
+  if (!id) e.id = "";
+  var cats = Object.keys(CATS).map(function(k){ return '<option value="'+k+'"'+(e.category===k?' selected':'')+'>'+esc(CATS[k].label)+'</option>'; }).join("");
+  var dl = CITIES.map(function(c){ return '<option value="'+esc(c)+'">'; }).join("");
+  var h = '<div class="dlg"><div class="dlg-top"><h2 style="margin:0">'+(id?'Modifica evento':'Nuovo evento')+'</h2><button class="x" type="button" data-close aria-label="Chiudi">×</button></div>';
+  h += '<form class="ef" data-ef novalidate>';
+  h += '<label class="full">Nome dell\u2019evento<input name="title" required value="'+esc(e.title)+'" placeholder="Es. Area Indie" autofocus></label>';
+  h += '<label>Powered by <small>chi lo organizza</small><input name="org" value="'+esc(e.org)+'" placeholder="Es. AFK, Kemonia Games"></label>';
+  h += '<label>Dentro a <small>evento ospitante, se c\u2019è</small><input name="host" value="'+esc(e.host)+'" placeholder="Es. Perla Comix"></label>';
+  h += '<label>Categoria<select name="category">'+cats+'</select></label>';
+  h += '<label>Città<input name="city" list="citylist" value="'+esc(e.city)+'" placeholder="Es. Palermo"><datalist id="citylist">'+dl+'</datalist></label>';
+  h += '<label class="full">Luogo<input name="venue" value="'+esc(e.venue)+'" placeholder="Es. Ostello Bello"></label>';
+  h += '<label>Primo giorno<input type="date" name="start" required value="'+esc(e.start)+'"></label>';
+  h += '<label>Ultimo giorno <small>vuoto se dura un giorno</small><input type="date" name="end" value="'+esc(e.end && e.end!==e.start ? e.end : "")+'"></label>';
+  h += '<label>Ora di inizio <small>facoltativa</small><input type="time" name="timeStart" value="'+esc(e.timeStart)+'"></label>';
+  h += '<label>Ora di fine <small>facoltativa</small><input type="time" name="timeEnd" value="'+esc(e.timeEnd)+'"></label>';
+  h += '<label class="full">Descrizione<textarea name="desc" placeholder="Due o tre frasi su cosa succede">'+esc(e.desc)+'</textarea></label>';
+  h += '<label class="full">Link per info o biglietti <small>facoltativo</small><input type="url" name="link" value="'+esc(e.link)+'" placeholder="https://"></label>';
+  h += '<p class="err full" data-err hidden></p>';
+  h += '<div class="full" style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary px" type="submit">'+(id?'Salva modifiche':'Aggiungi evento')+'</button><button class="btn px" type="button" data-close>Annulla</button></div>';
+  h += '</form></div>';
+  var d = showDialog(h);
+  d.querySelector("[data-ef]").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var f = ev.target, g = function(n){ return (f.elements[n].value||"").trim(); };
+    var err = f.querySelector("[data-err]");
+    var rec = {id: id || ("e"+Date.now().toString(36)+Math.random().toString(36).slice(2,6)), title:g("title"), org:g("org"), host:g("host"), category:g("category"), city:g("city"), venue:g("venue"), start:g("start"), end:g("end"), timeStart:g("timeStart"), timeEnd:g("timeEnd"), desc:g("desc"), link:g("link")};
+    if (!rec.title){ err.textContent = "Scrivi il nome dell\u2019evento."; err.hidden = false; f.elements.title.focus(); return; }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(rec.start)){ err.textContent = "Scegli il primo giorno dell\u2019evento."; err.hidden = false; f.elements.start.focus(); return; }
+    if (rec.end && rec.end < rec.start){ err.textContent = "L\u2019ultimo giorno non può venire prima del primo."; err.hidden = false; f.elements.end.focus(); return; }
+    if (!rec.end) rec.end = rec.start;
+    if (rec.link && !/^https?:\/\//i.test(rec.link)) rec.link = "https://"+rec.link;
+    if (id){ draft.events = draft.events.map(function(x){ return x.id === id ? rec : x; }); }
+    else draft.events.push(rec);
+    saveDraft(); closeDialog(); render(); toast(id ? "Modifiche salvate. Ricordati di pubblicare." : "Evento aggiunto. Ricordati di pubblicare.");
+  });
+}
+
+function buildDocument(data){
+  var json = JSON.stringify(data, null, 1).replace(/</g,"\\u003c");
+  return "<!doctype html>\n<html lang=\"it\">\n<head>\n"+HEAD_HTML+"\n</head>\n<body>\n<div id=\"app\"></div>\n<script type=\"application/json\" id=\"afk-data\">"+json+"</"+"script>\n"+SCRIPT_HTML+"\n</body>\n</html>\n";
+}
+function nextData(){
+  return {updatedAt: new Date().toISOString(), events: draft.events.slice().sort(sortEv)};
+}
+function publish(){
+  if (!caps.artifact) return;
+  var btn = app.querySelector('[data-act="publish"]'); if (btn){ btn.disabled = true; btn.textContent = "Pubblico…"; }
+  sstore("afk-admin","1");
+  caps.artifact.publish(buildDocument(nextData())).then(function(){
+    store("afk-draft", null); toast("Pubblicato. Il calendario è aggiornato.");
+  }).catch(function(err){
+    var code = err && err.code;
+    if (code === "conflict"){ toast("Il calendario era cambiato: lo sto ricaricando."); return; }
+    if (code === "not_writer" || code === "not_granted" || code === "consent_required" || code === "capability_disabled" || code === "not_declared"){
+      caps.readOnly = true; render(); toast("Questa vista è di sola lettura: aprila dal tuo account per pubblicare."); return;
+    }
+    if (code === "rate_limited"){ toast("Troppe pubblicazioni ravvicinate. Riprova tra un minuto."); }
+    else toast("Pubblicazione non riuscita. Le modifiche sono salve: riprova tra poco.");
+    if (btn){ btn.disabled = false; btn.textContent = "Pubblica"; }
+  });
+}
+function exportSite(){
+  saveFile("index.html", buildDocument(nextData()), "text/html");
+  toast("File scaricato: caricalo al posto del vecchio index.html.");
+}
+
+/* ---------- events ---------- */
+app.addEventListener("click", function(ev){
+  var el = ev.target.closest("button, a"); if (!el || !app.contains(el)) return;
+  var d = el.dataset;
+  if ("close" in d){ closeDialog(); return; }
+  if (d.open){ openEvent(d.open); return; }
+  if (d.ics){ var e = DATA.events.find(function(x){ return x.id === d.ics; }); if (e) saveFile("afk-"+slug(e.title)+".ics", icsFor(e), "text/calendar"); return; }
+  if (d.cat !== undefined && el.classList.contains("chip")){
+    if (!d.cat) ui.cats = [];
+    else { var i = ui.cats.indexOf(d.cat); if (i<0) ui.cats.push(d.cat); else ui.cats.splice(i,1); if (ui.cats.length === Object.keys(CATS).length) ui.cats = []; }
+    ui.selDay = null; render(); return;
+  }
+  if (d.view){ ui.view = d.view; ui.selDay = null; render(); return; }
+  if (d.month){ ui.cursor = new Date(ui.cursor.getFullYear(), ui.cursor.getMonth()+(+d.month), 1); ui.selDay = null; render(); return; }
+  if (d.day){ if (el.classList.contains("out")) return; ui.selDay = ui.selDay === d.day ? null : d.day; render(); var dl = app.querySelector(".day-list"); if (dl && window.innerWidth < 700) dl.scrollIntoView({behavior:"smooth", block:"start"}); return; }
+  if (d.edit){ editForm(d.edit); return; }
+  if (d.dup){ var src = draft.events.find(function(x){ return x.id === d.dup; }); if (src){ var c = JSON.parse(JSON.stringify(src)); c.title = c.title; editForm(null, c); } return; }
+  if (d.del){
+    var t = draft.events.find(function(x){ return x.id === d.del; });
+    if (t && confirm("Eliminare \u201c"+t.title+"\u201d?")){ draft.events = draft.events.filter(function(x){ return x.id !== d.del; }); saveDraft(); render(); toast("Evento eliminato. Ricordati di pubblicare."); }
+    return;
+  }
+  switch (d.act){
+    case "install": install(); break;
+    case "admin": ev.preventDefault(); askPassword(); break;
+    case "exit": ev.preventDefault(); exitAdmin(); break;
+    case "new": editForm(null); break;
+    case "publish": publish(); break;
+    case "export": exportSite(); break;
+    case "discard": if (confirm("Annullare tutte le modifiche non pubblicate?")){ draft = {base: DATA.updatedAt, events: JSON.parse(JSON.stringify(DATA.events)), dirty:false}; store("afk-draft", null); render(); } break;
+    case "reset": ui.cats = []; ui.city = ""; render(); break;
+    case "showpast": ui.past = true; render(); break;
+  }
+  if (el.getAttribute("href") === "#") ev.preventDefault();
+});
+app.addEventListener("change", function(ev){
+  var t = ev.target;
+  if (t.hasAttribute("data-city")){ ui.city = t.value; ui.selDay = null; render(); var s = app.querySelector("[data-city]"); if (s) s.focus(); }
+  if (t.hasAttribute("data-past")){ ui.past = t.checked; render(); var c = app.querySelector("[data-past]"); if (c) c.focus(); }
+});
+window.addEventListener("hashchange", function(){ if (location.hash === "#admin") askPassword(); });
+
+/* ---------- boot ---------- */
+render();
+if (sload("afk-admin") === "1") enterAdmin();
+else if (location.hash === "#admin") askPassword();
+
+function hookClaude(tries){
+  if (!(window.claude && typeof window.claude.use === "function")){ if (tries < 30) setTimeout(function(){ hookClaude(tries+1); }, 200); return; }
+  window.claude.use("artifact").then(function(a){ caps.artifact = a; if (ui.mode === "admin") render(); }).catch(function(){});
+  window.claude.use("downloads").then(function(d){ caps.downloads = d; }).catch(function(){});
+  window.claude.use("user").then(function(u){
+    if (!u) return;
+    return u.isOwner().then(function(o){ caps.owner = !!o; });
+  }).catch(function(){});
+}
+hookClaude(0);
+/* offline support when hosted as a standalone site (GitHub Pages, Netlify…) */
+if ("serviceWorker" in navigator && location.protocol === "https:" && !/claude\.(ai|site)|claudeusercontent/.test(location.hostname)){
+  window.addEventListener("load", function(){ navigator.serviceWorker.register("sw.js").catch(function(){}); });
+}
+})();
+</script>
+</body>
+</html>

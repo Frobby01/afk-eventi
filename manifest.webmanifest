@@ -1,0 +1,16 @@
+{
+  "name": "AFK Palermo · Eventi",
+  "short_name": "AFK Eventi",
+  "description": "Il calendario degli eventi indie e videoludici in Sicilia, curato da AFK Palermo.",
+  "lang": "it",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#E933D3",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
