@@ -1,0 +1,50 @@
+{
+ "updatedAt": "2026-10-03T00:07:06.597Z",
+ "events": [
+  {
+   "id": "perla-comix-2026",
+   "title": "Area Indie",
+   "org": "AFK",
+   "host": "Perla Comix",
+   "category": "expo",
+   "city": "Palermo",
+   "venue": "Fiera Pala Giotto",
+   "start": "2026-10-01",
+   "end": "2026-10-04",
+   "timeStart": "",
+   "timeEnd": "",
+   "desc": "L'area dedicata ai videogiochi indipendenti siciliani dentro Perla Comix, la nuova fiera di fumetti, giochi e cultura pop di Palermo. Prova i giochi, conosci chi li sviluppa e scopri la scena indie dell'isola.",
+   "link": ""
+  },
+  {
+   "id": "game-jam-ostello-2026",
+   "title": "Game Jam",
+   "org": "Kemonia Games",
+   "host": "Ostello Bello",
+   "category": "jam",
+   "city": "Palermo",
+   "venue": "Ostello Bello",
+   "start": "2026-11-02",
+   "end": "2026-11-05",
+   "timeStart": "",
+   "timeEnd": "",
+   "desc": "Quattro giorni per creare un videogioco da zero, in squadra, partendo da un tema svelato all'inizio. Aperta a programmatori, artisti, musicisti e game designer di ogni livello.",
+   "link": ""
+  },
+  {
+   "id": "sicilia-game-expo-2026",
+   "title": "Area Indie",
+   "org": "Kemonia Games",
+   "host": "Sicilian Game Expo",
+   "category": "expo",
+   "city": "Catania",
+   "venue": "SiciliaFiera, Misterbianco",
+   "start": "2026-11-13",
+   "end": "2026-11-15",
+   "timeStart": "",
+   "timeEnd": "",
+   "desc": "Lo spazio dedicato agli sviluppatori indipendenti dentro Sicilian Game Expo, la fiera del gioco in tutte le sue forme: videogiochi, giochi da tavolo, cosplay e incontri con gli ospiti.",
+   "link": ""
+  }
+ ]
+}
