@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-03T00:07:06.597Z",
+ "updatedAt": "2026-10-04T11:43:01.353Z",
  "events": [
   {
    "id": "perla-comix-2026",
@@ -44,6 +44,21 @@
    "timeStart": "",
    "timeEnd": "",
    "desc": "Lo spazio dedicato agli sviluppatori indipendenti dentro Sicilian Game Expo, la fiera del gioco in tutte le sue forme: videogiochi, giochi da tavolo, cosplay e incontri con gli ospiti.",
+   "link": ""
+  },
+  {
+   "id": "emutqyfjn8nnx",
+   "title": "INDIE PANIK",
+   "org": "AFK",
+   "host": "",
+   "category": "party",
+   "city": "Palermo",
+   "venue": "Spazio Averna Open",
+   "start": "2027-04-14",
+   "end": "2027-04-14",
+   "timeStart": "21:00",
+   "timeEnd": "23:59",
+   "desc": "",
    "link": ""
   }
  ]
