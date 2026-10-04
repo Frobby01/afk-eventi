@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-04T11:43:01.353Z",
+ "updatedAt": "2026-10-04T12:24:30.765Z",
  "events": [
   {
    "id": "perla-comix-2026",
@@ -54,8 +54,8 @@
    "category": "party",
    "city": "Palermo",
    "venue": "Spazio Averna Open",
-   "start": "2027-04-14",
-   "end": "2027-04-14",
+   "start": "2027-04-24",
+   "end": "2027-04-24",
    "timeStart": "21:00",
    "timeEnd": "23:59",
    "desc": "",
