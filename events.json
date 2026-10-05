@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-05T13:47:48.136Z",
+ "updatedAt": "2026-10-05T13:48:53.116Z",
  "seed": 2,
  "events": [
   {
@@ -61,7 +61,7 @@
    "category": "expo",
    "city": "Palermo",
    "venue": "Fiera Pala Giotto",
-   "start": "2026-10-03",
+   "start": "2026-10-01",
    "end": "2026-10-04",
    "timeStart": "",
    "timeEnd": "",
@@ -124,13 +124,11 @@
   {
    "id": "bearly-in-time",
    "title": "BEARly in Time",
-   "studio": "Heni, Andzia \"Pleple\" Plescia",
+   "studio": "",
    "genre": "",
    "desc": "",
-   "cover": "https://img.itch.zone/aW1nLzI4ODUzNTcyLmdpZg==/original/wnU8vr.gif",
-   "links": {
-    "itch": "https://heniyt.itch.io/bearly-in-time"
-   },
+   "cover": "",
+   "links": {},
    "events": [
     "perla-comix-2026"
    ]
@@ -138,14 +136,11 @@
   {
    "id": "blob-arena",
    "title": "Blob Arena",
-   "studio": "Grug's Lair Limited",
-   "genre": "Strategia, Casual",
-   "desc": "Sopravvivi a sessioni Arcade di 10 livelli, colleziona combattenti in pixel-art e sfida i rivali in duelli in tempo reale. Veloce, strategico e infinitamente rigiocabile. Sblocca Blobert rari, padroneggia combo potenti, scala la classifica globale e domina l'arena.\n\nGioca a modo tuo\nBlob Arena offre diversi modi per combattere e progredire:\n\nModalità Arcade: Affronta una serie di dieci livelli di nemici, ognuno più difficile del precedente. Guadagna punti in base alla velocità, alla varietà di mosse e alle vittorie perfette. Gli Arcade Token sono la valuta di gioco che ti permette di giocare…",
-   "cover": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/25/90/02/2590020c-e948-1e83-c789-ba00978047af/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
-   "links": {
-    "play": "https://play.google.com/store/apps/details?id=com.GrugsLair.BlobArena&hl=it",
-    "apple": "https://apps.apple.com/it/app/blob-arena/id6751915702?uo=4"
-   },
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
    "events": [
     "trapani-comix-2026"
    ]
@@ -156,14 +151,12 @@
    "studio": "Mangiapalazzo Studios",
    "genre": "Visual novel, Mistero",
    "desc": "",
-   "cover": "https://img.itch.zone/aW1nLzIzMzgxNTUzLnBuZw==/315x250%23c/mheOyH.png",
-   "links": {
-    "itch": "https://mangiapalazzostudios.itch.io/boundbyblood"
-   },
+   "cover": "",
+   "links": {},
    "events": [
-    "perla-comix-2026",
+    "questa-casa-2026",
     "trapani-comix-2026",
-    "questa-casa-2026"
+    "perla-comix-2026"
    ]
   },
   {
@@ -182,13 +175,11 @@
   {
    "id": "chicken-out",
    "title": "Chicken Out",
-   "studio": "CUBOX",
+   "studio": "",
    "genre": "",
    "desc": "",
-   "cover": "https://img.itch.zone/aW1nLzMwMzg5Njc4LnBuZw==/315x250%23c/jiKTw3.png",
-   "links": {
-    "itch": "https://thecubox.itch.io/chicken-out"
-   },
+   "cover": "",
+   "links": {},
    "events": [
     "perla-comix-2026"
    ]
