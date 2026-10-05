@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-05T13:52:53.417Z",
+ "updatedAt": "2026-10-05T14:12:53.011Z",
  "seed": 2,
  "events": [
   {
@@ -226,7 +226,9 @@
    "genre": "",
    "desc": "",
    "cover": "",
-   "links": {},
+   "links": {
+    "steam": "https://store.steampowered.com/app/4559680/"
+   },
    "events": [
     "trapani-comix-2026"
    ]
@@ -237,8 +239,10 @@
    "studio": "Overgamez",
    "genre": "Avventura, Horror",
    "desc": "",
-   "cover": "",
-   "links": {},
+   "cover": "https://img.itch.zone/aW1nLzIwNzAzMTQ3LmpwZw==/315x250%23c/bEzvgt.jpg",
+   "links": {
+    "itch": "https://overgamez.itch.io/invasione-di-controllo"
+   },
    "events": [
     "questa-casa-2026",
     "trapani-comix-2026"
@@ -259,11 +263,13 @@
   {
    "id": "lambdawn",
    "title": "LambDawn",
-   "studio": "",
+   "studio": "KemoniaGames",
    "genre": "",
    "desc": "",
-   "cover": "",
-   "links": {},
+   "cover": "https://img.itch.zone/aW1nLzMwNTY1OTc4LnBuZw==/315x250%23c/p2rD%2Fe.png",
+   "links": {
+    "itch": "https://kemoniagames.itch.io/lambdawn"
+   },
    "events": [
     "trapani-comix-2026",
     "pcc-2026",
@@ -276,8 +282,10 @@
    "studio": "Kappo Studio, Mangiapalazzo Studios",
    "genre": "Puzzle",
    "desc": "",
-   "cover": "",
-   "links": {},
+   "cover": "https://img.itch.zone/aW1nLzMwNDgwNzkxLnBuZw==/315x250%23c/O57IDZ.png",
+   "links": {
+    "itch": "https://frobby.itch.io/loot-jackal-loot"
+   },
    "events": [
     "questa-casa-2026",
     "trapani-comix-2026",
@@ -290,8 +298,10 @@
    "studio": "Moon Pie Interactive",
    "genre": "Roguelike, RPG",
    "desc": "",
-   "cover": "",
-   "links": {},
+   "cover": "https://img.itch.zone/aW1nLzI2ODgyNTg2LnBuZw==/315x250%23c/x7Ibod.png",
+   "links": {
+    "itch": "https://moonpie-interactive.itch.io/lunar-crypt-rpg"
+   },
    "events": [
     "questa-casa-2026",
     "pcc-2026"
@@ -312,11 +322,13 @@
   {
    "id": "out-of-my-shop",
    "title": "Out of my Shop",
-   "studio": "",
+   "studio": "Kiograh, Alessandro Varisco, Malchio03",
    "genre": "",
    "desc": "",
-   "cover": "",
-   "links": {},
+   "cover": "https://img.itch.zone/aW1nLzE3NDYxMzAwLnBuZw==/315x250%23c/oAKT4R.png",
+   "links": {
+    "itch": "https://kiograh.itch.io/out-of-my-shop"
+   },
    "events": [
     "perla-comix-2026"
    ]
@@ -324,11 +336,13 @@
   {
    "id": "psoxide",
    "title": "PSoxide",
-   "studio": "",
+   "studio": "Bonnie Studios",
    "genre": "",
    "desc": "",
-   "cover": "",
-   "links": {},
+   "cover": "https://img.itch.zone/aW1nLzI3NTM1NzE3LnBuZw==/315x250%23c/pgBvSZ.png",
+   "links": {
+    "itch": "https://bonnie-studios.itch.io/psoxide"
+   },
    "events": [
     "pcc-2026"
    ]
@@ -336,11 +350,13 @@
   {
    "id": "the-demon-who-knocked",
    "title": "The Demon Who Knocked",
-   "studio": "",
+   "studio": "Team Cassette, GreenCone",
    "genre": "",
    "desc": "",
-   "cover": "",
-   "links": {},
+   "cover": "https://img.itch.zone/aW1nLzMwMDU0NDk3LmdpZg==/original/pDgjU3.gif",
+   "links": {
+    "itch": "https://team-cassette.itch.io/the-demon-who-knocked"
+   },
    "events": [
     "perla-comix-2026"
    ]
@@ -348,11 +364,13 @@
   {
    "id": "voodloop",
    "title": "VoodLoop",
-   "studio": "",
+   "studio": "CUBOX, Nate Sassoon",
    "genre": "",
    "desc": "",
-   "cover": "",
-   "links": {},
+   "cover": "https://img.itch.zone/aW1nLzIyNTU0NDAwLmdpZg==/original/I%2FBWjQ.gif",
+   "links": {
+    "itch": "https://thecubox.itch.io/voodloop"
+   },
    "events": [
     "trapani-comix-2026"
    ]
