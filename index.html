@@ -175,7 +175,7 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
 }
 
 /* admin */
-.admin-bar{position:sticky;bottom:0;z-index:6;background:var(--ink);color:var(--bg);padding:12px 0;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+.admin-bar{position:sticky;bottom:0;z-index:6;background:var(--magenta);color:#000;font-weight:700;padding:12px 0;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
 .admin-bar .wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
 .admin-bar .btn{--pc:transparent}
 .adm h1{font-family:var(--f-pixel);font-size:1.8rem;margin:10px 0 4px}
@@ -295,6 +295,22 @@ form.ef .checks small{color:var(--muted)}
 .import input{flex:1 1 240px}
 .impmsg{margin:10px 0 0;font-size:.95rem}
 .imgprev{max-width:240px;aspect-ratio:16/10;object-fit:cover;display:block;margin-top:4px;background:var(--surface-2)}
+/* batch import */
+.batch code{font-size:.9em;background:var(--surface-2);padding:1px 6px}
+.batchta{display:block;width:100%;min-height:180px;padding:12px 14px;background:var(--surface);color:var(--ink);border:0;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92rem;line-height:1.55;resize:vertical;--pc:var(--line)}
+.batchta:focus{--pc:var(--magenta);outline:none}
+.brow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:16px 0}
+.bitem{display:flex;align-items:center;gap:14px;padding:12px 14px;background:var(--surface);margin-bottom:12px;--pc:var(--line)}
+.bitem.fail{--pc:#8a3550}
+.bitem .cover.mini{width:72px;height:45px;aspect-ratio:auto;flex:0 0 auto}
+.bitem .cover.mini.ph{font-size:1.1rem}
+.bitem .t{flex:1;min-width:0}
+.bitem .t b{display:block;font-family:var(--f-pixel);font-size:1rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bitem .t small{display:block;color:var(--muted);font-size:.9rem}
+.blink{display:block;font-size:.8rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bsel{display:flex;flex-direction:column;gap:4px;font-size:.8rem;color:var(--muted);flex:0 0 auto}
+.bsel select{min-width:210px;max-width:260px;color:var(--ink)}
+@media (max-width:640px){.bitem{flex-wrap:wrap}.bitem .t{flex-basis:calc(100% - 90px)}.bsel{width:100%}.bsel select{width:100%;max-width:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -686,7 +702,7 @@ var MON3 = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","d
 var DOW = ["lun","mar","mer","gio","ven","sab","dom"];
 
 var app = document.getElementById("app");
-var ui = { view:"list", cats:[], city:"", past:false, cursor:null, selDay:null, mode:"public", page:"cal", gameId:null, gq:"", gevent:"", ggenre:"", adminTab:"events" };
+var ui = { view:"list", cats:[], city:"", past:false, cursor:null, selDay:null, mode:"public", page:"cal", gameId:null, gq:"", gevent:"", ggenre:"", adminTab:"events", batch:{text:"", overwrite:false, rows:[], running:false} };
 var caps = { artifact:null, downloads:null, owner:false, readOnly:false };
 var draft = null; /* admin working copy */
 
@@ -1206,7 +1222,7 @@ function renderAdmin(){
     h += '<p class="hint">'+(g && g.token ? 'Pubblicazione collegata a GitHub ('+esc(g.owner)+'/'+esc(g.repo)+'). ' : '<b>Prima pubblicazione:</b> serve collegare GitHub una volta su questo dispositivo. ')+'<button class="btn ghost small" type="button" data-act="ghsetup" style="min-height:0;padding:0">'+(g && g.token ? 'Impostazioni GitHub' : 'Collega GitHub')+'</button></p>';
   }
   if (caps.readOnly) h += '<p class="hint" style="color:#d1004f"><b>Questa vista è di sola lettura:</b> per pubblicare apri il sito dal tuo account Claude.</p>';
-  h += '<div class="seg px atabs" role="group" aria-label="Sezione"><button type="button" data-tab="events" aria-pressed="'+(tab==="events")+'">Eventi ('+draft.events.length+')</button><button type="button" data-tab="games" aria-pressed="'+(tab==="games")+'">Giochi ('+draft.games.length+')</button></div>';
+  h += '<div class="seg px atabs" role="group" aria-label="Sezione"><button type="button" data-tab="events" aria-pressed="'+(tab==="events")+'">Eventi ('+draft.events.length+')</button><button type="button" data-tab="games" aria-pressed="'+(tab==="games")+'">Giochi ('+draft.games.length+')</button><button type="button" data-tab="batch" aria-pressed="'+(tab==="batch")+'">Importa link</button></div>';
   var t = today();
   if (tab === "events"){
     h += '<div style="margin-bottom:22px"><button class="btn primary px" type="button" data-act="new">+ Nuovo evento</button></div>';
@@ -1217,8 +1233,10 @@ function renderAdmin(){
       h += '<div class="adm-row px" style="--cc:'+c.color+(endOf(e)<t?';opacity:.7':'')+'"><i class="sq"></i><div class="t"><b>'+esc(e.title)+(e.host?' @ '+esc(e.host):'')+'</b><small>'+esc(rangeText(e))+(e.city?' · '+esc(e.city):'')+(ng?' · '+ng+(ng===1?' gioco':' giochi'):'')+(endOf(e)<t?' · concluso':'')+'</small></div>';
       h += '<div class="acts"><button class="btn small px" type="button" data-edit="'+esc(e.id)+'">Modifica</button><button class="btn small px" type="button" data-dup="'+esc(e.id)+'">Duplica</button><button class="btn small px" type="button" data-del="'+esc(e.id)+'">Elimina</button></div></div>';
     });
+  } else if (tab === "batch"){
+    h += batchTab();
   } else {
-    h += '<div style="margin-bottom:22px"><button class="btn primary px" type="button" data-act="newgame">+ Nuovo gioco</button></div>';
+    h += '<div style="margin-bottom:22px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary px" type="button" data-act="newgame">+ Nuovo gioco</button><button class="btn px" type="button" data-tab="batch">Importa link in blocco</button></div>';
     var gl = draft.games.slice().sort(byTitle);
     if (!gl.length) h += '<div class="empty px"><p>Ancora nessun gioco in archivio.</p></div>';
     gl.forEach(function(g){
@@ -1341,6 +1359,126 @@ function gameForm(id){
     if (id) draft.games = draft.games.map(function(x){ return x.id === id ? rec : x; }); else draft.games.push(rec);
     saveDraft(); closeDialog(); ui.adminTab = "games"; render(); toast(id ? "Gioco salvato. Ricordati di pubblicare." : "Gioco aggiunto. Ricordati di pubblicare.");
   });
+}
+
+/* ---------- batch import of store links ---------- */
+function normT(s){ return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,""); }
+function normUrl(u){
+  u = String(u||"").trim(); var m;
+  if ((m = u.match(/steampowered\.com\/app\/(\d+)/i))) return "steam:"+m[1];
+  if ((m = u.match(/play\.google\.com\/.*[?&]id=([\w.]+)/i))) return "play:"+m[1].toLowerCase();
+  if ((m = u.match(/apple\.com\/.*id(\d+)/i))) return "apple:"+m[1];
+  return u.toLowerCase().replace(/^https?:\/\/(www\.)?/,"").replace(/[?#].*$/,"").replace(/\/+$/,"");
+}
+function urlHint(u){
+  try {
+    var x = new URL(u), parts = x.pathname.split("/").filter(Boolean);
+    if (/\.itch\.io$/i.test(x.hostname)) return (parts[0]||"").replace(/[-_]+/g," ");
+    if (/steampowered/i.test(x.hostname)) return (parts[2]||"").replace(/_+/g," ");
+    if (/play\.google/i.test(x.hostname)) return (x.searchParams.get("id")||"").split(".").pop();
+    if (/apple\.com/i.test(x.hostname)){ var i = parts.indexOf("app"); return (i >= 0 && parts[i+1] && !/^id\d+$/.test(parts[i+1]) ? parts[i+1] : "").replace(/-/g," "); }
+    return (parts.pop() || x.hostname.split(".")[0]).replace(/[-_]+/g," ");
+  } catch(e){ return ""; }
+}
+function storeLabel(k){ var s = STORES.find(function(x){ return x[0] === k; }); return s ? s[1] : "Link"; }
+function matchGame(r){
+  var key = normUrl(r.url);
+  var hit = draft.games.find(function(g){ var L = g.links || {}; return Object.keys(L).some(function(k){ return normUrl(L[k]) === key; }); });
+  if (hit) return hit.id;
+  var cands = [r.hint, r.data && r.data.title, urlHint(r.url)].map(normT).filter(function(x){ return x.length >= 3; });
+  var i, g;
+  for (i = 0; i < cands.length; i++){ g = draft.games.find(function(x){ return normT(x.title) === cands[i]; }); if (g) return g.id; }
+  for (i = 0; i < cands.length; i++){
+    g = draft.games.find(function(x){ var t = normT(x.title); return t.length >= 4 && (cands[i].indexOf(t) >= 0 || t.indexOf(cands[i]) >= 0); });
+    if (g) return g.id;
+  }
+  return "";
+}
+function parseBatch(text){
+  var re = /(https?:\/\/[^\s|,;<>"]+|(?:[\w-]+\.)+(?:itch\.io|steampowered\.com|google\.com|apple\.com)\/[^\s|,;<>"]*)/i, seen = {}, out = [];
+  String(text||"").split(/\r?\n/).forEach(function(line){
+    var m = line.match(re); if (!m) return;
+    var url = fixUrl(m[1].replace(/[).\]]+$/,"")), key = normUrl(url);
+    if (seen[key]) return; seen[key] = 1;
+    var hint = (line.slice(0, m.index)+" "+line.slice(m.index+m[1].length)).replace(/^[\s\-•*·]+|^\s*\d+[.)]\s*/,"").replace(/[\s|:\t–—\-=>]+$/,"").replace(/^[\s|:\t–—\-=>]+/,"").trim();
+    out.push({url:url, hint:hint});
+  });
+  return out;
+}
+function batchTab(){
+  var B = ui.batch;
+  var h = '<div class="batch"><p class="hint">Incolla i link delle pagine dei giochi, uno per riga: itch.io, Steam, Google Play, App Store o sito ufficiale. Leggo tutte le pagine insieme, ti propongo a quale gioco collegare ogni link e aggiorno i dati in un colpo solo.</p>';
+  h += '<p class="hint">Se lo store usa un nome diverso, scrivi il titolo prima del link: <code>Lunar Crypt | https://…</code></p>';
+  h += '<label class="sr" for="batch">Link dei giochi</label><textarea id="batch" class="batchta px" data-batch spellcheck="false" placeholder="https://autore.itch.io/nome-gioco&#10;Office Shift | https://store.steampowered.com/app/123456/&#10;https://play.google.com/store/apps/details?id=…">'+esc(B.text)+'</textarea>';
+  h += '<div class="brow"><label class="check"><input type="checkbox" data-bover'+(B.overwrite?' checked':'')+'> Sovrascrivi anche i campi già compilati</label><span class="spacer"></span>';
+  h += '<button class="btn lime px" type="button" data-act="bread"'+(B.running?' disabled':'')+'>'+(B.running?'Leggo i link…':'Leggi i link')+'</button></div>';
+  h += '<div id="brows" aria-live="polite">'+batchRows()+'</div></div>';
+  return h;
+}
+function batchRows(){
+  var B = ui.batch; if (!B.rows.length) return "";
+  var done = B.rows.filter(function(r){ return r.status !== "wait"; }).length, fail = B.rows.filter(function(r){ return r.status === "fail"; }).length;
+  var opts = draft.games.slice().sort(byTitle);
+  var h = '<p class="count">'+done+' di '+B.rows.length+' link letti'+(fail ? ' · '+fail+' non letti (salvo solo il link)' : '')+'</p>';
+  B.rows.forEach(function(r, i){
+    var d = r.data || {}, name = d.title || r.hint || urlHint(r.url) || r.url;
+    var info = r.status === "wait" ? "in lettura…" : r.status === "fail" ? "pagina non letta: verrà salvato solo il link" : ([d.studio, d.genre].filter(Boolean).join(" · ") || "dati letti");
+    h += '<div class="bitem px'+(r.status==="fail"?' fail':'')+'">'+coverHtml({title:name, cover:d.cover}, "mini");
+    h += '<div class="t"><b>'+esc(name)+'</b><small>'+esc(storeLabel(d.kind || r.kind))+' · '+esc(info)+'</small><a class="blink" href="'+esc(r.url)+'" target="_blank" rel="noopener">'+esc(r.url)+'</a></div>';
+    h += '<label class="bsel"><span>Collega a</span><select class="select px" data-btarget="'+i+'"'+(r.status==="wait" && !r.target ? ' disabled' : '')+'>';
+    if (!r.target) h += '<option value="" selected disabled>Attendi…</option>';
+    h += '<option value="skip"'+(r.target==="skip"?' selected':'')+'>Ignora questo link</option>';
+    h += '<option value="new"'+(r.target==="new"?' selected':'')+'>+ Nuovo gioco</option>';
+    opts.forEach(function(g){ h += '<option value="'+esc(g.id)+'"'+(r.target===g.id?' selected':'')+'>'+esc(g.title)+'</option>'; });
+    h += '</select></label></div>';
+  });
+  var n = B.rows.filter(function(r){ return r.status !== "wait" && r.target && r.target !== "skip"; }).length;
+  h += '<div class="brow"><button class="btn primary px" type="button" data-act="bapply"'+((B.running || !n) ? ' disabled' : '')+'>Applica '+n+(n===1?' link':' link')+'</button><button class="btn px" type="button" data-act="bclear">Svuota</button></div>';
+  return h;
+}
+function batchRefresh(){ var el = document.getElementById("brows"); if (el) el.innerHTML = batchRows(); }
+function batchRead(){
+  var B = ui.batch, ta = app.querySelector("[data-batch]");
+  if (ta) B.text = ta.value;
+  var parsed = parseBatch(B.text);
+  if (!parsed.length){ toast("Non trovo link: incollane almeno uno, uno per riga."); return; }
+  B.rows = parsed.map(function(p){ var r = {url:p.url, hint:p.hint, kind:storeKind(p.url), status:"wait", data:null, target:"", userSet:false}; r.target = matchGame(r); return r; });
+  B.running = true; render();
+  var queue = B.rows.slice();
+  function work(){
+    var r = queue.shift(); if (!r) return Promise.resolve();
+    return importGame(r.url).then(function(d){ r.data = d; r.status = "ok"; }, function(){ r.status = "fail"; })
+      .then(function(){ if (!r.userSet && !r.target) r.target = matchGame(r) || (r.status === "ok" ? "new" : "skip"); batchRefresh(); return work(); });
+  }
+  Promise.all([work(), work(), work()]).then(function(){
+    B.running = false;
+    if (ui.mode === "admin" && ui.adminTab === "batch") render();
+    toast("Link letti: controlla gli abbinamenti e premi Applica.");
+  });
+}
+function batchApply(){
+  var B = ui.batch, over = B.overwrite, created = {}, touched = {};
+  B.rows.forEach(function(r){
+    if (r.status === "wait" || !r.target || r.target === "skip") return;
+    var d = r.data || {}, g;
+    if (r.target === "new"){
+      var title = d.title || r.hint || urlHint(r.url) || "Senza titolo", k = normT(title);
+      g = created[k];
+      if (!g){ g = {id:newId("g"), title:title, studio:"", genre:"", desc:"", cover:"", links:{}, events:[]}; draft.games.push(g); created[k] = g; }
+    } else g = draft.games.find(function(x){ return x.id === r.target; });
+    if (!g) return;
+    ["studio","genre","desc","cover"].forEach(function(f){ if (d[f] && (over || !g[f])) g[f] = d[f]; });
+    if (!g.title && d.title) g.title = d.title;
+    g.links = g.links || {};
+    g.links[d.kind || r.kind] = d.link || r.url;
+    touched[g.id] = 1;
+  });
+  var c = Object.keys(touched).length;
+  if (!c){ toast("Nessun link da applicare."); return; }
+  saveDraft();
+  B.rows = []; B.text = "";
+  ui.adminTab = "games"; render();
+  toast("Aggiornati "+c+(c===1?" gioco":" giochi")+". Ricordati di pubblicare.");
 }
 
 /* ---------- import metadata from store pages ---------- */
@@ -1610,6 +1748,9 @@ app.addEventListener("click", function(ev){
     case "export": exportSite(); break;
     case "ghsetup": ghSetup(false); break;
     case "newgame": gameForm(null); break;
+    case "bread": batchRead(); break;
+    case "bapply": batchApply(); break;
+    case "bclear": ui.batch.rows = []; ui.batch.text = ""; render(); break;
     case "import": doImport(); break;
     case "greset": ui.gq = ""; ui.gevent = ""; ui.ggenre = ""; render(); break;
     case "ghforget": if (confirm("Scollegare GitHub da questo dispositivo?")){ store("afk-gh", null); closeDialog(); render(); toast("GitHub scollegato da questo dispositivo."); } break;
@@ -1620,10 +1761,13 @@ app.addEventListener("click", function(ev){
   if (el.getAttribute("href") === "#"){ ev.preventDefault(); if (ui.mode !== "admin"){ if (location.hash && location.hash !== "#") location.hash = ""; else { ui.page = "cal"; render(); window.scrollTo(0,0); } } }
 });
 app.addEventListener("input", function(ev){
+  if (ev.target.hasAttribute("data-batch")){ ui.batch.text = ev.target.value; return; }
   if (ev.target.hasAttribute("data-gq")){ ui.gq = ev.target.value; var r = document.getElementById("gresults"); if (r) r.innerHTML = gamesResults(); }
 });
 app.addEventListener("change", function(ev){
   var t = ev.target;
+  if (t.hasAttribute("data-bover")){ ui.batch.overwrite = t.checked; return; }
+  if (t.hasAttribute("data-btarget")){ var br = ui.batch.rows[+t.getAttribute("data-btarget")]; if (br){ br.target = t.value; br.userSet = true; batchRefresh(); } return; }
   if (t.hasAttribute("data-gevent")){ ui.gevent = t.value; render(); var a = app.querySelector("[data-gevent]"); if (a) a.focus(); return; }
   if (t.hasAttribute("data-ggenre")){ ui.ggenre = t.value; render(); var b = app.querySelector("[data-ggenre]"); if (b) b.focus(); return; }
   if (t.hasAttribute("data-city")){ ui.city = t.value; ui.selDay = null; render(); var s = app.querySelector("[data-city]"); if (s) s.focus(); }
