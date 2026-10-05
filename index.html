@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" data-afk>
 <title data-afk>AFK Palermo · Eventi</title>
 <meta name="description" content="Il calendario degli eventi indie e videoludici in Sicilia, curato da AFK Palermo." data-afk>
-<meta name="theme-color" content="#FFEEFB" media="(prefers-color-scheme: light)" data-afk>
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" data-afk>
+<meta name="theme-color" content="#EA33D5" data-afk>
+<meta name="color-scheme" content="dark" data-afk>
 <meta name="apple-mobile-web-app-capable" content="yes" data-afk>
 <meta name="mobile-web-app-capable" content="yes" data-afk>
 <meta name="apple-mobile-web-app-title" content="AFK Eventi" data-afk>
@@ -19,34 +19,18 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@900&family=Silkscreen:wght@400;700&display=swap" data-afk>
 <style data-afk>
 :root{
-  --bg:#FFEEFB; --surface:#FFFFFF; --surface-2:#FBDDF5; --ink:#1F1F1F; --muted:#5E4A5A;
-  --magenta:#E933D3; --magenta-ink:#A3138F; --lime:#C6FF00; --on-accent:#1F1F1F;
-  --line:rgba(31,31,31,.16); --line-strong:#1F1F1F; --dot:rgba(31,31,31,.07);
-  --c-expo:#E933D3; --c-jam:#9ED600; --c-talk:#3FA9F5; --c-party:#FF8A1F;
+  --bg:#000000; --surface:#151217; --surface-2:#221B24; --ink:#F2EAF0; --muted:#B9A9B5;
+  --magenta:#EA33D5; --magenta-ink:#FF86EC; --lime:#C6FF00; --on-accent:#000000;
+  --line:rgba(255,238,251,.14); --line-strong:#F2EAF0; --dot:rgba(255,238,251,.07);
+  --c-expo:#EA33D5; --c-jam:#C6FF00; --c-talk:#5CC0FF; --c-party:#FF9F45;
   --pixel:3px;
   --f-pixel:"Silkscreen","Courier New",monospace;
   --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif;
   --f-mark:"Montserrat","Arial Black","Helvetica Neue",sans-serif;
-  color-scheme:light;
+  color-scheme:dark;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#000000; --surface:#151217; --surface-2:#221B24; --ink:#F2EAF0; --muted:#B9A9B5;
-    --magenta:#F04BDC; --magenta-ink:#FF86EC; --lime:#C6FF00; --on-accent:#000000;
-    --line:rgba(255,238,251,.14); --line-strong:#F2EAF0; --dot:rgba(255,238,251,.07);
-    --c-expo:#F04BDC; --c-jam:#C6FF00; --c-talk:#5CC0FF; --c-party:#FF9F45;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#000000; --surface:#151217; --surface-2:#221B24; --ink:#F2EAF0; --muted:#B9A9B5;
-  --magenta:#F04BDC; --magenta-ink:#FF86EC; --lime:#C6FF00; --on-accent:#000000;
-  --line:rgba(255,238,251,.14); --line-strong:#F2EAF0; --dot:rgba(255,238,251,.07);
-  --c-expo:#F04BDC; --c-jam:#C6FF00; --c-talk:#5CC0FF; --c-party:#FF9F45;
-  color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
@@ -73,7 +57,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .mark span{font-family:var(--f-pixel);font-size:13px;margin-left:10px;color:var(--muted);line-height:1}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 16px;border:0;background:var(--surface);color:var(--ink);cursor:pointer;font-family:var(--f-pixel);font-size:14px;text-decoration:none;line-height:1.1}
 .btn:hover{background:var(--surface-2)}
-.btn.primary{background:var(--magenta);color:#000}
+.btn.primary{background:var(--magenta);color:#000;--pc:var(--line-strong)}
 .btn.primary:hover{filter:brightness(1.07)}
 .btn.lime{background:var(--lime);color:#000}
 .btn.ghost{background:transparent;box-shadow:none;text-decoration:underline;text-underline-offset:4px}
@@ -216,13 +200,19 @@ form.ef .err{color:#d1004f;font-weight:700;margin:0}
 .pw{display:flex;flex-direction:column;gap:10px;margin-top:12px}
 .pw input{min-height:48px;padding:10px 12px;background:var(--bg);border:2px solid var(--line)}
 .toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;z-index:50;font-size:.95rem;max-width:calc(100vw - 32px)}
-/* navigation */
-.top{flex-wrap:wrap}
-.nav{display:flex;gap:4px;margin-left:auto;margin-right:8px}
-.nav a{font-family:var(--f-pixel);font-size:13px;text-decoration:none;color:var(--ink);padding:8px 12px;min-height:44px;display:inline-flex;align-items:center}
-.nav a:hover{background:var(--surface-2)}
-.nav a[aria-current="page"]{background:var(--ink);color:var(--bg)}
-@media (max-width:700px){.top .nav{order:3;width:100%;margin:6px 0 0;gap:4px}.top .nav a{flex:1;justify-content:center;padding:8px 4px;background:var(--surface)}.top .nav a[aria-current="page"]{background:var(--ink)}}
+/* navigation strip */
+.strip{background:var(--magenta);color:#000;margin-top:calc(-1*env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);position:relative;z-index:2}
+.strip .wrap{display:flex;align-items:stretch;justify-content:space-between;gap:8px}
+.nav{display:flex;gap:2px}
+.nav a{font-family:var(--f-pixel);font-weight:700;font-size:14px;text-decoration:none;color:#000;padding:0 16px;min-height:46px;display:inline-flex;align-items:center}
+.nav a:hover{background:rgba(0,0,0,.14)}
+.nav a[aria-current="page"]{background:#000;color:var(--magenta)}
+.nav a:focus-visible{outline:3px solid #000;outline-offset:-3px}
+.strip .tagline{font-family:var(--f-pixel);font-size:12px;align-self:center;opacity:.8}
+.mark .logo{height:48px;width:auto;display:block;margin:0}
+.top .mark{align-items:center;gap:14px}
+.top .mark span{margin:0}
+@media (max-width:700px){.strip .wrap{padding:0 8px}.nav{width:100%}.nav a{flex:1;justify-content:center;padding:0 4px;font-size:13px}.strip .tagline{display:none}.mark .logo{height:36px}}
 .page-head{padding:26px 0 22px}
 .page-head h1{font-family:var(--f-pixel);font-weight:700;font-size:clamp(2rem,6.4vw,3.6rem);line-height:1;margin:0 0 12px;letter-spacing:-.02em}
 .page-head p{margin:0;color:var(--muted);max-width:56ch;font-size:1.1rem}
@@ -312,6 +302,7 @@ form.ef .checks small{color:var(--muted)}
 <div id="app"></div>
 <script type="application/json" id="afk-data">{
  "updatedAt": "2026-10-05T09:00:00.000Z",
+ "seed": 2,
  "events": [
   {
    "id": "questa-casa-2026",
@@ -338,8 +329,8 @@ form.ef .checks small{color:var(--muted)}
    "category": "expo",
    "city": "Palermo",
    "venue": "Fiera Pala Giotto",
-   "start": "2026-10-01",
-   "end": "2026-10-04",
+   "start": "2026-10-03",
+   "end": "2026-10-05",
    "timeStart": "",
    "timeEnd": "",
    "desc": "L'area dedicata ai videogiochi indipendenti siciliani dentro Perla Comix, la nuova fiera di fumetti, giochi e cultura pop di Palermo. Prova i giochi, conosci chi li sviluppa e scopri la scena indie dell'isola.",
@@ -380,6 +371,40 @@ form.ef .checks small{color:var(--muted)}
    "link": "",
    "image": "",
    "recap": ""
+  },
+  {
+   "id": "trapani-comix-2026",
+   "title": "Area Indie",
+   "org": "Kemonia Games",
+   "host": "Trapani Comix",
+   "category": "expo",
+   "city": "Trapani",
+   "venue": "",
+   "start": "2026-05-22",
+   "end": "2026-05-24",
+   "timeStart": "",
+   "timeEnd": "",
+   "desc": "L'area dedicata ai videogiochi indipendenti siciliani dentro Trapani Comix.",
+   "link": "",
+   "image": "",
+   "recap": ""
+  },
+  {
+   "id": "pcc-2026",
+   "title": "Area Indie",
+   "org": "Kemonia Games",
+   "host": "Palermo Comic Convention",
+   "category": "expo",
+   "city": "Palermo",
+   "venue": "",
+   "start": "2026-09-10",
+   "end": "2026-09-13",
+   "timeStart": "",
+   "timeEnd": "",
+   "desc": "L'area dedicata ai videogiochi indipendenti siciliani dentro Palermo Comic Convention 2026.",
+   "link": "",
+   "image": "",
+   "recap": ""
   }
  ],
  "games": [
@@ -392,19 +417,23 @@ form.ef .checks small{color:var(--muted)}
    "cover": "",
    "links": {},
    "events": [
-    "questa-casa-2026"
+    "questa-casa-2026",
+    "trapani-comix-2026",
+    "perla-comix-2026"
    ]
   },
   {
    "id": "loot-jackal-loot",
-   "title": "LOOT JACKAL, LOOT!",
+   "title": "LOOT JACKAL LOOT",
    "studio": "Kappo Studio, Mangiapalazzo Studios",
    "genre": "Puzzle",
    "desc": "",
    "cover": "",
    "links": {},
    "events": [
-    "questa-casa-2026"
+    "questa-casa-2026",
+    "trapani-comix-2026",
+    "perla-comix-2026"
    ]
   },
   {
@@ -416,7 +445,8 @@ form.ef .checks small{color:var(--muted)}
    "cover": "",
    "links": {},
    "events": [
-    "questa-casa-2026"
+    "questa-casa-2026",
+    "pcc-2026"
    ]
   },
   {
@@ -428,7 +458,8 @@ form.ef .checks small{color:var(--muted)}
    "cover": "",
    "links": {},
    "events": [
-    "questa-casa-2026"
+    "questa-casa-2026",
+    "pcc-2026"
    ]
   },
   {
@@ -440,7 +471,8 @@ form.ef .checks small{color:var(--muted)}
    "cover": "",
    "links": {},
    "events": [
-    "questa-casa-2026"
+    "questa-casa-2026",
+    "trapani-comix-2026"
    ]
   },
   {
@@ -453,6 +485,152 @@ form.ef .checks small{color:var(--muted)}
    "links": {},
    "events": [
     "questa-casa-2026"
+   ]
+  },
+  {
+   "id": "lambdawn",
+   "title": "LambDawn",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "trapani-comix-2026",
+    "pcc-2026",
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "blob-arena",
+   "title": "Blob Arena",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "trapani-comix-2026"
+   ]
+  },
+  {
+   "id": "heirlooms",
+   "title": "Heirlooms",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "trapani-comix-2026"
+   ]
+  },
+  {
+   "id": "voodloop",
+   "title": "VoodLoop",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "trapani-comix-2026"
+   ]
+  },
+  {
+   "id": "psoxide",
+   "title": "PSoxide",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "pcc-2026"
+   ]
+  },
+  {
+   "id": "kintsugi",
+   "title": "Kintsugi",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "out-of-my-shop",
+   "title": "Out of my Shop",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "bearly-in-time",
+   "title": "BEARly in Time",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "the-demon-who-knocked",
+   "title": "The Demon Who Knocked",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "genesea",
+   "title": "GENESEA",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "chicken-out",
+   "title": "Chicken Out",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "cosmo-voyage",
+   "title": "Cosmo Voyage",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "perla-comix-2026"
    ]
   }
  ]
@@ -469,6 +647,29 @@ try { DATA = JSON.parse(document.getElementById("afk-data").textContent); } catc
 if (!Array.isArray(DATA.events)) DATA.events = [];
 if (!Array.isArray(DATA.games)) DATA.games = [];
 /* true when the page is hosted as its own site (GitHub Pages), false inside the claude.ai viewer or opened as a file */
+/* the bundled data carries a seed version: an older events.json gets the new bundled events and games merged in once */
+var SEED = DATA.seed || 0;
+var SEED_DATA = JSON.parse(JSON.stringify(DATA));
+var FORCE = {"perla-comix-2026":["start","end"], "loot-jackal-loot":["title"]};
+function mergeItem(t, src){
+  Object.keys(src).forEach(function(k){
+    var v = t[k], forced = (FORCE[src.id]||[]).indexOf(k) >= 0;
+    if (k === "events" && Array.isArray(src.events)){ var u = Array.isArray(v) ? v.slice() : []; src.events.forEach(function(x){ if (u.indexOf(x) < 0) u.push(x); }); t.events = u; }
+    else if (forced || v === undefined || v === "" || (v && typeof v === "object" && !Array.isArray(v) && !Object.keys(v).length)) t[k] = JSON.parse(JSON.stringify(src[k]));
+  });
+}
+function applySeed(j){
+  if ((j.seed || 0) >= SEED) return j;
+  if (!Array.isArray(j.games)) j.games = [];
+  ["events","games"].forEach(function(key){
+    SEED_DATA[key].forEach(function(src){
+      var t = j[key].find(function(x){ return x.id === src.id; });
+      if (t) mergeItem(t, src); else j[key].push(JSON.parse(JSON.stringify(src)));
+    });
+  });
+  j.seed = SEED;
+  return j;
+}
 var STANDALONE = /^https?:$/.test(location.protocol) && !/claude|anthropic/i.test(location.hostname);
 
 var PW_HASH = "991ad442b7bfb7a693c61a1c47ff5b5b6658260f11e313c2160287a323fee124"; /* replaced at build time */
@@ -566,10 +767,12 @@ function navLink(hash, label, pages){
   var cur = pages.indexOf(ui.page) >= 0;
   return '<a href="#'+hash+'"'+(cur?' aria-current="page"':'')+'>'+label+'</a>';
 }
+var LOGO_K = "M805.727 433.553V10.1582H890.406V179.516H975.085V264.195H1059.76V348.874H1144.44V433.553H1059.76V348.874H975.085V264.195H890.406V433.553H805.727ZM1059.76 94.8372V10.1582H1144.44V94.8372H1059.76ZM975.085 179.516V94.8372H1059.76V179.516H975.085Z";
+var LOGO = '<svg class="logo" viewBox="0 0 1145 448" role="img" aria-label="AFK"><path d="M743.99 273.164H609.749V433.555H482.763L482.564 7.54102L755.264 8.80849L750.037 107.285H609.749V178.637H743.99V273.164Z" fill="#fff"/><path d="M311.495 433.554L286.648 358.656H147.869L123.628 433.554H0L151.505 22.5302L284.83 0L443.607 433.554H311.495ZM178.17 264.273H255.135L215.743 146.751L178.17 264.273Z" fill="#fff"/><path d="'+LOGO_K+'" fill="#fff" transform="translate(-27.471 13.7355)"/><path d="'+LOGO_K+'" fill="#EA33D5"/></svg>';
 function header(){
-  var h = '<div class="wrap"><header class="top">';
-  h += '<a class="mark" href="#" aria-label="AFK Palermo, calendario"><b>AF</b>'+kSvg("currentColor","var(--magenta)")+'<span>Palermo</span></a>';
-  h += '<nav class="nav" aria-label="Sezioni">'+navLink("","Calendario",["cal"])+navLink("giochi","Giochi",["games","game"])+navLink("cronistoria","Cronistoria",["history"])+'</nav>';
+  var h = '<div class="strip"><div class="wrap"><nav class="nav" aria-label="Sezioni">'+navLink("","Calendario",["cal"])+navLink("giochi","Giochi",["games","game"])+navLink("cronistoria","Cronistoria",["history"])+'</nav><span class="tagline">Palermo · eventi indie</span></div></div>';
+  h += '<div class="wrap"><header class="top">';
+  h += '<a class="mark" href="#" aria-label="AFK Palermo, calendario">'+LOGO+'<span>Palermo</span></a>';
   h += '<button class="btn small px" type="button" data-act="install">Installa l\u2019app</button>';
   h += '</header></div>';
   return h;
@@ -994,7 +1197,7 @@ function saveDraft(){ draft.dirty = true; store("afk-draft", JSON.stringify(draf
 
 function renderAdmin(){
   var tab = ui.adminTab || "events";
-  var h = '<div class="wrap"><header class="top"><a class="mark" href="#" data-act="exit" aria-label="Torna al sito"><b>AF</b>'+kSvg("currentColor","var(--magenta)")+'<span>Organizzatore</span></a>';
+  var h = '<div class="strip"><div class="wrap"><nav class="nav"><a href="#" data-act="exit" aria-current="page">Area organizzatore</a></nav></div></div><div class="wrap"><header class="top"><a class="mark" href="#" data-act="exit" aria-label="Torna al sito">'+LOGO+'<span>Organizzatore</span></a>';
   h += '<button class="btn small px" type="button" data-act="exit">Esci</button></header>';
   h += '<main class="adm"><h1>Gestisci il sito</h1>';
   h += '<p class="hint">Aggiungi o modifica eventi e giochi, poi premi <b>Pubblica</b>: il sito si aggiorna per tutti. Finché non pubblichi, le modifiche restano solo su questo dispositivo.</p>';
@@ -1266,7 +1469,7 @@ function buildDocument(data){
   return "<!doctype html>\n<html lang=\"it\">\n<head>\n"+HEAD_HTML+"\n</head>\n<body>\n<div id=\"app\"></div>\n<script type=\"application/json\" id=\"afk-data\">"+json+"</"+"script>\n"+SCRIPT_HTML+"\n</body>\n</html>\n";
 }
 function nextData(){
-  return {updatedAt: new Date().toISOString(), events: draft.events.slice().sort(sortEv), games: draft.games.slice().sort(byTitle)};
+  return {updatedAt: new Date().toISOString(), seed: SEED, events: draft.events.slice().sort(sortEv), games: draft.games.slice().sort(byTitle)};
 }
 function b64(str){ return btoa(unescape(encodeURIComponent(str))); }
 function ghCfg(){ try { return JSON.parse(load("afk-gh") || "null"); } catch(e){ return null; } }
@@ -1461,12 +1664,7 @@ if (STANDALONE){
     .then(function(r){ return r.ok ? r.json() : null; })
     .then(function(j){
       if (j && Array.isArray(j.events)){
-        if (!Array.isArray(j.games)){
-          /* events.json saved before the games archive existed: bring in the bundled archive and its event */
-          var ids = {}; j.events.forEach(function(e){ ids[e.id] = 1; });
-          DATA.events.forEach(function(e){ if (!ids[e.id] && e.id === "questa-casa-2026") j.events.push(e); });
-          j.games = DATA.games;
-        }
+        applySeed(j);
         DATA = j;
       }
     })
