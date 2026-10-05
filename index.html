@@ -216,14 +216,120 @@ form.ef .err{color:#d1004f;font-weight:700;margin:0}
 .pw{display:flex;flex-direction:column;gap:10px;margin-top:12px}
 .pw input{min-height:48px;padding:10px 12px;background:var(--bg);border:2px solid var(--line)}
 .toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;z-index:50;font-size:.95rem;max-width:calc(100vw - 32px)}
+/* navigation */
+.top{flex-wrap:wrap}
+.nav{display:flex;gap:4px;margin-left:auto;margin-right:8px}
+.nav a{font-family:var(--f-pixel);font-size:13px;text-decoration:none;color:var(--ink);padding:8px 12px;min-height:44px;display:inline-flex;align-items:center}
+.nav a:hover{background:var(--surface-2)}
+.nav a[aria-current="page"]{background:var(--ink);color:var(--bg)}
+@media (max-width:700px){.top .nav{order:3;width:100%;margin:6px 0 0;gap:4px}.top .nav a{flex:1;justify-content:center;padding:8px 4px;background:var(--surface)}.top .nav a[aria-current="page"]{background:var(--ink)}}
+.page-head{padding:26px 0 22px}
+.page-head h1{font-family:var(--f-pixel);font-weight:700;font-size:clamp(2rem,6.4vw,3.6rem);line-height:1;margin:0 0 12px;letter-spacing:-.02em}
+.page-head p{margin:0;color:var(--muted);max-width:56ch;font-size:1.1rem}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.stat{background:var(--surface);padding:10px 16px;font-family:var(--f-pixel);font-size:12px;--pc:var(--line);color:var(--muted)}
+.stat b{display:block;font-size:1.7rem;line-height:1.1;color:var(--magenta-ink)}
+.muted{color:var(--muted)}
+.count{font-family:var(--f-pixel);font-size:12px;color:var(--muted);margin:0 0 12px}
+/* games archive */
+.gfilters{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:0 0 22px}
+.search{min-height:44px;padding:8px 12px;background:var(--surface);border:0;flex:1 1 240px;--pc:var(--line);min-width:0}
+.gfilters .select{flex:0 1 auto;max-width:100%}
+.gmain{padding-bottom:60px}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px}
+.gcard{display:flex;flex-direction:column;background:var(--surface);text-decoration:none;color:inherit;--pc:var(--line)}
+.gcard:hover{--pc:var(--magenta)}
+.gcard:hover .cover{filter:saturate(1.15)}
+.cover{aspect-ratio:16/10;width:100%;object-fit:cover;display:block;background:var(--surface-2)}
+.cover.ph{display:flex;align-items:center;justify-content:center;font-family:var(--f-pixel);font-weight:700;font-size:2.6rem;color:var(--magenta);background:var(--surface-2);background-image:radial-gradient(var(--dot) 1.4px,transparent 1.6px);background-size:8px 8px}
+.gcard .gb{padding:12px 14px 16px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;flex:1}
+.gcard h3{font-family:var(--f-pixel);font-size:1.05rem;line-height:1.2;margin:0}
+.gcard .st{margin:0;color:var(--muted);font-size:.95rem}
+.gen{display:inline-block;margin-top:8px;font-size:.82rem;padding:2px 9px;background:var(--surface-2)}
+.gcard .seen{margin-top:auto;padding-top:10px;font-family:var(--f-pixel);font-size:11px;color:var(--magenta-ink)}
+/* game page */
+.back{display:inline-flex;align-items:center;min-height:44px;margin:12px 0 4px;font-family:var(--f-pixel);font-size:13px}
+.gpage{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:36px;padding:10px 0 64px;align-items:start}
+.gcov .cover{--pc:var(--line-strong)}
+.gpage .gen{margin:0 0 10px}
+.gpage h1{font-family:var(--f-pixel);font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.05;margin:0 0 8px;letter-spacing:-.01em}
+.gpage .studio{margin:0 0 14px;font-size:1.1rem}
+.gpage .studio b{color:var(--magenta-ink)}
+.gpage .desc{max-width:60ch}
+.stores{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 6px}
+.h3px{font-family:var(--f-pixel);font-size:1rem;margin:26px 0 10px}
+.seenlist{list-style:none;padding:0;margin:0}
+.seenlist li+li{margin-top:12px}
+.seen-ev{display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;text-align:left;border:0;background:var(--surface);padding:12px 14px;cursor:pointer;color:inherit;--pc:var(--line)}
+.seen-ev:hover{--pc:var(--magenta)}
+.seen-ev .sd{font-family:var(--f-pixel);font-size:11px;color:var(--magenta-ink)}
+.seen-ev small{color:var(--muted);font-size:.9rem}
+@media (max-width:760px){.gpage{grid-template-columns:1fr;gap:22px}}
+/* games inside event dialog */
+.minig{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:0 0 18px}
+.minig a{display:block;text-decoration:none;color:inherit;background:var(--surface-2)}
+.minig a:hover span{color:var(--magenta-ink)}
+.minig .cover.ph{font-size:1.8rem}
+.minig span{display:block;padding:7px 9px 9px;font-size:.92rem;font-weight:700;line-height:1.25}
+.minig small{display:block;font-weight:400;color:var(--muted);font-size:.82rem;margin-top:2px}
+.evimg{width:100%;max-height:440px;object-fit:contain;background:var(--surface-2);margin:8px 0 6px;display:block}
+/* history timeline */
+.tl{position:relative;padding-left:34px;margin:6px 0 64px}
+.tl::before{content:"";position:absolute;left:9px;top:10px;bottom:10px;width:3px;background:repeating-linear-gradient(180deg,var(--magenta) 0 6px,transparent 6px 10px)}
+.tl .yr{font-family:var(--f-pixel);font-size:1.7rem;margin:10px 0 16px;position:relative;line-height:1.1}
+.tl .yr::before{content:"";position:absolute;left:-32px;top:.3em;width:17px;height:17px;background:var(--lime)}
+.hitem{position:relative;background:var(--surface);padding:18px 20px;margin-bottom:20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;--pc:var(--line);cursor:pointer;text-align:left;border:0;width:100%;color:inherit;align-items:start}
+.hitem::before{content:"";position:absolute;left:-29px;top:24px;width:11px;height:11px;background:var(--cc)}
+.hitem:hover{--pc:var(--magenta)}
+.hitem .hd{font-family:var(--f-pixel);font-size:12px;color:var(--magenta-ink)}
+.hitem h3{font-family:var(--f-pixel);font-size:1.3rem;line-height:1.2;margin:4px 0 4px}
+.hitem .by,.hitem .where{margin:0}
+.hitem .by em{font-style:normal;font-weight:700;color:var(--magenta-ink)}
+.hitem .where{color:var(--muted);font-size:.95rem}
+.hitem .recap{margin:10px 0 0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;max-width:62ch}
+.hitem .thumb{width:130px;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;background:var(--surface-2)}
+.gchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.gchip{font-size:.84rem;padding:3px 9px;background:var(--surface-2)}
+@media (max-width:560px){.tl{padding-left:26px}.tl::before{left:5px}.tl .yr::before{left:-26px;width:14px;height:14px}.hitem::before{left:-24px}.hitem{grid-template-columns:1fr;padding:16px}.hitem .thumb{width:100%;aspect-ratio:16/9;order:-1}}
+/* admin additions */
+.atabs{margin:0 0 20px}
+.adm-row .cover.mini{width:64px;height:40px;aspect-ratio:auto;flex:0 0 auto}
+.adm-row .cover.mini.ph{font-size:1rem}
+.flabel{display:block;font-weight:700;font-size:.95rem;margin-bottom:6px}
+.checks{display:grid;gap:4px;max-height:230px;overflow:auto;padding:8px 10px;background:var(--bg);border:2px solid var(--line)}
+form.ef .checks label{flex-direction:row;align-items:center;gap:10px;font-weight:400;min-height:36px}
+form.ef .checks input{width:20px;min-height:20px;flex:0 0 auto;accent-color:var(--magenta)}
+form.ef .checks small{color:var(--muted)}
+.importbox{background:var(--surface-2);padding:14px}
+.import{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.import input{flex:1 1 240px}
+.impmsg{margin:10px 0 0;font-size:.95rem}
+.imgprev{max-width:240px;aspect-ratio:16/10;object-fit:cover;display:block;margin-top:4px;background:var(--surface-2)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script type="application/json" id="afk-data">{
- "updatedAt": "2026-10-03T09:00:00.000Z",
+ "updatedAt": "2026-10-05T09:00:00.000Z",
  "events": [
+  {
+   "id": "questa-casa-2026",
+   "title": "Questa casa non è una sala giochi",
+   "org": "AFK",
+   "host": "",
+   "category": "party",
+   "city": "Palermo",
+   "venue": "Ostello Bello",
+   "start": "2026-01-18",
+   "end": "2026-01-18",
+   "timeStart": "15:00",
+   "timeEnd": "22:00",
+   "desc": "Giornata dedicata agli sviluppatori indipendenti, con videogiochi, musica e arte tutta palermitana. Dalle 15 alle 20 i giochi da provare, dalle 20 alle 22 il DJ set.",
+   "link": "",
+   "image": "poster-questa-casa.jpg",
+   "recap": "Un pomeriggio all'Ostello Bello con sei giochi indie nati a Palermo da provare, e la serata chiusa dalla musica di Cobeximan, Just_Digri e Roberto Genco."
+  },
   {
    "id": "perla-comix-2026",
    "title": "Area Indie",
@@ -237,7 +343,9 @@ form.ef .err{color:#d1004f;font-weight:700;margin:0}
    "timeStart": "",
    "timeEnd": "",
    "desc": "L'area dedicata ai videogiochi indipendenti siciliani dentro Perla Comix, la nuova fiera di fumetti, giochi e cultura pop di Palermo. Prova i giochi, conosci chi li sviluppa e scopri la scena indie dell'isola.",
-   "link": ""
+   "link": "",
+   "image": "",
+   "recap": ""
   },
   {
    "id": "game-jam-ostello-2026",
@@ -252,7 +360,9 @@ form.ef .err{color:#d1004f;font-weight:700;margin:0}
    "timeStart": "",
    "timeEnd": "",
    "desc": "Quattro giorni per creare un videogioco da zero, in squadra, partendo da un tema svelato all'inizio. Aperta a programmatori, artisti, musicisti e game designer di ogni livello.",
-   "link": ""
+   "link": "",
+   "image": "",
+   "recap": ""
   },
   {
    "id": "sicilia-game-expo-2026",
@@ -267,7 +377,83 @@ form.ef .err{color:#d1004f;font-weight:700;margin:0}
    "timeStart": "",
    "timeEnd": "",
    "desc": "Lo spazio dedicato agli sviluppatori indipendenti dentro Sicilian Game Expo, la fiera del gioco in tutte le sue forme: videogiochi, giochi da tavolo, cosplay e incontri con gli ospiti.",
-   "link": ""
+   "link": "",
+   "image": "",
+   "recap": ""
+  }
+ ],
+ "games": [
+  {
+   "id": "bound-by-blood",
+   "title": "Bound by Blood",
+   "studio": "Mangiapalazzo Studios",
+   "genre": "Visual novel, Mistero",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "questa-casa-2026"
+   ]
+  },
+  {
+   "id": "loot-jackal-loot",
+   "title": "LOOT JACKAL, LOOT!",
+   "studio": "Kappo Studio, Mangiapalazzo Studios",
+   "genre": "Puzzle",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "questa-casa-2026"
+   ]
+  },
+  {
+   "id": "lunar-crypt",
+   "title": "Lunar Crypt",
+   "studio": "Moon Pie Interactive",
+   "genre": "Roguelike, RPG",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "questa-casa-2026"
+   ]
+  },
+  {
+   "id": "catharsis",
+   "title": "Catharsis",
+   "studio": "Yumi Yume",
+   "genre": "Avventura, RPG",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "questa-casa-2026"
+   ]
+  },
+  {
+   "id": "invasione-di-controllo",
+   "title": "Invasione di controllo",
+   "studio": "Overgamez",
+   "genre": "Avventura, Horror",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "questa-casa-2026"
+   ]
+  },
+  {
+   "id": "office-shift",
+   "title": "Office Shift",
+   "studio": "Cassette Dream Production",
+   "genre": "Avventura, RPG",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "questa-casa-2026"
+   ]
   }
  ]
 }</script>
@@ -281,6 +467,7 @@ var HEAD_HTML = Array.prototype.map.call(document.head.querySelectorAll("[data-a
 var DATA;
 try { DATA = JSON.parse(document.getElementById("afk-data").textContent); } catch(e){ DATA = {updatedAt:"", events:[]}; }
 if (!Array.isArray(DATA.events)) DATA.events = [];
+if (!Array.isArray(DATA.games)) DATA.games = [];
 /* true when the page is hosted as its own site (GitHub Pages), false inside the claude.ai viewer or opened as a file */
 var STANDALONE = /^https?:$/.test(location.protocol) && !/claude|anthropic/i.test(location.hostname);
 
@@ -298,7 +485,7 @@ var MON3 = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","d
 var DOW = ["lun","mar","mer","gio","ven","sab","dom"];
 
 var app = document.getElementById("app");
-var ui = { view:"list", cats:[], city:"", past:false, cursor:null, selDay:null, mode:"public" };
+var ui = { view:"list", cats:[], city:"", past:false, cursor:null, selDay:null, mode:"public", page:"cal", gameId:null, gq:"", gevent:"", ggenre:"", adminTab:"events" };
 var caps = { artifact:null, downloads:null, owner:false, readOnly:false };
 var draft = null; /* admin working copy */
 
@@ -375,36 +562,54 @@ function cityOptions(){
 }
 
 /* ---------- render: public ---------- */
+function navLink(hash, label, pages){
+  var cur = pages.indexOf(ui.page) >= 0;
+  return '<a href="#'+hash+'"'+(cur?' aria-current="page"':'')+'>'+label+'</a>';
+}
+function header(){
+  var h = '<div class="wrap"><header class="top">';
+  h += '<a class="mark" href="#" aria-label="AFK Palermo, calendario"><b>AF</b>'+kSvg("currentColor","var(--magenta)")+'<span>Palermo</span></a>';
+  h += '<nav class="nav" aria-label="Sezioni">'+navLink("","Calendario",["cal"])+navLink("giochi","Giochi",["games","game"])+navLink("cronistoria","Cronistoria",["history"])+'</nav>';
+  h += '<button class="btn small px" type="button" data-act="install">Installa l\u2019app</button>';
+  h += '</header></div>';
+  return h;
+}
+function footer(){
+  return '<footer><div class="wrap row"><span>AFK Palermo · videogiochi, musica e arte indipendente siciliana.</span><button class="btn ghost small" type="button" data-act="admin">Area organizzatore</button></div></footer>';
+}
 function render(){
   if (ui.mode === "admin") return renderAdmin();
+  var h = header();
+  if (ui.page === "games") h += gamesPage();
+  else if (ui.page === "game") h += gamePage();
+  else if (ui.page === "history") h += historyPage();
+  else h += calendarPage();
+  h += footer();
+  app.innerHTML = h;
+}
+
+function calendarPage(){
   var ev = visibleEvents();
   var featured = DATA.events.filter(function(e){ return status(e) !== "past"; }).sort(function(a,b){
     var sa = status(a)==="live"?0:1, sb = status(b)==="live"?0:1;
     return sa-sb || sortEv(a,b);
   })[0];
-
-  var h = '';
-  h += '<div class="wrap"><header class="top">';
-  h += '<a class="mark" href="#" aria-label="AFK Palermo, eventi"><b>AF</b>'+kSvg("currentColor","var(--magenta)")+'<span>Palermo</span></a>';
-  h += '<button class="btn small px" type="button" data-act="install">Installa l\u2019app</button>';
-  h += '</header>';
-  h += '<section class="hero">';
+  var h = '<div class="wrap"><section class="hero">';
   h += '<span class="spark a">'+SPARK+'</span><span class="spark b">'+DIAMOND+'</span><span class="spark c">'+SPARK+'</span>';
   h += '<h1>Eventi indie <span class="l2">in Sicilia</span></h1>';
   h += '<p class="lead">Fiere, game jam, talk e serate dedicate ai videogiochi indipendenti, raccolte da AFK Palermo in un unico calendario.</p>';
   if (featured){
-    var st = status(featured), dn = dayNums(featured);
+    var st = status(featured), dn = dayNums(featured), ng = gamesForEvent(featured.id).length;
     h += '<div class="next px">';
     h += '<div class="when"><span class="d">'+esc(dn.d)+'</span><span class="m">'+esc(dn.m)+'</span></div>';
     h += '<div class="body"><div class="flag">'+(st==="live" ? '<i class="live" aria-hidden="true"></i>In corso adesso' : 'Prossimo evento')+'</div>';
     h += '<h2>'+esc(featured.title)+'</h2>';
-    h += '<p class="meta">'+byLine(featured)+(whereLine(featured) ? '<br>'+whereLine(featured) : '')+'</p>';
+    h += '<p class="meta">'+byLine(featured)+(whereLine(featured) ? '<br>'+whereLine(featured) : '')+(ng ? '<br>'+ng+(ng===1?' gioco da provare':' giochi da provare') : '')+'</p>';
     h += '<button class="btn primary small px" type="button" data-open="'+esc(featured.id)+'">Vedi dettagli</button>';
     h += '</div></div>';
   }
   h += '</section></div>';
 
-  /* controls */
   h += '<div class="controls"><div class="wrap">';
   h += '<div class="row"><div class="chips" role="group" aria-label="Filtra per categoria">';
   h += '<button class="chip px" type="button" data-cat="" aria-pressed="'+(ui.cats.length===0)+'">Tutti</button>';
@@ -425,10 +630,124 @@ function render(){
   h += '<main class="wrap" id="main">';
   h += ui.view === "month" ? monthView(ev) : listView(ev);
   h += '</main>';
+  return h;
+}
 
-  h += '<footer><div class="wrap row"><span>AFK Palermo · videogiochi, musica e arte indipendente siciliana.</span>';
-  h += '<button class="btn ghost small" type="button" data-act="admin">Area organizzatore</button></div></footer>';
-  app.innerHTML = h;
+/* ---------- games ---------- */
+function gamesForEvent(id){ return DATA.games.filter(function(g){ return (g.events||[]).indexOf(id) >= 0; }).sort(byTitle); }
+function eventsForGame(g){ var ids = g.events || []; return DATA.events.filter(function(e){ return ids.indexOf(e.id) >= 0; }).sort(function(a,b){ return sortEv(b,a); }); }
+function byTitle(a,b){ return (a.title||"").localeCompare(b.title||"", "it", {sensitivity:"base"}); }
+function genresOf(g){ return String(g.genre||"").split(/[,;·\/]/).map(function(s){ return s.trim(); }).filter(Boolean); }
+function coverHtml(g, cls){
+  var init = esc((String(g.title||"?").trim().charAt(0) || "?").toUpperCase());
+  if (g.cover) return '<img class="cover'+(cls?' '+cls:'')+'" src="'+esc(g.cover)+'" alt="" loading="lazy" referrerpolicy="no-referrer" data-init="'+init+'">';
+  return '<div class="cover ph'+(cls?' '+cls:'')+'" aria-hidden="true">'+init+'</div>';
+}
+function gameCard(g){
+  var n = (g.events||[]).length;
+  var h = '<a class="gcard px" href="#gioco/'+encodeURIComponent(g.id)+'">'+coverHtml(g)+'<div class="gb">';
+  h += '<h3>'+esc(g.title)+'</h3>';
+  if (g.studio) h += '<p class="st">'+esc(g.studio)+'</p>';
+  if (g.genre) h += '<span class="gen">'+esc(g.genre)+'</span>';
+  if (n) h += '<span class="seen">Visto a '+n+(n===1?' evento':' eventi')+'</span>';
+  h += '</div></a>';
+  return h;
+}
+function allGenres(){
+  var m = {};
+  DATA.games.forEach(function(g){ genresOf(g).forEach(function(x){ var k = x.toLowerCase(); if (!m[k]) m[k] = x; }); });
+  return Object.keys(m).sort().map(function(k){ return m[k]; });
+}
+function gamesPage(){
+  var evs = DATA.events.filter(function(e){ return gamesForEvent(e.id).length; }).sort(function(a,b){ return sortEv(b,a); });
+  var h = '<div class="wrap"><section class="page-head"><h1>Archivio giochi</h1>';
+  h += '<p>I videogiochi indipendenti incontrati agli eventi in Sicilia: dove sono passati e dove giocarli.</p></section>';
+  if (DATA.games.length){
+    h += '<div class="gfilters">';
+    h += '<label class="sr" for="gq">Cerca</label><input id="gq" class="search px" type="search" placeholder="Cerca un gioco o uno studio" value="'+esc(ui.gq)+'" data-gq>';
+    h += '<label class="sr" for="gev">Evento</label><select id="gev" class="select px" data-gevent><option value="">Tutti gli eventi</option>';
+    evs.forEach(function(e){ h += '<option value="'+esc(e.id)+'"'+(ui.gevent===e.id?' selected':'')+'>'+esc(e.title+(e.host?' @ '+e.host:''))+' · '+esc(dayNums(e).m)+' '+parse(e.start).getFullYear()+'</option>'; });
+    h += '</select>';
+    var gs = allGenres();
+    if (gs.length){
+      h += '<label class="sr" for="ggen">Genere</label><select id="ggen" class="select px" data-ggenre><option value="">Tutti i generi</option>';
+      gs.forEach(function(x){ h += '<option'+(ui.ggenre===x?' selected':'')+'>'+esc(x)+'</option>'; });
+      h += '</select>';
+    }
+    h += '</div>';
+  }
+  h += '<main id="gresults" class="gmain">'+gamesResults()+'</main></div>';
+  return h;
+}
+function gamesResults(){
+  if (!DATA.games.length) return '<div class="empty px"><p>L\u2019archivio è ancora vuoto.</p></div>';
+  var q = ui.gq.toLowerCase().trim();
+  var list = DATA.games.slice().sort(byTitle).filter(function(g){
+    if (ui.gevent && (g.events||[]).indexOf(ui.gevent) < 0) return false;
+    if (ui.ggenre && !genresOf(g).some(function(x){ return x.toLowerCase() === ui.ggenre.toLowerCase(); })) return false;
+    if (q && [g.title,g.studio,g.genre,g.desc].join(" ").toLowerCase().indexOf(q) < 0) return false;
+    return true;
+  });
+  if (!list.length) return '<div class="empty px"><p>Nessun gioco trovato con questi filtri.</p><button class="btn primary px" type="button" data-act="greset">Mostra tutti i giochi</button></div>';
+  return '<p class="count">'+list.length+(list.length===1?' gioco':' giochi')+'</p><div class="ggrid">'+list.map(gameCard).join("")+'</div>';
+}
+var STORES = [["itch","itch.io"],["steam","Steam"],["play","Google Play"],["apple","App Store"],["web","Sito ufficiale"]];
+function gamePage(){
+  var g = DATA.games.find(function(x){ return x.id === ui.gameId; });
+  var h = '<div class="wrap"><a class="back" href="#giochi">\u2190 Archivio giochi</a>';
+  if (!g) return h + '<div class="empty px" style="margin:20px 0 60px"><p>Questo gioco non è (più) in archivio.</p></div></div>';
+  var L = g.links || {}, evs = eventsForGame(g);
+  h += '<article class="gpage"><div class="gcov">'+coverHtml(g, "px")+'</div><div>';
+  if (g.genre) h += '<span class="gen">'+esc(g.genre)+'</span>';
+  h += '<h1>'+esc(g.title)+'</h1>';
+  if (g.studio) h += '<p class="studio">di <b>'+esc(g.studio)+'</b></p>';
+  if (g.desc) h += '<p class="desc">'+esc(g.desc).replace(/\n/g,'<br>')+'</p>';
+  var st = STORES.filter(function(s){ return L[s[0]]; });
+  h += st.length ? '<div class="stores">'+st.map(function(s,i){ return '<a class="btn px'+(i===0?' primary':'')+'" href="'+esc(L[s[0]])+'" target="_blank" rel="noopener">'+s[1]+' \u2197</a>'; }).join("")+'</div>' : '<p class="muted">Ancora nessun link per giocarlo.</p>';
+  if (evs.length){
+    h += '<h2 class="h3px">Agli eventi</h2><ul class="seenlist">';
+    evs.forEach(function(e){
+      var past = status(e) === "past";
+      h += '<li><button type="button" class="seen-ev px" data-open="'+esc(e.id)+'"><span class="sd">'+esc(rangeText(e))+'</span><b>'+esc(e.title)+(e.host?' @ '+esc(e.host):'')+'</b><small>'+esc([e.venue,e.city].filter(Boolean).join(", "))+(past?'':' · in arrivo')+'</small></button></li>';
+    });
+    h += '</ul>';
+  }
+  h += '</div></article></div>';
+  return h;
+}
+
+/* ---------- history ---------- */
+function historyPage(){
+  var past = DATA.events.filter(function(e){ return status(e) === "past"; }).sort(function(a,b){ return sortEv(b,a); });
+  var seen = {}, cities = {};
+  past.forEach(function(e){ gamesForEvent(e.id).forEach(function(g){ seen[g.id] = 1; }); if (e.city) cities[e.city] = 1; });
+  var h = '<div class="wrap"><section class="page-head"><h1>Cronistoria</h1>';
+  h += '<p>Gli eventi passati, uno dopo l\u2019altro: dove eravamo, cosa abbiamo giocato, com\u2019è andata.</p>';
+  if (past.length){
+    h += '<div class="stats"><div class="stat px"><b>'+past.length+'</b>'+(past.length===1?'evento':'eventi')+'</div>';
+    h += '<div class="stat px"><b>'+Object.keys(seen).length+'</b>giochi presentati</div>';
+    h += '<div class="stat px"><b>'+Object.keys(cities).length+'</b>'+(Object.keys(cities).length===1?'città':'città')+'</div></div>';
+  }
+  h += '</section>';
+  if (!past.length){ h += '<div class="empty px" style="margin-bottom:60px"><p>Ancora nessun evento concluso.</p></div></div>'; return h; }
+  h += '<div class="tl">';
+  var yr = null;
+  past.forEach(function(e){
+    var y = parse(e.start).getFullYear();
+    if (y !== yr){ h += '<h2 class="yr">'+y+'</h2>'; yr = y; }
+    var gs = gamesForEvent(e.id), c = catOf(e);
+    h += '<button type="button" class="hitem px" data-open="'+esc(e.id)+'" style="--cc:'+c.color+'"><div class="hmain">';
+    h += '<span class="hd">'+esc(rangeText(e))+'</span><h3>'+esc(e.title)+'</h3>';
+    if (e.org || e.host) h += '<p class="by">'+byLine(e)+'</p>';
+    if (whereLine(e)) h += '<p class="where">'+whereLine(e)+'</p>';
+    if (e.recap || e.desc) h += '<p class="recap">'+esc(e.recap || e.desc)+'</p>';
+    if (gs.length) h += '<div class="gchips">'+gs.map(function(g){ return '<span class="gchip">'+esc(g.title)+'</span>'; }).join("")+'</div>';
+    h += '</div>';
+    if (e.image) h += '<img class="thumb" src="'+esc(e.image)+'" alt="" loading="lazy">';
+    h += '</button>';
+  });
+  h += '</div></div>';
+  return h;
 }
 
 function evCard(e){
@@ -512,6 +831,7 @@ function openEvent(id){
   var c = catOf(e), past = status(e) === "past";
   var h = '<div class="dlg"><div class="dlg-top"><span class="tag" style="--cc:'+c.color+';display:inline-flex;gap:8px;align-items:center;color:var(--muted)"><i class="sq" style="width:10px;height:10px;background:var(--cc);display:inline-block"></i>'+esc(c.label)+'</span><button class="x" type="button" data-close aria-label="Chiudi">×</button></div>';
   h += '<h2>'+esc(e.title)+'</h2>';
+  if (e.image) h += '<img class="evimg" src="'+esc(e.image)+'" alt="Locandina di '+esc(e.title)+'" loading="lazy">';
   if (e.org || e.host) h += '<p class="by" style="margin:0">'+byLine(e).replace(/<em>/g,'<b style="color:var(--magenta-ink)">').replace(/<\/em>/g,'</b>')+'</p>';
   h += '<dl class="facts"><dt>Quando</dt><dd>'+esc(rangeText(e))+(timeText(e)?'<br>'+esc(timeText(e)):'')+'</dd>';
   if (e.venue || e.city){
@@ -521,6 +841,13 @@ function openEvent(id){
   if (e.link) h += '<dt>Info</dt><dd><a href="'+esc(e.link)+'" target="_blank" rel="noopener">'+esc(e.link.replace(/^https?:\/\//,'').replace(/\/$/,''))+'</a></dd>';
   h += '</dl>';
   if (e.desc) h += '<p class="desc">'+esc(e.desc).replace(/\n/g,'<br>')+'</p>';
+  if (past && e.recap) h += '<h3 class="h3px">Com\u2019è andata</h3><p class="desc">'+esc(e.recap).replace(/\n/g,'<br>')+'</p>';
+  var gs = gamesForEvent(e.id);
+  if (gs.length){
+    h += '<h3 class="h3px">'+(past ? 'Giochi presentati' : 'Giochi che troverai')+'</h3><div class="minig">';
+    gs.forEach(function(g){ h += '<a href="#gioco/'+encodeURIComponent(g.id)+'" data-gamelink>'+coverHtml(g)+'<span>'+esc(g.title)+(g.studio?'<small>'+esc(g.studio)+'</small>':'')+'</span></a>'; });
+    h += '</div>';
+  }
   if (!past){
     h += '<div class="addcal px" style="--pc:transparent"><p>Aggiungi al tuo calendario</p><div class="btns">';
     h += '<a class="btn primary small px" href="'+esc(gcalUrl(e))+'" target="_blank" rel="noopener">Google Calendar</a>';
@@ -658,32 +985,45 @@ function askPassword(){
 function enterAdmin(){
   var saved = load("afk-draft"), parsed = null;
   try { parsed = saved ? JSON.parse(saved) : null; } catch(e){}
-  if (parsed && parsed.base === DATA.updatedAt && Array.isArray(parsed.events)) draft = parsed;
-  else { draft = {base: DATA.updatedAt, events: JSON.parse(JSON.stringify(DATA.events)), dirty:false}; store("afk-draft", null); }
+  if (parsed && parsed.base === DATA.updatedAt && Array.isArray(parsed.events)){ draft = parsed; if (!Array.isArray(draft.games)) draft.games = JSON.parse(JSON.stringify(DATA.games)); }
+  else { draft = freshDraft(); store("afk-draft", null); }
   ui.mode = "admin"; render(); window.scrollTo(0,0);
 }
 function exitAdmin(){ ui.mode = "public"; sstore("afk-admin", null); render(); window.scrollTo(0,0); }
 function saveDraft(){ draft.dirty = true; store("afk-draft", JSON.stringify(draft)); }
 
 function renderAdmin(){
-  var list = draft.events.slice().sort(sortEv);
-  var h = '<div class="wrap"><header class="top"><a class="mark" href="#" data-act="exit" aria-label="Torna al calendario"><b>AF</b>'+kSvg("currentColor","var(--magenta)")+'<span>Organizzatore</span></a>';
+  var tab = ui.adminTab || "events";
+  var h = '<div class="wrap"><header class="top"><a class="mark" href="#" data-act="exit" aria-label="Torna al sito"><b>AF</b>'+kSvg("currentColor","var(--magenta)")+'<span>Organizzatore</span></a>';
   h += '<button class="btn small px" type="button" data-act="exit">Esci</button></header>';
-  h += '<main class="adm"><h1>Gestisci eventi</h1>';
-  h += '<p class="hint">Aggiungi o modifica gli eventi qui sotto, poi premi <b>Pubblica</b>: il calendario si aggiorna per tutti. Finché non pubblichi, le modifiche restano solo su questo dispositivo.</p>';
+  h += '<main class="adm"><h1>Gestisci il sito</h1>';
+  h += '<p class="hint">Aggiungi o modifica eventi e giochi, poi premi <b>Pubblica</b>: il sito si aggiorna per tutti. Finché non pubblichi, le modifiche restano solo su questo dispositivo.</p>';
   if (STANDALONE && !caps.artifact){
     var g = ghCfg();
     h += '<p class="hint">'+(g && g.token ? 'Pubblicazione collegata a GitHub ('+esc(g.owner)+'/'+esc(g.repo)+'). ' : '<b>Prima pubblicazione:</b> serve collegare GitHub una volta su questo dispositivo. ')+'<button class="btn ghost small" type="button" data-act="ghsetup" style="min-height:0;padding:0">'+(g && g.token ? 'Impostazioni GitHub' : 'Collega GitHub')+'</button></p>';
   }
   if (caps.readOnly) h += '<p class="hint" style="color:#d1004f"><b>Questa vista è di sola lettura:</b> per pubblicare apri il sito dal tuo account Claude.</p>';
-  h += '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px"><button class="btn primary px" type="button" data-act="new">+ Nuovo evento</button></div>';
-  if (!list.length) h += '<div class="empty px"><p>Ancora nessun evento.</p><button class="btn primary px" type="button" data-act="new">Aggiungi il primo evento</button></div>';
+  h += '<div class="seg px atabs" role="group" aria-label="Sezione"><button type="button" data-tab="events" aria-pressed="'+(tab==="events")+'">Eventi ('+draft.events.length+')</button><button type="button" data-tab="games" aria-pressed="'+(tab==="games")+'">Giochi ('+draft.games.length+')</button></div>';
   var t = today();
-  list.forEach(function(e){
-    var c = catOf(e);
-    h += '<div class="adm-row px" style="--cc:'+c.color+(endOf(e)<t?';opacity:.65':'')+'"><i class="sq"></i><div class="t"><b>'+esc(e.title)+(e.host?' @ '+esc(e.host):'')+'</b><small>'+esc(rangeText(e))+(e.city?' · '+esc(e.city):'')+(endOf(e)<t?' · concluso':'')+'</small></div>';
-    h += '<div class="acts"><button class="btn small px" type="button" data-edit="'+esc(e.id)+'">Modifica</button><button class="btn small px" type="button" data-dup="'+esc(e.id)+'">Duplica</button><button class="btn small px" type="button" data-del="'+esc(e.id)+'">Elimina</button></div></div>';
-  });
+  if (tab === "events"){
+    h += '<div style="margin-bottom:22px"><button class="btn primary px" type="button" data-act="new">+ Nuovo evento</button></div>';
+    var list = draft.events.slice().sort(function(a,b){ return sortEv(b,a); });
+    if (!list.length) h += '<div class="empty px"><p>Ancora nessun evento.</p></div>';
+    list.forEach(function(e){
+      var c = catOf(e), ng = draft.games.filter(function(g){ return (g.events||[]).indexOf(e.id) >= 0; }).length;
+      h += '<div class="adm-row px" style="--cc:'+c.color+(endOf(e)<t?';opacity:.7':'')+'"><i class="sq"></i><div class="t"><b>'+esc(e.title)+(e.host?' @ '+esc(e.host):'')+'</b><small>'+esc(rangeText(e))+(e.city?' · '+esc(e.city):'')+(ng?' · '+ng+(ng===1?' gioco':' giochi'):'')+(endOf(e)<t?' · concluso':'')+'</small></div>';
+      h += '<div class="acts"><button class="btn small px" type="button" data-edit="'+esc(e.id)+'">Modifica</button><button class="btn small px" type="button" data-dup="'+esc(e.id)+'">Duplica</button><button class="btn small px" type="button" data-del="'+esc(e.id)+'">Elimina</button></div></div>';
+    });
+  } else {
+    h += '<div style="margin-bottom:22px"><button class="btn primary px" type="button" data-act="newgame">+ Nuovo gioco</button></div>';
+    var gl = draft.games.slice().sort(byTitle);
+    if (!gl.length) h += '<div class="empty px"><p>Ancora nessun gioco in archivio.</p></div>';
+    gl.forEach(function(g){
+      var n = (g.events||[]).length;
+      h += '<div class="adm-row px">'+coverHtml(g, "mini")+'<div class="t"><b>'+esc(g.title)+'</b><small>'+esc(g.studio||"studio non indicato")+' · '+n+(n===1?' evento':' eventi')+'</small></div>';
+      h += '<div class="acts"><button class="btn small px" type="button" data-gedit="'+esc(g.id)+'">Modifica</button><button class="btn small px" type="button" data-gdel="'+esc(g.id)+'">Elimina</button></div></div>';
+    });
+  }
   h += '<p class="hint" style="margin-top:30px">Ultima pubblicazione: '+(DATA.updatedAt ? esc(new Date(DATA.updatedAt).toLocaleString("it-IT",{dateStyle:"long",timeStyle:"short"})) : "mai")+'.</p>';
   h += '</main></div>';
   var n = changesCount();
@@ -694,18 +1034,21 @@ function renderAdmin(){
   h += '</span></div></div>';
   app.innerHTML = h;
 }
-function changesCount(){
-  if (!draft) return 0;
-  var a = {}, b = {}, n = 0;
-  DATA.events.forEach(function(e){ a[e.id] = JSON.stringify(e); });
-  draft.events.forEach(function(e){ b[e.id] = JSON.stringify(e); if (a[e.id] !== b[e.id]) n++; });
-  Object.keys(a).forEach(function(id){ if (!(id in b)) n++; });
+function diffCount(a, b){
+  var A = {}, B = {}, n = 0;
+  a.forEach(function(x){ A[x.id] = JSON.stringify(x); });
+  b.forEach(function(x){ B[x.id] = JSON.stringify(x); if (A[x.id] !== B[x.id]) n++; });
+  Object.keys(A).forEach(function(id){ if (!(id in B)) n++; });
   return n;
 }
+function changesCount(){ return draft ? diffCount(DATA.events, draft.events) + diffCount(DATA.games, draft.games) : 0; }
+function freshDraft(){ return {base: DATA.updatedAt, events: JSON.parse(JSON.stringify(DATA.events)), games: JSON.parse(JSON.stringify(DATA.games)), dirty:false}; }
+function newId(p){ return p+Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
+function fixUrl(u){ u = String(u||"").trim(); return u && !/^https?:\/\//i.test(u) && !/^[\w.-]+\.(jpe?g|png|webp|gif|avif)$/i.test(u) ? "https://"+u : u; }
 
 function editForm(id, copyFrom){
   var src = id ? draft.events.find(function(x){ return x.id === id; }) : (copyFrom || null);
-  var e = src ? JSON.parse(JSON.stringify(src)) : {id:"", title:"", org:"AFK", host:"", category:"expo", city:"Palermo", venue:"", start:today(), end:"", timeStart:"", timeEnd:"", desc:"", link:""};
+  var e = src ? JSON.parse(JSON.stringify(src)) : {id:"", title:"", org:"AFK", host:"", category:"expo", city:"Palermo", venue:"", start:today(), end:"", timeStart:"", timeEnd:"", desc:"", link:"", image:"", recap:""};
   if (!id) e.id = "";
   var cats = Object.keys(CATS).map(function(k){ return '<option value="'+k+'"'+(e.category===k?' selected':'')+'>'+esc(CATS[k].label)+'</option>'; }).join("");
   var dl = CITIES.map(function(c){ return '<option value="'+esc(c)+'">'; }).join("");
@@ -723,6 +1066,16 @@ function editForm(id, copyFrom){
   h += '<label>Ora di fine <small>facoltativa</small><input type="time" name="timeEnd" value="'+esc(e.timeEnd)+'"></label>';
   h += '<label class="full">Descrizione<textarea name="desc" placeholder="Due o tre frasi su cosa succede">'+esc(e.desc)+'</textarea></label>';
   h += '<label class="full">Link per info o biglietti <small>facoltativo</small><input type="url" name="link" value="'+esc(e.link)+'" placeholder="https://"></label>';
+  h += '<label class="full">Locandina o foto <small>link a un\u2019immagine, facoltativo</small><input type="url" name="image" value="'+esc(e.image||"")+'" placeholder="https://"></label>';
+  h += '<label class="full">Com\u2019è andata <small>compare nella cronistoria a evento concluso</small><textarea name="recap" placeholder="Chi c\u2019era, cosa è successo, i momenti migliori">'+esc(e.recap||"")+'</textarea></label>';
+  h += '<div class="full"><span class="flabel">Giochi presenti</span>';
+  if (draft.games.length){
+    h += '<div class="checks">'+draft.games.slice().sort(byTitle).map(function(g){
+      var on = id && (g.events||[]).indexOf(id) >= 0;
+      return '<label><input type="checkbox" name="g" value="'+esc(g.id)+'"'+(on?' checked':'')+'> '+esc(g.title)+(g.studio?' <small>'+esc(g.studio)+'</small>':'')+'</label>';
+    }).join("")+'</div>';
+  } else h += '<p class="muted" style="margin:6px 0 0">Aggiungi prima i giochi nella sezione Giochi.</p>';
+  h += '</div>';
   h += '<p class="err full" data-err hidden></p>';
   h += '<div class="full" style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary px" type="submit">'+(id?'Salva modifiche':'Aggiungi evento')+'</button><button class="btn px" type="button" data-close>Annulla</button></div>';
   h += '</form></div>';
@@ -731,16 +1084,181 @@ function editForm(id, copyFrom){
     ev.preventDefault();
     var f = ev.target, g = function(n){ return (f.elements[n].value||"").trim(); };
     var err = f.querySelector("[data-err]");
-    var rec = {id: id || ("e"+Date.now().toString(36)+Math.random().toString(36).slice(2,6)), title:g("title"), org:g("org"), host:g("host"), category:g("category"), city:g("city"), venue:g("venue"), start:g("start"), end:g("end"), timeStart:g("timeStart"), timeEnd:g("timeEnd"), desc:g("desc"), link:g("link")};
+    var rec = {id: id || newId("e"), title:g("title"), org:g("org"), host:g("host"), category:g("category"), city:g("city"), venue:g("venue"), start:g("start"), end:g("end"), timeStart:g("timeStart"), timeEnd:g("timeEnd"), desc:g("desc"), link:fixUrl(g("link")), image:fixUrl(g("image")), recap:g("recap")};
     if (!rec.title){ err.textContent = "Scrivi il nome dell\u2019evento."; err.hidden = false; f.elements.title.focus(); return; }
     if (!/^\d{4}-\d{2}-\d{2}$/.test(rec.start)){ err.textContent = "Scegli il primo giorno dell\u2019evento."; err.hidden = false; f.elements.start.focus(); return; }
     if (rec.end && rec.end < rec.start){ err.textContent = "L\u2019ultimo giorno non può venire prima del primo."; err.hidden = false; f.elements.end.focus(); return; }
     if (!rec.end) rec.end = rec.start;
-    if (rec.link && !/^https?:\/\//i.test(rec.link)) rec.link = "https://"+rec.link;
+    var picked = Array.prototype.map.call(f.querySelectorAll('input[name="g"]:checked'), function(x){ return x.value; });
     if (id){ draft.events = draft.events.map(function(x){ return x.id === id ? rec : x; }); }
     else draft.events.push(rec);
+    draft.games.forEach(function(gm){
+      var evs = (gm.events||[]).filter(function(x){ return x !== rec.id; });
+      if (picked.indexOf(gm.id) >= 0) evs.push(rec.id);
+      if (JSON.stringify(evs) !== JSON.stringify(gm.events||[])) gm.events = evs;
+    });
     saveDraft(); closeDialog(); render(); toast(id ? "Modifiche salvate. Ricordati di pubblicare." : "Evento aggiunto. Ricordati di pubblicare.");
   });
+}
+
+function gameForm(id){
+  var src = id ? draft.games.find(function(x){ return x.id === id; }) : null;
+  var g = src ? JSON.parse(JSON.stringify(src)) : {id:"", title:"", studio:"", genre:"", desc:"", cover:"", links:{}, events:[]};
+  var L = g.links || {};
+  var h = '<div class="dlg"><div class="dlg-top"><h2 style="margin:0">'+(id?'Modifica gioco':'Nuovo gioco')+'</h2><button class="x" type="button" data-close aria-label="Chiudi">×</button></div>';
+  h += '<form class="ef" data-gf novalidate>';
+  h += '<div class="full importbox"><label for="imp">Importa da uno store <small>incolla il link della pagina su itch.io, Steam, Google Play o App Store: riempio io i campi vuoti</small></label>';
+  h += '<div class="import"><input id="imp" name="imp" type="url" placeholder="https://…"><button type="button" class="btn lime px" data-act="import">Importa dati</button></div><p class="impmsg" data-impmsg hidden></p></div>';
+  h += '<label class="full">Titolo<input name="title" required value="'+esc(g.title)+'"></label>';
+  h += '<label>Studio o autori<input name="studio" value="'+esc(g.studio)+'" placeholder="Es. Kappo Studio"></label>';
+  h += '<label>Genere <small>separa con la virgola</small><input name="genre" value="'+esc(g.genre)+'" placeholder="Es. Puzzle, Avventura"></label>';
+  h += '<label class="full">Descrizione<textarea name="desc">'+esc(g.desc)+'</textarea></label>';
+  h += '<label class="full">Copertina <small>link all\u2019immagine</small><input type="url" name="cover" value="'+esc(g.cover)+'" placeholder="https://"><img class="imgprev" data-prev alt=""'+(g.cover?' src="'+esc(g.cover)+'"':' hidden')+' referrerpolicy="no-referrer"></label>';
+  STORES.forEach(function(s){ h += '<label>'+s[1]+' <small>link</small><input type="url" name="l_'+s[0]+'" value="'+esc(L[s[0]]||"")+'" placeholder="https://"></label>'; });
+  h += '<div class="full"><span class="flabel">Eventi in cui è stato presente</span>';
+  if (draft.events.length){
+    h += '<div class="checks">'+draft.events.slice().sort(function(a,b){ return sortEv(b,a); }).map(function(e){
+      var on = (g.events||[]).indexOf(e.id) >= 0;
+      return '<label><input type="checkbox" name="ev" value="'+esc(e.id)+'"'+(on?' checked':'')+'> '+esc(e.title+(e.host?' @ '+e.host:''))+' <small>'+esc(rangeText(e))+'</small></label>';
+    }).join("")+'</div>';
+  } else h += '<p class="muted" style="margin:6px 0 0">Nessun evento ancora.</p>';
+  h += '</div><p class="err full" data-err hidden></p>';
+  h += '<div class="full" style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary px" type="submit">'+(id?'Salva modifiche':'Aggiungi gioco')+'</button><button class="btn px" type="button" data-close>Annulla</button></div>';
+  h += '</form></div>';
+  var d = showDialog(h), f = d.querySelector("[data-gf]");
+  if (!id) setTimeout(function(){ f.elements.imp.focus(); }, 30);
+  f.elements.cover.addEventListener("input", function(){ var p = f.querySelector("[data-prev]"); var v = fixUrl(this.value); if (v){ p.src = v; p.hidden = false; } else p.hidden = true; });
+  f.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var v = function(n){ return (f.elements[n].value||"").trim(); }, err = f.querySelector("[data-err]");
+    if (!v("title")){ err.textContent = "Scrivi il titolo del gioco."; err.hidden = false; f.elements.title.focus(); return; }
+    var links = {}; STORES.forEach(function(s){ var u = fixUrl(v("l_"+s[0])); if (u) links[s[0]] = u; });
+    var rec = {id: id || newId("g"), title:v("title"), studio:v("studio"), genre:v("genre"), desc:v("desc"), cover:fixUrl(v("cover")), links:links,
+      events: Array.prototype.map.call(f.querySelectorAll('input[name="ev"]:checked'), function(x){ return x.value; })};
+    if (id) draft.games = draft.games.map(function(x){ return x.id === id ? rec : x; }); else draft.games.push(rec);
+    saveDraft(); closeDialog(); ui.adminTab = "games"; render(); toast(id ? "Gioco salvato. Ricordati di pubblicare." : "Gioco aggiunto. Ricordati di pubblicare.");
+  });
+}
+
+/* ---------- import metadata from store pages ---------- */
+var PROXIES = [
+  function(u){ return "https://api.allorigins.win/raw?url="+encodeURIComponent(u); },
+  function(u){ return "https://corsproxy.io/?url="+encodeURIComponent(u); },
+  function(u){ return "https://api.codetabs.com/v1/proxy/?quest="+encodeURIComponent(u); }
+];
+function withTimeout(p, ms){ return new Promise(function(res, rej){ var t = setTimeout(function(){ rej(new Error("timeout")); }, ms); p.then(function(v){ clearTimeout(t); res(v); }, function(e){ clearTimeout(t); rej(e); }); }); }
+function getText(url, direct, check){
+  var tries = (direct ? [url] : []).concat(PROXIES.map(function(p){ return p(url); })), i = 0;
+  function next(){
+    if (i >= tries.length) return Promise.reject(new Error("unreachable"));
+    var u = tries[i++];
+    return withTimeout(fetch(u, {cache:"no-store"}).then(function(r){ if (!r.ok) throw new Error(r.status); return r.text(); }), 12000)
+      .then(function(t){ if (!t || t.length < 20 || (check && !check(t))) throw new Error("bad"); return t; })
+      .catch(next);
+  }
+  return next();
+}
+function isJSON(t){ try { JSON.parse(t); return true; } catch(e){ return false; } }
+function getJSON(url, direct){ return getText(url, direct, isJSON).then(JSON.parse); }
+function jsonp(url){
+  return new Promise(function(res, rej){
+    var cb = "afkcb"+Date.now()+Math.floor(Math.random()*1e4), s = document.createElement("script");
+    var t = setTimeout(function(){ clean(); rej(new Error("timeout")); }, 12000);
+    function clean(){ clearTimeout(t); try { delete window[cb]; } catch(e){ window[cb] = undefined; } s.remove(); }
+    window[cb] = function(d){ clean(); res(d); };
+    s.onerror = function(){ clean(); rej(new Error("err")); };
+    s.src = url+(url.indexOf("?")<0?"?":"&")+"callback="+cb;
+    document.head.appendChild(s);
+  });
+}
+function absUrl(u, b){ try { return u ? new URL(u, b).href : ""; } catch(e){ return u || ""; } }
+function readMeta(html, base){
+  var d = new DOMParser().parseFromString(html, "text/html");
+  function m(sel){ var e = d.querySelector(sel); return e ? (e.getAttribute("content")||"").trim() : ""; }
+  return {doc:d, title: m('meta[property="og:title"]') || m('meta[name="twitter:title"]') || (d.title||"").trim(),
+    desc: m('meta[property="og:description"]') || m('meta[name="description"]'),
+    image: absUrl(m('meta[property="og:image"]') || m('meta[name="twitter:image"]'), base)};
+}
+function plain(s){ var t = document.createElement("textarea"); t.innerHTML = String(s||"").replace(/<br\s*\/?>/gi,"\n").replace(/<[^>]+>/g," "); return t.value.replace(/[ \t]+/g," ").replace(/\n{3,}/g,"\n\n").trim(); }
+function clip(s, n){ s = plain(s); return s.length > n ? s.slice(0, n).replace(/\s+\S*$/,"")+"…" : s; }
+function storeKind(u){
+  if (/\.itch\.io/i.test(u)) return "itch";
+  if (/steampowered\.com|steamcommunity\.com/i.test(u)) return "steam";
+  if (/play\.google\.com/i.test(u)) return "play";
+  if (/apps\.apple\.com|itunes\.apple\.com/i.test(u)) return "apple";
+  return "web";
+}
+function settle(ps){ return Promise.all(ps.map(function(p){ return p.then(function(v){ return {ok:true, v:v}; }, function(){ return {ok:false}; }); })); }
+function importGame(url){
+  var kind = storeKind(url), m;
+  if (kind === "itch" && (m = url.match(/^https?:\/\/([\w-]+)\.itch\.io\/([\w-]+)/i))){
+    var base = "https://"+m[1].toLowerCase()+".itch.io/"+m[2];
+    return settle([getJSON(base+"/data.json", true), getText(base, false)]).then(function(r){
+      if (!r[0].ok && !r[1].ok) throw new Error("unreachable");
+      var j = r[0].ok ? r[0].v : {}, out = {kind:"itch", link:base};
+      if (r[1].ok){
+        var md = readMeta(r[1].v, base), info = {};
+        Array.prototype.forEach.call(md.doc.querySelectorAll(".game_info_panel_widget tr"), function(tr){
+          var td = tr.querySelectorAll("td"); if (td.length > 1) info[td[0].textContent.trim().toLowerCase()] = td[1].textContent.replace(/\s+/g," ").trim();
+        });
+        out.title = md.title.replace(/\s+by\s+[^]+$/i, "");
+        out.desc = md.desc; out.cover = md.image;
+        out.studio = info.authors || info.author || "";
+        out.genre = info.genre || "";
+      }
+      if (j.title) out.title = j.title;
+      if (j.cover_image) out.cover = j.cover_image;
+      if (j.authors && j.authors.length) out.studio = j.authors.map(function(a){ return a.name; }).join(", ");
+      if (!out.studio) out.studio = m[1];
+      out.desc = clip(out.desc, 600);
+      return out;
+    });
+  }
+  if (kind === "steam" && (m = url.match(/\/app\/(\d+)/))){
+    var id = m[1], link = "https://store.steampowered.com/app/"+id+"/";
+    return getJSON("https://store.steampowered.com/api/appdetails?appids="+id+"&l=italian&cc=it", false).then(function(j){
+      var d = j && j[id] && j[id].success && j[id].data; if (!d) throw new Error("nodata");
+      return {kind:"steam", link:link, title:d.name, studio:(d.developers||[]).join(", "),
+        genre:(d.genres||[]).map(function(x){ return x.description; }).filter(function(x){ return !/^indie$/i.test(x); }).join(", "),
+        desc:clip(d.short_description, 600), cover:d.header_image || ""};
+    }).catch(function(){
+      return getText(link, false).then(function(t){ var md = readMeta(t, link); return {kind:"steam", link:link, title:md.title.replace(/\s+(on|su)\s+Steam$/i,""), desc:clip(md.desc,600), cover:md.image}; });
+    });
+  }
+  if (kind === "play" && (m = url.match(/[?&]id=([\w.]+)/))){
+    var plink = "https://play.google.com/store/apps/details?id="+m[1];
+    return getText(plink+"&hl=it&gl=IT", false).then(function(t){
+      var md = readMeta(t, plink), d = md.doc;
+      var dev = d.querySelector('a[href*="/store/apps/dev"] span') || d.querySelector('a[href*="/store/apps/dev"]');
+      var gen = Array.prototype.map.call(d.querySelectorAll('a[href*="/store/apps/category/"]'), function(a){ return a.textContent.trim(); }).filter(Boolean);
+      return {kind:"play", link:plink, title:md.title.replace(/\s*[-–]\s*(App su|Apps on|App in)\s+Google Play\s*$/i,""), studio: dev ? dev.textContent.trim() : "", genre: gen.slice(0,2).join(", "), desc:clip(md.desc,600), cover:md.image};
+    });
+  }
+  if (kind === "apple" && (m = url.match(/id(\d+)/))){
+    return jsonp("https://itunes.apple.com/lookup?id="+m[1]+"&country=it").then(function(j){
+      var d = j && j.results && j.results[0]; if (!d) throw new Error("nodata");
+      return {kind:"apple", link:d.trackViewUrl || url, title:d.trackName, studio:d.artistName, genre:(d.genres||[d.primaryGenreName]).filter(function(x){ return x && !/^(giochi|games)$/i.test(x); }).slice(0,2).join(", "), desc:clip(d.description,600), cover:d.artworkUrl512 || d.artworkUrl100 || ""};
+    });
+  }
+  return getText(url, false).then(function(t){ var md = readMeta(t, url); return {kind:"web", link:url, title:md.title, desc:clip(md.desc,600), cover:md.image}; });
+}
+function doImport(){
+  var f = dlgEl && dlgEl.querySelector("[data-gf]"); if (!f) return;
+  var raw = f.elements.imp.value.trim(), msg = f.querySelector("[data-impmsg]"), btn = f.querySelector('[data-act="import"]');
+  if (!raw){ msg.textContent = "Incolla prima il link della pagina del gioco."; msg.hidden = false; f.elements.imp.focus(); return; }
+  var url = /^https?:\/\//i.test(raw) ? raw : "https://"+raw;
+  var kind = storeKind(url);
+  function put(n, val){ if (val && f.elements[n] && !f.elements[n].value.trim()) f.elements[n].value = val; }
+  btn.disabled = true; btn.textContent = "Cerco…"; msg.textContent = "Leggo la pagina dello store, può volerci qualche secondo."; msg.hidden = false;
+  importGame(url).then(function(r){
+    put("title", r.title); put("studio", r.studio); put("genre", r.genre); put("desc", r.desc); put("cover", r.cover);
+    put("l_"+(r.kind||kind), r.link || url);
+    var p = f.querySelector("[data-prev]"); if (f.elements.cover.value){ p.src = f.elements.cover.value; p.hidden = false; }
+    msg.textContent = "Fatto: ho riempito i campi vuoti. Controlla e salva.";
+  }).catch(function(){
+    put("l_"+kind, url);
+    msg.textContent = "Non sono riuscito a leggere la pagina. Ho salvato il link: compila il resto a mano.";
+  }).then(function(){ btn.disabled = false; btn.textContent = "Importa dati"; f.elements.imp.value = ""; });
 }
 
 function buildDocument(data){
@@ -748,7 +1266,7 @@ function buildDocument(data){
   return "<!doctype html>\n<html lang=\"it\">\n<head>\n"+HEAD_HTML+"\n</head>\n<body>\n<div id=\"app\"></div>\n<script type=\"application/json\" id=\"afk-data\">"+json+"</"+"script>\n"+SCRIPT_HTML+"\n</body>\n</html>\n";
 }
 function nextData(){
-  return {updatedAt: new Date().toISOString(), events: draft.events.slice().sort(sortEv)};
+  return {updatedAt: new Date().toISOString(), events: draft.events.slice().sort(sortEv), games: draft.games.slice().sort(byTitle)};
 }
 function b64(str){ return btoa(unescape(encodeURIComponent(str))); }
 function ghCfg(){ try { return JSON.parse(load("afk-gh") || "null"); } catch(e){ return null; } }
@@ -815,7 +1333,7 @@ function ghPublish(){
     .then(function(r){
       if (!r.ok) throw r;
       DATA = data;
-      draft = {base: DATA.updatedAt, events: JSON.parse(JSON.stringify(DATA.events)), dirty:false};
+      draft = freshDraft();
       store("afk-draft", null); render();
       toast("Pubblicato. Il sito si aggiorna per tutti entro un paio di minuti.");
     })
@@ -865,11 +1383,19 @@ app.addEventListener("click", function(ev){
   if (d.view){ ui.view = d.view; ui.selDay = null; render(); return; }
   if (d.month){ ui.cursor = new Date(ui.cursor.getFullYear(), ui.cursor.getMonth()+(+d.month), 1); ui.selDay = null; render(); return; }
   if (d.day){ if (el.classList.contains("out")) return; ui.selDay = ui.selDay === d.day ? null : d.day; render(); var dl = app.querySelector(".day-list"); if (dl && window.innerWidth < 700) dl.scrollIntoView({behavior:"smooth", block:"start"}); return; }
+  if (el.hasAttribute("data-gamelink")){ ev.preventDefault(); closeDialog(); location.hash = el.getAttribute("href"); return; }
+  if (d.tab){ ui.adminTab = d.tab; render(); return; }
+  if (d.gedit){ gameForm(d.gedit); return; }
+  if (d.gdel){
+    var gg = draft.games.find(function(x){ return x.id === d.gdel; });
+    if (gg && confirm("Eliminare \u201c"+gg.title+"\u201d dall\u2019archivio?")){ draft.games = draft.games.filter(function(x){ return x.id !== d.gdel; }); saveDraft(); render(); toast("Gioco eliminato. Ricordati di pubblicare."); }
+    return;
+  }
   if (d.edit){ editForm(d.edit); return; }
   if (d.dup){ var src = draft.events.find(function(x){ return x.id === d.dup; }); if (src){ var c = JSON.parse(JSON.stringify(src)); c.title = c.title; editForm(null, c); } return; }
   if (d.del){
     var t = draft.events.find(function(x){ return x.id === d.del; });
-    if (t && confirm("Eliminare \u201c"+t.title+"\u201d?")){ draft.events = draft.events.filter(function(x){ return x.id !== d.del; }); saveDraft(); render(); toast("Evento eliminato. Ricordati di pubblicare."); }
+    if (t && confirm("Eliminare \u201c"+t.title+"\u201d?")){ draft.events = draft.events.filter(function(x){ return x.id !== d.del; }); draft.games.forEach(function(g){ if ((g.events||[]).indexOf(d.del) >= 0) g.events = g.events.filter(function(x){ return x !== d.del; }); }); saveDraft(); render(); toast("Evento eliminato. Ricordati di pubblicare."); }
     return;
   }
   switch (d.act){
@@ -880,21 +1406,50 @@ app.addEventListener("click", function(ev){
     case "publish": publish(); break;
     case "export": exportSite(); break;
     case "ghsetup": ghSetup(false); break;
+    case "newgame": gameForm(null); break;
+    case "import": doImport(); break;
+    case "greset": ui.gq = ""; ui.gevent = ""; ui.ggenre = ""; render(); break;
     case "ghforget": if (confirm("Scollegare GitHub da questo dispositivo?")){ store("afk-gh", null); closeDialog(); render(); toast("GitHub scollegato da questo dispositivo."); } break;
-    case "discard": if (confirm("Annullare tutte le modifiche non pubblicate?")){ draft = {base: DATA.updatedAt, events: JSON.parse(JSON.stringify(DATA.events)), dirty:false}; store("afk-draft", null); render(); } break;
+    case "discard": if (confirm("Annullare tutte le modifiche non pubblicate?")){ draft = freshDraft(); store("afk-draft", null); render(); } break;
     case "reset": ui.cats = []; ui.city = ""; render(); break;
     case "showpast": ui.past = true; render(); break;
   }
-  if (el.getAttribute("href") === "#") ev.preventDefault();
+  if (el.getAttribute("href") === "#"){ ev.preventDefault(); if (ui.mode !== "admin"){ if (location.hash && location.hash !== "#") location.hash = ""; else { ui.page = "cal"; render(); window.scrollTo(0,0); } } }
+});
+app.addEventListener("input", function(ev){
+  if (ev.target.hasAttribute("data-gq")){ ui.gq = ev.target.value; var r = document.getElementById("gresults"); if (r) r.innerHTML = gamesResults(); }
 });
 app.addEventListener("change", function(ev){
   var t = ev.target;
+  if (t.hasAttribute("data-gevent")){ ui.gevent = t.value; render(); var a = app.querySelector("[data-gevent]"); if (a) a.focus(); return; }
+  if (t.hasAttribute("data-ggenre")){ ui.ggenre = t.value; render(); var b = app.querySelector("[data-ggenre]"); if (b) b.focus(); return; }
   if (t.hasAttribute("data-city")){ ui.city = t.value; ui.selDay = null; render(); var s = app.querySelector("[data-city]"); if (s) s.focus(); }
   if (t.hasAttribute("data-past")){ ui.past = t.checked; render(); var c = app.querySelector("[data-past]"); if (c) c.focus(); }
 });
-window.addEventListener("hashchange", function(){ if (location.hash === "#admin") askPassword(); });
+function route(){
+  var h = decodeURIComponent(location.hash.replace(/^#\/?/, ""));
+  if (h === "giochi") ui.page = "games";
+  else if (h === "cronistoria") ui.page = "history";
+  else if (h.indexOf("gioco/") === 0){ ui.page = "game"; ui.gameId = h.slice(6); }
+  else if (h !== "admin") ui.page = "cal";
+  return h;
+}
+window.addEventListener("hashchange", function(){
+  var h = route();
+  if (h === "admin"){ askPassword(); return; }
+  if (ui.mode === "admin") return;
+  closeDialog(); render(); window.scrollTo(0,0);
+});
+/* broken cover images fall back to a pixel initial */
+document.addEventListener("error", function(ev){
+  var t = ev.target;
+  if (t && t.tagName === "IMG" && t.classList.contains("cover")){
+    var d = document.createElement("div"); d.className = t.className+" ph"; d.setAttribute("aria-hidden","true"); d.textContent = t.getAttribute("data-init") || "?"; t.replaceWith(d);
+  } else if (t && t.tagName === "IMG" && (t.classList.contains("thumb") || t.classList.contains("evimg"))) t.remove();
+}, true);
 
 /* ---------- boot ---------- */
+route();
 function boot(){
   render();
   if (sload("afk-admin") === "1") enterAdmin();
@@ -904,7 +1459,17 @@ if (STANDALONE){
   render();
   fetch("events.json?t="+Date.now(), {cache:"no-store"})
     .then(function(r){ return r.ok ? r.json() : null; })
-    .then(function(j){ if (j && Array.isArray(j.events)) DATA = j; })
+    .then(function(j){
+      if (j && Array.isArray(j.events)){
+        if (!Array.isArray(j.games)){
+          /* events.json saved before the games archive existed: bring in the bundled archive and its event */
+          var ids = {}; j.events.forEach(function(e){ ids[e.id] = 1; });
+          DATA.events.forEach(function(e){ if (!ids[e.id] && e.id === "questa-casa-2026") j.events.push(e); });
+          j.games = DATA.games;
+        }
+        DATA = j;
+      }
+    })
     .catch(function(){})
     .then(boot);
 } else boot();
