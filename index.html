@@ -47,6 +47,19 @@
 .btn.icon{width:44px;padding:0}
 .btn.icon svg{width:20px;height:20px;display:block}
 .fbrand .logo{height:40px;width:auto;display:block;flex:0 0 auto}
+.notice{display:flex;gap:16px;align-items:flex-start;background:var(--surface);padding:16px 20px;margin:0 0 30px;max-width:760px;border-left:8px solid var(--lime);--pc:var(--line)}
+.notice .ni{flex:0 0 auto;width:30px;height:30px;color:var(--magenta);margin-top:2px}
+.notice .ni svg{width:100%;height:100%;display:block}
+.notice b{display:block;font-family:var(--f-pixel);font-size:1.05rem;line-height:1.25;margin-bottom:4px}
+.notice p{margin:0;font-size:1.05rem;line-height:1.55}
+.notice a{color:var(--magenta-ink);font-weight:700}
+.fside{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.iglink{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;min-height:44px}
+.iglink svg{width:22px;height:22px;color:var(--magenta);flex:0 0 auto}
+.iglink:hover span{text-decoration:underline;text-underline-offset:3px}
+.iglink b{color:var(--magenta-ink)}
+.tacts .btn{white-space:nowrap}
+@media (max-width:420px){.tacts .btn.small:not(.icon){padding:8px 9px;font-size:11px}.tacts{gap:6px}.tacts .btn.icon{width:40px}}
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:1.0625rem;line-height:1.6;min-height:100vh;overflow-x:hidden}
@@ -941,6 +954,7 @@ function header(){
   h += '<a class="mark" href="#" aria-label="AFK Palermo, calendario">'+LOGO+'</a>';
   var light = theme() === "light";
   h += '<span class="tacts"><button class="btn small px" type="button" data-act="install">Installa l\u2019app</button>';
+  h += '<a class="btn small px icon" href="'+IG_URL+'" target="_blank" rel="noopener" aria-label="AFK Palermo su Instagram" title="Instagram @afkpalermo">'+IG+'</a>';
   h += '<button class="btn small px icon" type="button" data-act="theme" aria-label="'+(light?'Passa al tema scuro':'Passa al tema chiaro')+'" title="'+(light?'Tema scuro':'Tema chiaro')+'">'+(light?MOON:SUN)+'</button></span>';
   h += '</header></div>';
   return h;
@@ -950,9 +964,12 @@ var MOON = '<svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="tru
 function theme(){ return document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark"; }
 function setTheme(t){ document.documentElement.setAttribute("data-theme", t); store("afk-theme", t); }
 (function(){ var t = load("afk-theme"); document.documentElement.setAttribute("data-theme", t === "light" ? "light" : "dark"); })();
+var IG_URL = "https://www.instagram.com/afkpalermo/";
+var IG = '<svg viewBox="0 0 9 9" shape-rendering="crispEdges" aria-hidden="true"><g fill="currentColor"><rect x="1" width="7" height="1"/><rect x="1" y="8" width="7" height="1"/><rect y="1" width="1" height="7"/><rect x="8" y="1" width="1" height="7"/><rect x="3" y="2" width="3" height="1"/><rect x="3" y="6" width="3" height="1"/><rect x="2" y="3" width="1" height="3"/><rect x="6" y="3" width="1" height="3"/><rect x="6" y="1" width="1" height="1"/></g></svg>';
+var WARN = '<svg viewBox="0 0 9 9" shape-rendering="crispEdges" aria-hidden="true"><g fill="currentColor"><rect x="4" width="1" height="1"/><rect x="3" y="1" width="3" height="2"/><rect x="2" y="3" width="5" height="2"/><rect x="1" y="5" width="7" height="2"/><rect y="7" width="9" height="2"/></g><g fill="var(--lime)"><rect x="4" y="2" width="1" height="4"/><rect x="4" y="7" width="1" height="1"/></g></svg>';
 var HEAD_DECO = '<i class="deco d-planet" aria-hidden="true"></i><i class="deco d-cross" aria-hidden="true"></i><i class="deco d-star2" aria-hidden="true"></i>';
 function footer(){
-  return '<footer><div class="wrap row"><span class="fbrand">'+LOGO+'<span>Videogiochi, musica e arte indipendente siciliana.</span></span><button class="btn ghost small" type="button" data-act="admin">Area organizzatore</button></div></footer>';
+  return '<footer><div class="wrap row"><span class="fbrand">'+LOGO+'<span>Videogiochi, musica e arte indipendente siciliana.</span></span><span class="fside"><a class="iglink" href="'+IG_URL+'" target="_blank" rel="noopener">'+IG+'<span>Seguici su Instagram <b>@afkpalermo</b></span></a><button class="btn ghost small" type="button" data-act="admin">Area organizzatore</button></span></div></footer>';
 }
 function render(){
   if (ui.mode === "admin") return renderAdmin();
@@ -985,7 +1002,9 @@ function calendarPage(){
     h += '<button class="btn primary small px" type="button" data-open="'+esc(featured.id)+'">Vedi dettagli</button>';
     h += '</div></div>';
   }
-  h += '</section></div>';
+  h += '</section>';
+  h += '<aside class="notice px" role="note"><span class="ni">'+WARN+'</span><div><b>Le date possono cambiare</b><p>Date, orari e luoghi degli eventi possono essere modificati in qualsiasi momento. Torna spesso a controllare il calendario per gli ultimi aggiornamenti, e seguici su <a href="'+IG_URL+'" target="_blank" rel="noopener">Instagram</a> per non perdere le novità.</p></div></aside>';
+  h += '</div>';
 
   h += '<div class="controls"><div class="wrap">';
   h += '<div class="row"><div class="chips" role="group" aria-label="Filtra per categoria">';
