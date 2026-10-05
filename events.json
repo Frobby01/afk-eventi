@@ -1,6 +1,58 @@
 {
- "updatedAt": "2026-10-04T12:24:30.765Z",
+ "updatedAt": "2026-10-05T13:47:48.136Z",
+ "seed": 2,
  "events": [
+  {
+   "id": "questa-casa-2026",
+   "title": "Questa casa non è una sala giochi",
+   "org": "AFK",
+   "host": "",
+   "category": "party",
+   "city": "Palermo",
+   "venue": "Ostello Bello",
+   "start": "2026-01-18",
+   "end": "2026-01-18",
+   "timeStart": "15:00",
+   "timeEnd": "22:00",
+   "desc": "Giornata dedicata agli sviluppatori indipendenti, con videogiochi, musica e arte tutta palermitana. Dalle 15 alle 20 i giochi da provare, dalle 20 alle 22 il DJ set.",
+   "link": "",
+   "image": "poster-questa-casa.jpg",
+   "recap": "Un pomeriggio all'Ostello Bello con sei giochi indie nati a Palermo da provare, e la serata chiusa dalla musica di Cobeximan, Just_Digri e Roberto Genco."
+  },
+  {
+   "id": "trapani-comix-2026",
+   "title": "Area Indie",
+   "org": "Kemonia Games",
+   "host": "Trapani Comix",
+   "category": "expo",
+   "city": "Trapani",
+   "venue": "",
+   "start": "2026-05-22",
+   "end": "2026-05-24",
+   "timeStart": "",
+   "timeEnd": "",
+   "desc": "L'area dedicata ai videogiochi indipendenti siciliani dentro Trapani Comix.",
+   "link": "",
+   "image": "",
+   "recap": ""
+  },
+  {
+   "id": "pcc-2026",
+   "title": "Area Indie",
+   "org": "Kemonia Games",
+   "host": "Palermo Comic Convention",
+   "category": "expo",
+   "city": "Palermo",
+   "venue": "",
+   "start": "2026-09-10",
+   "end": "2026-09-13",
+   "timeStart": "",
+   "timeEnd": "",
+   "desc": "L'area dedicata ai videogiochi indipendenti siciliani dentro Palermo Comic Convention 2026.",
+   "link": "",
+   "image": "",
+   "recap": ""
+  },
   {
    "id": "perla-comix-2026",
    "title": "Area Indie",
@@ -9,12 +61,14 @@
    "category": "expo",
    "city": "Palermo",
    "venue": "Fiera Pala Giotto",
-   "start": "2026-10-01",
+   "start": "2026-10-03",
    "end": "2026-10-04",
    "timeStart": "",
    "timeEnd": "",
    "desc": "L'area dedicata ai videogiochi indipendenti siciliani dentro Perla Comix, la nuova fiera di fumetti, giochi e cultura pop di Palermo. Prova i giochi, conosci chi li sviluppa e scopri la scena indie dell'isola.",
-   "link": ""
+   "link": "",
+   "image": "",
+   "recap": ""
   },
   {
    "id": "game-jam-ostello-2026",
@@ -29,7 +83,9 @@
    "timeStart": "",
    "timeEnd": "",
    "desc": "Quattro giorni per creare un videogioco da zero, in squadra, partendo da un tema svelato all'inizio. Aperta a programmatori, artisti, musicisti e game designer di ogni livello.",
-   "link": ""
+   "link": "",
+   "image": "",
+   "recap": ""
   },
   {
    "id": "sicilia-game-expo-2026",
@@ -44,7 +100,9 @@
    "timeStart": "",
    "timeEnd": "",
    "desc": "Lo spazio dedicato agli sviluppatori indipendenti dentro Sicilian Game Expo, la fiera del gioco in tutte le sue forme: videogiochi, giochi da tavolo, cosplay e incontri con gli ospiti.",
-   "link": ""
+   "link": "",
+   "image": "",
+   "recap": ""
   },
   {
    "id": "emutqyfjn8nnx",
@@ -60,6 +118,242 @@
    "timeEnd": "23:59",
    "desc": "",
    "link": ""
+  }
+ ],
+ "games": [
+  {
+   "id": "bearly-in-time",
+   "title": "BEARly in Time",
+   "studio": "Heni, Andzia \"Pleple\" Plescia",
+   "genre": "",
+   "desc": "",
+   "cover": "https://img.itch.zone/aW1nLzI4ODUzNTcyLmdpZg==/original/wnU8vr.gif",
+   "links": {
+    "itch": "https://heniyt.itch.io/bearly-in-time"
+   },
+   "events": [
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "blob-arena",
+   "title": "Blob Arena",
+   "studio": "Grug's Lair Limited",
+   "genre": "Strategia, Casual",
+   "desc": "Sopravvivi a sessioni Arcade di 10 livelli, colleziona combattenti in pixel-art e sfida i rivali in duelli in tempo reale. Veloce, strategico e infinitamente rigiocabile. Sblocca Blobert rari, padroneggia combo potenti, scala la classifica globale e domina l'arena.\n\nGioca a modo tuo\nBlob Arena offre diversi modi per combattere e progredire:\n\nModalità Arcade: Affronta una serie di dieci livelli di nemici, ognuno più difficile del precedente. Guadagna punti in base alla velocità, alla varietà di mosse e alle vittorie perfette. Gli Arcade Token sono la valuta di gioco che ti permette di giocare…",
+   "cover": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/25/90/02/2590020c-e948-1e83-c789-ba00978047af/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+   "links": {
+    "play": "https://play.google.com/store/apps/details?id=com.GrugsLair.BlobArena&hl=it",
+    "apple": "https://apps.apple.com/it/app/blob-arena/id6751915702?uo=4"
+   },
+   "events": [
+    "trapani-comix-2026"
+   ]
+  },
+  {
+   "id": "bound-by-blood",
+   "title": "Bound by Blood",
+   "studio": "Mangiapalazzo Studios",
+   "genre": "Visual novel, Mistero",
+   "desc": "",
+   "cover": "https://img.itch.zone/aW1nLzIzMzgxNTUzLnBuZw==/315x250%23c/mheOyH.png",
+   "links": {
+    "itch": "https://mangiapalazzostudios.itch.io/boundbyblood"
+   },
+   "events": [
+    "perla-comix-2026",
+    "trapani-comix-2026",
+    "questa-casa-2026"
+   ]
+  },
+  {
+   "id": "catharsis",
+   "title": "Catharsis",
+   "studio": "Yumi Yume",
+   "genre": "Avventura, RPG",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "questa-casa-2026",
+    "pcc-2026"
+   ]
+  },
+  {
+   "id": "chicken-out",
+   "title": "Chicken Out",
+   "studio": "CUBOX",
+   "genre": "",
+   "desc": "",
+   "cover": "https://img.itch.zone/aW1nLzMwMzg5Njc4LnBuZw==/315x250%23c/jiKTw3.png",
+   "links": {
+    "itch": "https://thecubox.itch.io/chicken-out"
+   },
+   "events": [
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "cosmo-voyage",
+   "title": "Cosmo Voyage",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "genesea",
+   "title": "GENESEA",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "heirlooms",
+   "title": "Heirlooms",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "trapani-comix-2026"
+   ]
+  },
+  {
+   "id": "invasione-di-controllo",
+   "title": "Invasione di controllo",
+   "studio": "Overgamez",
+   "genre": "Avventura, Horror",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "questa-casa-2026",
+    "trapani-comix-2026"
+   ]
+  },
+  {
+   "id": "kintsugi",
+   "title": "Kintsugi",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "lambdawn",
+   "title": "LambDawn",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "trapani-comix-2026",
+    "pcc-2026",
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "loot-jackal-loot",
+   "title": "LOOT JACKAL LOOT",
+   "studio": "Kappo Studio, Mangiapalazzo Studios",
+   "genre": "Puzzle",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "questa-casa-2026",
+    "trapani-comix-2026",
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "lunar-crypt",
+   "title": "Lunar Crypt",
+   "studio": "Moon Pie Interactive",
+   "genre": "Roguelike, RPG",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "questa-casa-2026",
+    "pcc-2026"
+   ]
+  },
+  {
+   "id": "office-shift",
+   "title": "Office Shift",
+   "studio": "Cassette Dream Production",
+   "genre": "Avventura, RPG",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "questa-casa-2026"
+   ]
+  },
+  {
+   "id": "out-of-my-shop",
+   "title": "Out of my Shop",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "psoxide",
+   "title": "PSoxide",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "pcc-2026"
+   ]
+  },
+  {
+   "id": "the-demon-who-knocked",
+   "title": "The Demon Who Knocked",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "voodloop",
+   "title": "VoodLoop",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "trapani-comix-2026"
+   ]
   }
  ]
 }
