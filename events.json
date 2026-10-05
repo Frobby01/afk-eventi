@@ -1,15 +1,15 @@
 {
- "updatedAt": "2026-10-05T14:58:23.560Z",
+ "updatedAt": "2026-10-05T15:05:29.049Z",
  "seed": 4,
  "events": [
   {
    "id": "pcc-2024",
    "title": "Area Indie Games",
-   "org": "AFK",
+   "org": "",
    "host": "Palermo Comic Convention",
    "category": "expo",
    "city": "Palermo",
-   "venue": "Cantieri Culturali alla Zisa",
+   "venue": "",
    "start": "2024-09-12",
    "end": "2024-09-15",
    "timeStart": "",
@@ -22,7 +22,7 @@
   {
    "id": "pcc-2025",
    "title": "Area Indie Games",
-   "org": "AFK",
+   "org": "",
    "host": "Palermo Comic Convention",
    "category": "expo",
    "city": "Palermo",
@@ -40,7 +40,7 @@
    "id": "questa-casa-2026",
    "title": "Questa casa non è una sala giochi",
    "org": "AFK",
-   "host": "Ostello Bello",
+   "host": "",
    "category": "party",
    "city": "Palermo",
    "venue": "Ostello Bello",
@@ -60,7 +60,7 @@
    "host": "Trapani Comix",
    "category": "expo",
    "city": "Trapani",
-   "venue": "Villa Margherita",
+   "venue": "",
    "start": "2026-05-22",
    "end": "2026-05-24",
    "timeStart": "",
@@ -77,7 +77,7 @@
    "host": "Palermo Comic Convention",
    "category": "expo",
    "city": "Palermo",
-   "venue": "Cantieri Culturali alla Zisa",
+   "venue": "",
    "start": "2026-09-10",
    "end": "2026-09-13",
    "timeStart": "",
@@ -148,12 +148,10 @@
    "venue": "Spazio Averna Open",
    "start": "2027-04-24",
    "end": "2027-04-24",
-   "timeStart": "",
-   "timeEnd": "",
+   "timeStart": "21:00",
+   "timeEnd": "23:59",
    "desc": "",
-   "link": "",
-   "image": "",
-   "recap": ""
+   "link": ""
   }
  ],
  "games": [
@@ -183,8 +181,8 @@
     "apple": "https://apps.apple.com/it/app/blob-arena/id6751915702?uo=4"
    },
    "events": [
-    "pcc-2025",
-    "trapani-comix-2026"
+    "trapani-comix-2026",
+    "pcc-2025"
    ]
   },
   {
@@ -199,10 +197,10 @@
    },
    "events": [
     "perla-comix-2026",
-    "pcc-2024",
-    "pcc-2025",
     "trapani-comix-2026",
-    "questa-casa-2026"
+    "questa-casa-2026",
+    "pcc-2024",
+    "pcc-2025"
    ]
   },
   {
@@ -214,15 +212,15 @@
    "cover": "",
    "links": {},
    "events": [
-    "pcc-2025",
+    "questa-casa-2026",
     "pcc-2026",
-    "questa-casa-2026"
+    "pcc-2025"
    ]
   },
   {
    "id": "chicken-out",
    "title": "Chicken Out",
-   "studio": "CUBOX",
+   "studio": "CUBOX Games",
    "genre": "",
    "desc": "",
    "cover": "https://img.itch.zone/aW1nLzMwMzg5Njc4LnBuZw==/315x250%23c/jiKTw3.png",
@@ -236,7 +234,7 @@
   {
    "id": "cosmo-voyage",
    "title": "Cosmo Voyage",
-   "studio": "",
+   "studio": "CUBOX Games",
    "genre": "",
    "desc": "",
    "cover": "",
@@ -251,8 +249,10 @@
    "studio": "Kappo Studio",
    "genre": "",
    "desc": "",
-   "cover": "",
-   "links": {},
+   "cover": "https://img.itch.zone/aW1nLzI2MDM0MTc0LnBuZw==/315x250%23c/EQhqyY.png",
+   "links": {
+    "itch": "https://frobby.itch.io/enough-sheep"
+   },
    "events": [
     "pcc-2024"
    ]
@@ -274,10 +274,10 @@
   {
    "id": "hands-on-grape",
    "title": "Hands on Grape!",
-   "studio": "",
+   "studio": "RedFoXalabama",
    "genre": "",
    "desc": "",
-   "cover": "",
+   "cover": "https://img.itch.zone/aW1nLzE4NTE1NjYzLnBuZw==/315x250%23c/fDv1Ha.png",
    "links": {
     "itch": "https://redfoxalabama.itch.io/hands-on-grape"
    },
@@ -288,7 +288,7 @@
   {
    "id": "heirlooms",
    "title": "Heirlooms",
-   "studio": "",
+   "studio": "Sunny Pond Studio",
    "genre": "",
    "desc": "",
    "cover": "",
@@ -296,8 +296,8 @@
     "steam": "https://store.steampowered.com/app/4559680/"
    },
    "events": [
-    "pcc-2025",
-    "trapani-comix-2026"
+    "trapani-comix-2026",
+    "pcc-2025"
    ]
   },
   {
@@ -311,14 +311,14 @@
     "itch": "https://overgamez.itch.io/invasione-di-controllo"
    },
    "events": [
-    "trapani-comix-2026",
-    "questa-casa-2026"
+    "questa-casa-2026",
+    "trapani-comix-2026"
    ]
   },
   {
    "id": "kintsugi",
    "title": "Kintsugi",
-   "studio": "",
+   "studio": "Kappo Studio",
    "genre": "",
    "desc": "",
    "cover": "",
@@ -333,8 +333,10 @@
    "studio": "Kappo Studio",
    "genre": "",
    "desc": "",
-   "cover": "",
-   "links": {},
+   "cover": "https://img.itch.zone/aW1nLzI2MDIwODkxLnBuZw==/315x250%23c/LA0N1G.png",
+   "links": {
+    "itch": "https://frobby.itch.io/kno-k"
+   },
    "events": [
     "pcc-2024"
    ]
@@ -350,9 +352,9 @@
     "itch": "https://kemoniagames.itch.io/lambdawn"
    },
    "events": [
-    "perla-comix-2026",
     "trapani-comix-2026",
-    "pcc-2026"
+    "pcc-2026",
+    "perla-comix-2026"
    ]
   },
   {
@@ -366,9 +368,9 @@
     "itch": "https://frobby.itch.io/loot-jackal-loot"
    },
    "events": [
-    "perla-comix-2026",
+    "questa-casa-2026",
     "trapani-comix-2026",
-    "questa-casa-2026"
+    "perla-comix-2026"
    ]
   },
   {
@@ -382,22 +384,22 @@
     "itch": "https://moonpie-interactive.itch.io/lunar-crypt-rpg"
    },
    "events": [
-    "pcc-2025",
+    "questa-casa-2026",
     "pcc-2026",
-    "questa-casa-2026"
+    "pcc-2025"
    ]
   },
   {
    "id": "office-shift",
    "title": "Office Shift",
-   "studio": "Cassette Dream Production",
+   "studio": "Team Cassette",
    "genre": "Avventura, RPG",
    "desc": "",
    "cover": "",
    "links": {},
    "events": [
-    "pcc-2025",
-    "questa-casa-2026"
+    "questa-casa-2026",
+    "pcc-2025"
    ]
   },
   {
@@ -421,7 +423,9 @@
    "genre": "",
    "desc": "",
    "cover": "",
-   "links": {},
+   "links": {
+    "steam": "https://store.steampowered.com/app/3129310/Paradox/"
+   },
    "events": [
     "pcc-2024"
    ]
@@ -457,7 +461,7 @@
   {
    "id": "untitled",
    "title": "Untitled",
-   "studio": "",
+   "studio": "Team Cassette",
    "genre": "",
    "desc": "",
    "cover": "",
