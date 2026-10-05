@@ -1,12 +1,46 @@
 {
- "updatedAt": "2026-10-05T14:12:53.011Z",
- "seed": 2,
+ "updatedAt": "2026-10-05T14:58:23.560Z",
+ "seed": 4,
  "events": [
+  {
+   "id": "pcc-2024",
+   "title": "Area Indie Games",
+   "org": "AFK",
+   "host": "Palermo Comic Convention",
+   "category": "expo",
+   "city": "Palermo",
+   "venue": "Cantieri Culturali alla Zisa",
+   "start": "2024-09-12",
+   "end": "2024-09-15",
+   "timeStart": "",
+   "timeEnd": "",
+   "desc": "L'area dedicata ai videogiochi indipendenti siciliani dentro Palermo Comic Convention 2024.",
+   "link": "",
+   "image": "",
+   "recap": ""
+  },
+  {
+   "id": "pcc-2025",
+   "title": "Area Indie Games",
+   "org": "AFK",
+   "host": "Palermo Comic Convention",
+   "category": "expo",
+   "city": "Palermo",
+   "venue": "Cantieri Culturali alla Zisa",
+   "start": "2025-09-11",
+   "end": "2025-09-14",
+   "timeStart": "",
+   "timeEnd": "",
+   "desc": "L'area dedicata ai videogiochi indipendenti siciliani dentro la decima edizione di Palermo Comic Convention.",
+   "link": "",
+   "image": "",
+   "recap": ""
+  },
   {
    "id": "questa-casa-2026",
    "title": "Questa casa non è una sala giochi",
    "org": "AFK",
-   "host": "",
+   "host": "Ostello Bello",
    "category": "party",
    "city": "Palermo",
    "venue": "Ostello Bello",
@@ -21,12 +55,12 @@
   },
   {
    "id": "trapani-comix-2026",
-   "title": "Area Indie",
+   "title": "Area Indie Games",
    "org": "Kemonia Games",
    "host": "Trapani Comix",
    "category": "expo",
    "city": "Trapani",
-   "venue": "",
+   "venue": "Villa Margherita",
    "start": "2026-05-22",
    "end": "2026-05-24",
    "timeStart": "",
@@ -38,12 +72,12 @@
   },
   {
    "id": "pcc-2026",
-   "title": "Area Indie",
+   "title": "Area Indie Games",
    "org": "Kemonia Games",
    "host": "Palermo Comic Convention",
    "category": "expo",
    "city": "Palermo",
-   "venue": "",
+   "venue": "Cantieri Culturali alla Zisa",
    "start": "2026-09-10",
    "end": "2026-09-13",
    "timeStart": "",
@@ -55,14 +89,14 @@
   },
   {
    "id": "perla-comix-2026",
-   "title": "Area Indie",
+   "title": "Area Indie Games",
    "org": "AFK",
    "host": "Perla Comix",
    "category": "expo",
    "city": "Palermo",
    "venue": "Fiera Pala Giotto",
    "start": "2026-10-03",
-   "end": "2026-10-04",
+   "end": "2026-10-05",
    "timeStart": "",
    "timeEnd": "",
    "desc": "L'area dedicata ai videogiochi indipendenti siciliani dentro Perla Comix, la nuova fiera di fumetti, giochi e cultura pop di Palermo. Prova i giochi, conosci chi li sviluppa e scopri la scena indie dell'isola.",
@@ -89,7 +123,7 @@
   },
   {
    "id": "sicilia-game-expo-2026",
-   "title": "Area Indie",
+   "title": "Area Indie Games",
    "org": "Kemonia Games",
    "host": "Sicilian Game Expo",
    "category": "expo",
@@ -114,10 +148,12 @@
    "venue": "Spazio Averna Open",
    "start": "2027-04-24",
    "end": "2027-04-24",
-   "timeStart": "21:00",
-   "timeEnd": "23:59",
+   "timeStart": "",
+   "timeEnd": "",
    "desc": "",
-   "link": ""
+   "link": "",
+   "image": "",
+   "recap": ""
   }
  ],
  "games": [
@@ -147,6 +183,7 @@
     "apple": "https://apps.apple.com/it/app/blob-arena/id6751915702?uo=4"
    },
    "events": [
+    "pcc-2025",
     "trapani-comix-2026"
    ]
   },
@@ -162,6 +199,8 @@
    },
    "events": [
     "perla-comix-2026",
+    "pcc-2024",
+    "pcc-2025",
     "trapani-comix-2026",
     "questa-casa-2026"
    ]
@@ -175,8 +214,9 @@
    "cover": "",
    "links": {},
    "events": [
-    "questa-casa-2026",
-    "pcc-2026"
+    "pcc-2025",
+    "pcc-2026",
+    "questa-casa-2026"
    ]
   },
   {
@@ -206,6 +246,18 @@
    ]
   },
   {
+   "id": "enough-sheep",
+   "title": "ENOUGH Sheep",
+   "studio": "Kappo Studio",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "pcc-2024"
+   ]
+  },
+  {
    "id": "genesea",
    "title": "GENESEA",
    "studio": "OverGameZ",
@@ -220,6 +272,20 @@
    ]
   },
   {
+   "id": "hands-on-grape",
+   "title": "Hands on Grape!",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {
+    "itch": "https://redfoxalabama.itch.io/hands-on-grape"
+   },
+   "events": [
+    "pcc-2024"
+   ]
+  },
+  {
    "id": "heirlooms",
    "title": "Heirlooms",
    "studio": "",
@@ -230,6 +296,7 @@
     "steam": "https://store.steampowered.com/app/4559680/"
    },
    "events": [
+    "pcc-2025",
     "trapani-comix-2026"
    ]
   },
@@ -244,8 +311,8 @@
     "itch": "https://overgamez.itch.io/invasione-di-controllo"
    },
    "events": [
-    "questa-casa-2026",
-    "trapani-comix-2026"
+    "trapani-comix-2026",
+    "questa-casa-2026"
    ]
   },
   {
@@ -261,6 +328,18 @@
    ]
   },
   {
+   "id": "kno-k",
+   "title": "KNO-K",
+   "studio": "Kappo Studio",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "pcc-2024"
+   ]
+  },
+  {
    "id": "lambdawn",
    "title": "LambDawn",
    "studio": "KemoniaGames",
@@ -271,9 +350,9 @@
     "itch": "https://kemoniagames.itch.io/lambdawn"
    },
    "events": [
+    "perla-comix-2026",
     "trapani-comix-2026",
-    "pcc-2026",
-    "perla-comix-2026"
+    "pcc-2026"
    ]
   },
   {
@@ -287,9 +366,9 @@
     "itch": "https://frobby.itch.io/loot-jackal-loot"
    },
    "events": [
-    "questa-casa-2026",
+    "perla-comix-2026",
     "trapani-comix-2026",
-    "perla-comix-2026"
+    "questa-casa-2026"
    ]
   },
   {
@@ -303,8 +382,9 @@
     "itch": "https://moonpie-interactive.itch.io/lunar-crypt-rpg"
    },
    "events": [
-    "questa-casa-2026",
-    "pcc-2026"
+    "pcc-2025",
+    "pcc-2026",
+    "questa-casa-2026"
    ]
   },
   {
@@ -316,6 +396,7 @@
    "cover": "",
    "links": {},
    "events": [
+    "pcc-2025",
     "questa-casa-2026"
    ]
   },
@@ -331,6 +412,18 @@
    },
    "events": [
     "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "paradox-stuck-in-the-past",
+   "title": "Paradox! Stuck in the Past",
+   "studio": "Rewind Studios",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "pcc-2024"
    ]
   },
   {
@@ -359,6 +452,18 @@
    },
    "events": [
     "perla-comix-2026"
+   ]
+  },
+  {
+   "id": "untitled",
+   "title": "Untitled",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": [
+    "pcc-2024"
    ]
   },
   {
