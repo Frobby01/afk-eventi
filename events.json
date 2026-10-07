@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-05T15:05:29.049Z",
+ "updatedAt": "2026-10-07T12:45:24.783Z",
  "seed": 4,
  "events": [
   {
@@ -100,6 +100,23 @@
    "timeStart": "",
    "timeEnd": "",
    "desc": "L'area dedicata ai videogiochi indipendenti siciliani dentro Perla Comix, la nuova fiera di fumetti, giochi e cultura pop di Palermo. Prova i giochi, conosci chi li sviluppa e scopri la scena indie dell'isola.",
+   "link": "",
+   "image": "",
+   "recap": ""
+  },
+  {
+   "id": "emuy3oqovbjzu",
+   "title": "Questa casa non è una sala giochi",
+   "org": "AFK",
+   "host": "Ostello Bello",
+   "category": "expo",
+   "city": "Palermo",
+   "venue": "Ostello Bello",
+   "start": "2026-10-18",
+   "end": "2026-10-18",
+   "timeStart": "",
+   "timeEnd": "",
+   "desc": "",
    "link": "",
    "image": "",
    "recap": ""
