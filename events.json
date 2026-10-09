@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-07T14:28:09.418Z",
+ "updatedAt": "2026-10-09T15:45:23.884Z",
  "seed": 4,
  "events": [
   {
@@ -174,7 +174,7 @@
  "games": [
   {
    "id": "bearly-in-time",
-   "title": "BEARly in Time",
+   "title": "BEARly in Time!",
    "studio": "Heni, Andzia \"Pleple\" Plescia",
    "genre": "",
    "desc": "",
