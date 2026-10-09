@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-09T15:45:23.884Z",
+ "updatedAt": "2026-10-09T15:48:35.561Z",
  "seed": 4,
  "events": [
   {
@@ -40,7 +40,7 @@
    "id": "questa-casa-2026",
    "title": "Questa casa non è una sala giochi",
    "org": "AFK",
-   "host": "",
+   "host": "Ostello Bello",
    "category": "party",
    "city": "Palermo",
    "venue": "Ostello Bello",
@@ -215,9 +215,9 @@
    "events": [
     "perla-comix-2026",
     "trapani-comix-2026",
-    "questa-casa-2026",
     "pcc-2024",
-    "pcc-2025"
+    "pcc-2025",
+    "questa-casa-2026"
    ]
   },
   {
@@ -229,9 +229,9 @@
    "cover": "",
    "links": {},
    "events": [
-    "questa-casa-2026",
     "pcc-2026",
-    "pcc-2025"
+    "pcc-2025",
+    "questa-casa-2026"
    ]
   },
   {
@@ -328,8 +328,8 @@
     "itch": "https://overgamez.itch.io/invasione-di-controllo"
    },
    "events": [
-    "questa-casa-2026",
-    "trapani-comix-2026"
+    "trapani-comix-2026",
+    "questa-casa-2026"
    ]
   },
   {
@@ -385,9 +385,9 @@
     "itch": "https://frobby.itch.io/loot-jackal-loot"
    },
    "events": [
-    "questa-casa-2026",
     "trapani-comix-2026",
-    "perla-comix-2026"
+    "perla-comix-2026",
+    "questa-casa-2026"
    ]
   },
   {
@@ -401,9 +401,9 @@
     "itch": "https://moonpie-interactive.itch.io/lunar-crypt-rpg"
    },
    "events": [
-    "questa-casa-2026",
     "pcc-2026",
-    "pcc-2025"
+    "pcc-2025",
+    "questa-casa-2026"
    ]
   },
   {
@@ -415,8 +415,8 @@
    "cover": "",
    "links": {},
    "events": [
-    "questa-casa-2026",
-    "pcc-2025"
+    "pcc-2025",
+    "questa-casa-2026"
    ]
   },
   {
