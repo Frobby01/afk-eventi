@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-10T13:46:01.450Z",
+ "updatedAt": "2026-10-10T13:46:08.999Z",
  "seed": 4,
  "events": [
   {
@@ -447,7 +447,9 @@
    "desc": "",
    "cover": "",
    "links": {},
-   "events": []
+   "events": [
+    "emuy3oqovbjzu"
+   ]
   },
   {
    "id": "paradox-stuck-in-the-past",
