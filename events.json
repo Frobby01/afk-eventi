@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-10T13:44:42.879Z",
+ "updatedAt": "2026-10-10T13:46:01.450Z",
  "seed": 4,
  "events": [
   {
@@ -438,6 +438,16 @@
     "perla-comix-2026",
     "emuy3oqovbjzu"
    ]
+  },
+  {
+   "id": "gmv2g694q23qk",
+   "title": "Panormus Legacy",
+   "studio": "",
+   "genre": "",
+   "desc": "",
+   "cover": "",
+   "links": {},
+   "events": []
   },
   {
    "id": "paradox-stuck-in-the-past",
