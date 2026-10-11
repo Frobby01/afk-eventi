@@ -213,6 +213,12 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
 .adm h1{font-family:var(--f-pixel);font-size:1.8rem;margin:10px 0 4px}
 .adm .hint{color:var(--muted);margin:0 0 20px;max-width:60ch}
 .adm-row{display:flex;align-items:center;gap:14px;padding:12px 14px;background:var(--surface);margin-bottom:12px;--pc:var(--line)}
+.adm-row.is-hidden{border-style:dashed;opacity:.72}
+.hid{display:inline-block;font-family:var(--f-pixel);font-size:11px;padding:2px 7px;margin-right:8px;background:var(--lime);color:#1E1E1E;vertical-align:2px}
+.hidebox{background:var(--surface-2);padding:12px 14px}
+form.ef label.hidebox{flex-direction:row;align-items:flex-start;gap:12px}
+form.ef label.hidebox span{display:flex;flex-direction:column;gap:2px}
+form.ef label.hidebox small{font-weight:400;color:var(--muted)}
 .adm-row .sq{width:12px;height:12px;background:var(--cc);flex:0 0 auto}
 .adm-row .t{flex:1;min-width:0}
 .adm-row .t b{display:block;font-family:var(--f-pixel);font-size:1rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -824,6 +830,9 @@ var DATA;
 try { DATA = JSON.parse(document.getElementById("afk-data").textContent); } catch(e){ DATA = {updatedAt:"", events:[]}; }
 if (!Array.isArray(DATA.events)) DATA.events = [];
 if (!Array.isArray(DATA.games)) DATA.games = [];
+/* items marked hidden stay in the data (events.json) but never reach the public pages */
+function pubEvents(){ return DATA.events.filter(function(e){ return !e.hidden; }); }
+function pubGames(){ return DATA.games.filter(function(g){ return !g.hidden; }); }
 /* true when the page is hosted as its own site (GitHub Pages), false inside the claude.ai viewer or opened as a file */
 /* the bundled data carries a seed version: an older events.json gets the new bundled events and games merged in once */
 var SEED = DATA.seed || 0;
@@ -925,7 +934,7 @@ function toast(msg){
 /* ---------- filtering ---------- */
 function visibleEvents(){
   var t = today();
-  return DATA.events.slice().sort(sortEv).filter(function(e){
+  return pubEvents().slice().sort(sortEv).filter(function(e){
     if (!ui.past && endOf(e) < t) return false;
     if (ui.cats.length && ui.cats.indexOf(e.category) < 0) return false;
     if (ui.city && e.city !== ui.city) return false;
@@ -935,8 +944,8 @@ function visibleEvents(){
 function cityOptions(){
   var set = {};
   CITIES.forEach(function(c){ set[c] = 1; });
-  DATA.events.forEach(function(e){ if (e.city) set[e.city] = 1; });
-  var used = {}; DATA.events.forEach(function(e){ if (e.city) used[e.city] = 1; });
+  pubEvents().forEach(function(e){ if (e.city) set[e.city] = 1; });
+  var used = {}; pubEvents().forEach(function(e){ if (e.city) used[e.city] = 1; });
   /* cities with events first, then the rest of Sicily */
   return Object.keys(set).sort(function(a,b){ return (used[b]?1:0)-(used[a]?1:0) || a.localeCompare(b); }).map(function(c){ return {name:c, has:!!used[c]}; });
 }
@@ -984,7 +993,7 @@ function render(){
 
 function calendarPage(){
   var ev = visibleEvents();
-  var featured = DATA.events.filter(function(e){ return status(e) !== "past"; }).sort(function(a,b){
+  var featured = pubEvents().filter(function(e){ return status(e) !== "past"; }).sort(function(a,b){
     var sa = status(a)==="live"?0:1, sb = status(b)==="live"?0:1;
     return sa-sb || sortEv(a,b);
   })[0];
@@ -1030,8 +1039,8 @@ function calendarPage(){
 }
 
 /* ---------- games ---------- */
-function gamesForEvent(id){ return DATA.games.filter(function(g){ return (g.events||[]).indexOf(id) >= 0; }).sort(byTitle); }
-function eventsForGame(g){ var ids = g.events || []; return DATA.events.filter(function(e){ return ids.indexOf(e.id) >= 0; }).sort(function(a,b){ return sortEv(b,a); }); }
+function gamesForEvent(id){ return pubGames().filter(function(g){ return (g.events||[]).indexOf(id) >= 0; }).sort(byTitle); }
+function eventsForGame(g){ var ids = g.events || []; return pubEvents().filter(function(e){ return ids.indexOf(e.id) >= 0; }).sort(function(a,b){ return sortEv(b,a); }); }
 function byTitle(a,b){ return (a.title||"").localeCompare(b.title||"", "it", {sensitivity:"base"}); }
 function genresOf(g){ return String(g.genre||"").split(/[,;·\/]/).map(function(s){ return s.trim(); }).filter(Boolean); }
 function coverHtml(g, cls){
@@ -1051,14 +1060,14 @@ function gameCard(g){
 }
 function allGenres(){
   var m = {};
-  DATA.games.forEach(function(g){ genresOf(g).forEach(function(x){ var k = x.toLowerCase(); if (!m[k]) m[k] = x; }); });
+  pubGames().forEach(function(g){ genresOf(g).forEach(function(x){ var k = x.toLowerCase(); if (!m[k]) m[k] = x; }); });
   return Object.keys(m).sort().map(function(k){ return m[k]; });
 }
 function gamesPage(){
-  var evs = DATA.events.filter(function(e){ return gamesForEvent(e.id).length; }).sort(function(a,b){ return sortEv(b,a); });
+  var evs = pubEvents().filter(function(e){ return gamesForEvent(e.id).length; }).sort(function(a,b){ return sortEv(b,a); });
   var h = '<div class="wrap"><section class="page-head">'+HEAD_DECO+'<h1>Archivio giochi</h1>';
   h += '<p>I videogiochi indipendenti incontrati agli eventi in Sicilia: dove sono passati e dove giocarli.</p></section>';
-  if (DATA.games.length){
+  if (pubGames().length){
     h += '<div class="gfilters">';
     h += '<label class="sr" for="gq">Cerca</label><input id="gq" class="search px" type="search" placeholder="Cerca un gioco o uno studio" value="'+esc(ui.gq)+'" data-gq>';
     h += '<label class="sr" for="gev">Evento</label><select id="gev" class="select px" data-gevent><option value="">Tutti gli eventi</option>';
@@ -1076,9 +1085,9 @@ function gamesPage(){
   return h;
 }
 function gamesResults(){
-  if (!DATA.games.length) return '<div class="empty px"><p>L\u2019archivio è ancora vuoto.</p></div>';
+  if (!pubGames().length) return '<div class="empty px"><p>L\u2019archivio è ancora vuoto.</p></div>';
   var q = ui.gq.toLowerCase().trim();
-  var list = DATA.games.slice().sort(byTitle).filter(function(g){
+  var list = pubGames().slice().sort(byTitle).filter(function(g){
     if (ui.gevent && (g.events||[]).indexOf(ui.gevent) < 0) return false;
     if (ui.ggenre && !genresOf(g).some(function(x){ return x.toLowerCase() === ui.ggenre.toLowerCase(); })) return false;
     if (q && [g.title,g.studio,g.genre,g.desc].join(" ").toLowerCase().indexOf(q) < 0) return false;
@@ -1089,7 +1098,7 @@ function gamesResults(){
 }
 var STORES = [["itch","itch.io"],["steam","Steam"],["play","Google Play"],["apple","App Store"],["web","Sito ufficiale"]];
 function gamePage(){
-  var g = DATA.games.find(function(x){ return x.id === ui.gameId; });
+  var g = pubGames().find(function(x){ return x.id === ui.gameId; });
   var h = '<div class="wrap"><a class="back" href="#giochi">\u2190 Archivio giochi</a>';
   if (!g) return h + '<div class="empty px" style="margin:20px 0 60px"><p>Questo gioco non è (più) in archivio.</p></div></div>';
   var L = g.links || {}, evs = eventsForGame(g);
@@ -1114,7 +1123,7 @@ function gamePage(){
 
 /* ---------- history ---------- */
 function historyPage(){
-  var past = DATA.events.filter(function(e){ return status(e) === "past"; }).sort(function(a,b){ return sortEv(b,a); });
+  var past = pubEvents().filter(function(e){ return status(e) === "past"; }).sort(function(a,b){ return sortEv(b,a); });
   var seen = {}, cities = {};
   past.forEach(function(e){ gamesForEvent(e.id).forEach(function(g){ seen[g.id] = 1; }); if (e.city) cities[e.city] = 1; });
   var h = '<div class="wrap"><section class="page-head">'+HEAD_DECO+'<h1>Cronistoria</h1>';
@@ -1223,7 +1232,7 @@ function monthView(ev){
 
 /* ---------- event detail ---------- */
 function openEvent(id){
-  var e = DATA.events.find(function(x){ return x.id === id; }); if (!e) return;
+  var e = pubEvents().find(function(x){ return x.id === id; }); if (!e) return;
   var c = catOf(e), past = status(e) === "past";
   var h = '<div class="dlg"><div class="dlg-top"><span class="tag" style="--cc:'+c.color+';display:inline-flex;gap:8px;align-items:center;color:var(--muted)"><i class="sq" style="width:10px;height:10px;background:var(--cc);display:inline-block"></i>'+esc(c.label)+'</span><button class="x" type="button" data-close aria-label="Chiudi">×</button></div>';
   h += '<h2>'+esc(e.title)+'</h2>';
@@ -1407,8 +1416,8 @@ function renderAdmin(){
     if (!list.length) h += '<div class="empty px"><p>Ancora nessun evento.</p></div>';
     list.forEach(function(e){
       var c = catOf(e), ng = draft.games.filter(function(g){ return (g.events||[]).indexOf(e.id) >= 0; }).length;
-      h += '<div class="adm-row px" style="--cc:'+c.color+(endOf(e)<t?';opacity:.7':'')+'"><i class="sq"></i><div class="t"><b>'+esc(e.title)+(e.host?' @ '+esc(e.host):'')+'</b><small>'+esc(rangeText(e))+(e.city?' · '+esc(e.city):'')+(ng?' · '+ng+(ng===1?' gioco':' giochi'):'')+(endOf(e)<t?' · concluso':'')+'</small></div>';
-      h += '<div class="acts"><button class="btn small px" type="button" data-edit="'+esc(e.id)+'">Modifica</button><button class="btn small px" type="button" data-dup="'+esc(e.id)+'">Duplica</button><button class="btn small px" type="button" data-del="'+esc(e.id)+'">Elimina</button></div></div>';
+      h += '<div class="adm-row px'+(e.hidden?' is-hidden':'')+'" style="--cc:'+c.color+(endOf(e)<t?';opacity:.7':'')+'"><i class="sq"></i><div class="t"><b>'+(e.hidden?'<span class="hid">Nascosto</span>':'')+esc(e.title)+(e.host?' @ '+esc(e.host):'')+'</b><small>'+esc(rangeText(e))+(e.city?' · '+esc(e.city):'')+(ng?' · '+ng+(ng===1?' gioco':' giochi'):'')+(endOf(e)<t?' · concluso':'')+'</small></div>';
+      h += '<div class="acts"><button class="btn small px" type="button" data-edit="'+esc(e.id)+'">Modifica</button><button class="btn small px" type="button" data-hide="'+esc(e.id)+'" aria-pressed="'+(e.hidden?'true':'false')+'">'+(e.hidden?'Mostra':'Nascondi')+'</button><button class="btn small px" type="button" data-dup="'+esc(e.id)+'">Duplica</button><button class="btn small px" type="button" data-del="'+esc(e.id)+'">Elimina</button></div></div>';
     });
   } else if (tab === "batch"){
     h += batchTab();
@@ -1418,8 +1427,8 @@ function renderAdmin(){
     if (!gl.length) h += '<div class="empty px"><p>Ancora nessun gioco in archivio.</p></div>';
     gl.forEach(function(g){
       var n = (g.events||[]).length;
-      h += '<div class="adm-row px">'+coverHtml(g, "mini")+'<div class="t"><b>'+esc(g.title)+'</b><small>'+esc(g.studio||"studio non indicato")+' · '+n+(n===1?' evento':' eventi')+'</small></div>';
-      h += '<div class="acts"><button class="btn small px" type="button" data-gedit="'+esc(g.id)+'">Modifica</button><button class="btn small px" type="button" data-gdel="'+esc(g.id)+'">Elimina</button></div></div>';
+      h += '<div class="adm-row px'+(g.hidden?' is-hidden':'')+'">'+coverHtml(g, "mini")+'<div class="t"><b>'+(g.hidden?'<span class="hid">Nascosto</span>':'')+esc(g.title)+'</b><small>'+esc(g.studio||"studio non indicato")+' · '+n+(n===1?' evento':' eventi')+'</small></div>';
+      h += '<div class="acts"><button class="btn small px" type="button" data-gedit="'+esc(g.id)+'">Modifica</button><button class="btn small px" type="button" data-ghide="'+esc(g.id)+'" aria-pressed="'+(g.hidden?'true':'false')+'">'+(g.hidden?'Mostra':'Nascondi')+'</button><button class="btn small px" type="button" data-gdel="'+esc(g.id)+'">Elimina</button></div></div>';
     });
   }
   h += '<p class="hint" style="margin-top:30px">Ultima pubblicazione: '+(DATA.updatedAt ? esc(new Date(DATA.updatedAt).toLocaleString("it-IT",{dateStyle:"long",timeStyle:"short"})) : "mai")+'.</p>';
@@ -1466,6 +1475,7 @@ function editForm(id, copyFrom){
   h += '<label class="full">Link per info o biglietti <small>facoltativo</small><input type="url" name="link" value="'+esc(e.link)+'" placeholder="https://"></label>';
   h += '<label class="full">Locandina o foto <small>link a un\u2019immagine, facoltativo</small><input type="url" name="image" value="'+esc(e.image||"")+'" placeholder="https://"></label>';
   h += '<label class="full">Com\u2019è andata <small>compare nella cronistoria a evento concluso</small><textarea name="recap" placeholder="Chi c\u2019era, cosa è successo, i momenti migliori">'+esc(e.recap||"")+'</textarea></label>';
+  h += '<label class="full cb hidebox"><input type="checkbox" name="hidden"'+(e.hidden?' checked':'')+'> <span><b>Nascondi dal sito pubblico</b><small>L\u2019evento resta salvato nei dati, ma i visitatori non lo vedono.</small></span></label>';
   h += '<div class="full"><span class="flabel">Giochi presenti</span>';
   if (draft.games.length){
     h += '<div class="checks">'+draft.games.slice().sort(byTitle).map(function(g){
@@ -1483,6 +1493,7 @@ function editForm(id, copyFrom){
     var f = ev.target, g = function(n){ return (f.elements[n].value||"").trim(); };
     var err = f.querySelector("[data-err]");
     var rec = {id: id || newId("e"), title:g("title"), org:g("org"), host:g("host"), category:g("category"), city:g("city"), venue:g("venue"), start:g("start"), end:g("end"), timeStart:g("timeStart"), timeEnd:g("timeEnd"), desc:g("desc"), link:fixUrl(g("link")), image:fixUrl(g("image")), recap:g("recap")};
+    if (f.elements.hidden.checked) rec.hidden = true;
     if (!rec.title){ err.textContent = "Scrivi il nome dell\u2019evento."; err.hidden = false; f.elements.title.focus(); return; }
     if (!/^\d{4}-\d{2}-\d{2}$/.test(rec.start)){ err.textContent = "Scegli il primo giorno dell\u2019evento."; err.hidden = false; f.elements.start.focus(); return; }
     if (rec.end && rec.end < rec.start){ err.textContent = "L\u2019ultimo giorno non può venire prima del primo."; err.hidden = false; f.elements.end.focus(); return; }
@@ -1513,6 +1524,7 @@ function gameForm(id){
   h += '<label class="full">Descrizione<textarea name="desc">'+esc(g.desc)+'</textarea></label>';
   h += '<label class="full">Copertina <small>link all\u2019immagine</small><input type="url" name="cover" value="'+esc(g.cover)+'" placeholder="https://"><img class="imgprev" data-prev alt=""'+(g.cover?' src="'+esc(g.cover)+'"':' hidden')+' referrerpolicy="no-referrer"></label>';
   STORES.forEach(function(s){ h += '<label>'+s[1]+' <small>link</small><input type="url" name="l_'+s[0]+'" value="'+esc(L[s[0]]||"")+'" placeholder="https://"></label>'; });
+  h += '<label class="full cb hidebox"><input type="checkbox" name="hidden"'+(g.hidden?' checked':'')+'> <span><b>Nascondi dal sito pubblico</b><small>Il gioco resta salvato nei dati, ma i visitatori non lo vedono.</small></span></label>';
   h += '<div class="full"><span class="flabel">Eventi in cui è stato presente</span>';
   if (draft.events.length){
     h += '<div class="checks">'+draft.events.slice().sort(function(a,b){ return sortEv(b,a); }).map(function(e){
@@ -1533,6 +1545,7 @@ function gameForm(id){
     var links = {}; STORES.forEach(function(s){ var u = fixUrl(v("l_"+s[0])); if (u) links[s[0]] = u; });
     var rec = {id: id || newId("g"), title:v("title"), studio:v("studio"), genre:v("genre"), desc:v("desc"), cover:fixUrl(v("cover")), links:links,
       events: Array.prototype.map.call(f.querySelectorAll('input[name="ev"]:checked'), function(x){ return x.value; })};
+    if (f.elements.hidden.checked) rec.hidden = true;
     if (id) draft.games = draft.games.map(function(x){ return x.id === id ? rec : x; }); else draft.games.push(rec);
     saveDraft(); closeDialog(); ui.adminTab = "games"; render(); toast(id ? "Gioco salvato. Ricordati di pubblicare." : "Gioco aggiunto. Ricordati di pubblicare.");
   });
@@ -1892,7 +1905,7 @@ app.addEventListener("click", function(ev){
   var d = el.dataset;
   if ("close" in d){ closeDialog(); return; }
   if (d.open){ openEvent(d.open); return; }
-  if (d.ics){ var e = DATA.events.find(function(x){ return x.id === d.ics; }); if (e) saveFile("afk-"+slug(e.title)+".ics", icsFor(e), "text/calendar"); return; }
+  if (d.ics){ var e = pubEvents().find(function(x){ return x.id === d.ics; }); if (e) saveFile("afk-"+slug(e.title)+".ics", icsFor(e), "text/calendar"); return; }
   if (d.cat !== undefined && el.classList.contains("chip")){
     if (!d.cat) ui.cats = [];
     else { var i = ui.cats.indexOf(d.cat); if (i<0) ui.cats.push(d.cat); else ui.cats.splice(i,1); if (ui.cats.length === Object.keys(CATS).length) ui.cats = []; }
@@ -1903,6 +1916,15 @@ app.addEventListener("click", function(ev){
   if (d.day){ if (el.classList.contains("out")) return; ui.selDay = ui.selDay === d.day ? null : d.day; render(); var dl = app.querySelector(".day-list"); if (dl && window.innerWidth < 700) dl.scrollIntoView({behavior:"smooth", block:"start"}); return; }
   if (el.hasAttribute("data-gamelink")){ ev.preventDefault(); closeDialog(); location.hash = el.getAttribute("href"); return; }
   if (d.tab){ ui.adminTab = d.tab; render(); return; }
+  if (d.hide || d.ghide){
+    var list = d.hide ? draft.events : draft.games, it = list.find(function(x){ return x.id === (d.hide || d.ghide); });
+    if (it){
+      if (it.hidden) delete it.hidden; else it.hidden = true;
+      saveDraft(); render();
+      toast(it.hidden ? "Nascosto dal sito. Ricordati di pubblicare." : "Di nuovo visibile. Ricordati di pubblicare.");
+    }
+    return;
+  }
   if (d.gedit){ gameForm(d.gedit); return; }
   if (d.gdel){
     var gg = draft.games.find(function(x){ return x.id === d.gdel; });
