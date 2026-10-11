@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-11T12:27:14.127Z",
+ "updatedAt": "2026-10-11T14:47:09.367Z",
  "seed": 4,
  "events": [
   {
@@ -257,10 +257,12 @@
    "genre": "",
    "desc": "",
    "cover": "",
-   "links": {},
+   "links": {
+    "play": "https://play.google.com/store/apps/details?id=com.cubox.cosmovoyage"
+   },
    "events": [
-    "perla-comix-2026",
-    "emuy3oqovbjzu"
+    "emuy3oqovbjzu",
+    "perla-comix-2026"
    ]
   },
   {
