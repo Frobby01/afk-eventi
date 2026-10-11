@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-10T13:46:08.999Z",
+ "updatedAt": "2026-10-11T12:27:14.127Z",
  "seed": 4,
  "events": [
   {
@@ -504,7 +504,8 @@
    "links": {},
    "events": [
     "pcc-2024"
-   ]
+   ],
+   "hidden": true
   },
   {
    "id": "voodloop",
