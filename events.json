@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-11T14:47:09.367Z",
+ "updatedAt": "2026-10-11T14:50:15.147Z",
  "seed": 4,
  "events": [
   {
@@ -146,8 +146,8 @@
    "category": "expo",
    "city": "Catania",
    "venue": "SiciliaFiera, Misterbianco",
-   "start": "2026-11-13",
-   "end": "2026-11-15",
+   "start": "2026-12-13",
+   "end": "2026-12-15",
    "timeStart": "",
    "timeEnd": "",
    "desc": "Lo spazio dedicato agli sviluppatori indipendenti dentro Sicilian Game Expo, la fiera del gioco in tutte le sue forme: videogiochi, giochi da tavolo, cosplay e incontri con gli ospiti.",
