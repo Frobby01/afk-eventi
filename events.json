@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-11T14:50:15.147Z",
+ "updatedAt": "2026-10-12T00:58:02.199Z",
  "seed": 4,
  "events": [
   {
@@ -382,7 +382,7 @@
   },
   {
    "id": "loot-jackal-loot",
-   "title": "LOOT JACKAL LOOT",
+   "title": "LOOT JACKAL LOOT!",
    "studio": "Kappo Studio, Mangiapalazzo Studios",
    "genre": "Puzzle",
    "desc": "",
@@ -391,10 +391,10 @@
     "itch": "https://frobby.itch.io/loot-jackal-loot"
    },
    "events": [
-    "trapani-comix-2026",
+    "emuy3oqovbjzu",
     "perla-comix-2026",
-    "questa-casa-2026",
-    "emuy3oqovbjzu"
+    "trapani-comix-2026",
+    "questa-casa-2026"
    ]
   },
   {
