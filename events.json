@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-17T00:31:41.257Z",
+ "updatedAt": "2026-10-19T10:34:01.511Z",
  "seed": 4,
  "events": [
   {
@@ -129,8 +129,8 @@
    "category": "jam",
    "city": "Palermo",
    "venue": "Ostello Bello",
-   "start": "2026-11-02",
-   "end": "2026-11-05",
+   "start": "2026-12-01",
+   "end": "2026-12-01",
    "timeStart": "",
    "timeEnd": "",
    "desc": "Quattro giorni per creare un videogioco da zero, in squadra, partendo da un tema svelato all'inizio. Aperta a programmatori, artisti, musicisti e game designer di ogni livello.",
