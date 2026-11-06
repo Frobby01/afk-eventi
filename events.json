@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-28T22:57:08.980Z",
+ "updatedAt": "2026-11-06T19:31:41.549Z",
  "seed": 4,
  "events": [
   {
@@ -139,6 +139,23 @@
    "recap": ""
   },
   {
+   "id": "sicilia-game-expo-2026",
+   "title": "Area Indie Games",
+   "org": "Kemonia Games",
+   "host": "Sicilian Game Expo",
+   "category": "expo",
+   "city": "Catania",
+   "venue": "SiciliaFiera, Misterbianco",
+   "start": "2026-11-13",
+   "end": "2026-11-15",
+   "timeStart": "",
+   "timeEnd": "",
+   "desc": "Lo spazio dedicato agli sviluppatori indipendenti dentro Sicilian Game Expo, la fiera del gioco in tutte le sue forme: videogiochi, giochi da tavolo, cosplay e incontri con gli ospiti.",
+   "link": "",
+   "image": "",
+   "recap": ""
+  },
+  {
    "id": "game-jam-ostello-2026",
    "title": "Game Jam",
    "org": "Kemonia Games",
@@ -151,23 +168,6 @@
    "timeStart": "",
    "timeEnd": "",
    "desc": "Quattro giorni per creare un videogioco da zero, in squadra, partendo da un tema svelato all'inizio. Aperta a programmatori, artisti, musicisti e game designer di ogni livello.",
-   "link": "",
-   "image": "",
-   "recap": ""
-  },
-  {
-   "id": "sicilia-game-expo-2026",
-   "title": "Area Indie Games",
-   "org": "Kemonia Games",
-   "host": "Sicilian Game Expo",
-   "category": "expo",
-   "city": "Catania",
-   "venue": "SiciliaFiera, Misterbianco",
-   "start": "2026-12-13",
-   "end": "2026-12-15",
-   "timeStart": "",
-   "timeEnd": "",
-   "desc": "Lo spazio dedicato agli sviluppatori indipendenti dentro Sicilian Game Expo, la fiera del gioco in tutte le sue forme: videogiochi, giochi da tavolo, cosplay e incontri con gli ospiti.",
    "link": "",
    "image": "",
    "recap": ""
