@@ -1099,7 +1099,7 @@ var STORES = [["itch","itch.io"],["steam","Steam"],["play","Google Play"],["appl
 function gamePage(){
   var g = pubGames().find(function(x){ return x.id === ui.gameId; });
   var h = '<div class="wrap"><a class="back" href="#giochi">\u2190 Archivio giochi</a>';
-  if (!g) return h + '<div class="empty px" style="margin:20px 0 60px"><p>Questo gioco non è (più) in archivio.</p></div></div>';
+  if (!g) return h + '<div class="empty px" style="margin:20px 0 64px"><p>Questo gioco non è (più) in archivio.</p></div></div>';
   var L = g.links || {}, evs = eventsForGame(g);
   h += '<article class="gpage"><div class="gcov">'+coverHtml(g, "px")+'</div><div>';
   if (g.genre) h += '<span class="gen">'+esc(g.genre)+'</span>';
@@ -1133,7 +1133,7 @@ function historyPage(){
     h += '<div class="stat px"><b>'+Object.keys(cities).length+'</b>'+(Object.keys(cities).length===1?'città':'città')+'</div></div>';
   }
   h += '</section>';
-  if (!past.length){ h += '<div class="empty px" style="margin-bottom:60px"><p>Ancora nessun evento concluso.</p></div></div>'; return h; }
+  if (!past.length){ h += '<div class="empty px" style="margin-bottom:64px"><p>Ancora nessun evento concluso.</p></div></div>'; return h; }
   h += '<div class="tl">';
   var yr = null;
   past.forEach(function(e){
