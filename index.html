@@ -248,6 +248,9 @@ form.ef .err{color:#d1004f;font-weight:700;margin:0}
 .strip .tagline{font-size:13px;align-self:center;opacity:.8}
 .mark .logo{height:48px;width:auto;display:block;margin:0}
 .top .mark{align-items:center;gap:14px}
+/* Silkscreen glyphs carry a 0.125em left bearing: shift the logo so it lines up with the title's ink */
+.top .mark{margin-left:calc(clamp(2.1rem,7.4vw,4.6rem)*.125)}
+#app:has(.page-head) .top .mark{margin-left:calc(clamp(2rem,6.4vw,3.6rem)*.125)}
 .top .mark span{margin:0}
 @media (max-width:700px){.strip .wrap{padding:0 8px}.nav{width:100%}.nav a{flex:1;justify-content:center;padding:0 4px;font-size:13px}.strip .tagline{display:none}.mark .logo{height:36px}}
 .page-head{padding:28px 0 24px}
