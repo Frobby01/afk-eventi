@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-06T19:32:24.188Z",
+ "updatedAt": "2026-11-13T14:43:22.407Z",
  "seed": 4,
  "events": [
   {
@@ -141,15 +141,15 @@
   {
    "id": "sicilia-game-expo-2026",
    "title": "Area Indie Games",
-   "org": "Kemonia Games",
+   "org": "AFK",
    "host": "Sicilian Game Expo",
    "category": "expo",
    "city": "Catania",
    "venue": "SiciliaFiera, Misterbianco",
    "start": "2026-11-13",
    "end": "2026-11-15",
-   "timeStart": "",
-   "timeEnd": "",
+   "timeStart": "12:00",
+   "timeEnd": "19:00",
    "desc": "Lo spazio dedicato agli sviluppatori indipendenti dentro Sicilian Game Expo, la fiera del gioco in tutte le sue forme: videogiochi, giochi da tavolo, cosplay e incontri con gli ospiti.",
    "link": "",
    "image": "",
@@ -279,7 +279,8 @@
    },
    "events": [
     "perla-comix-2026",
-    "emuy3oqovbjzu"
+    "emuy3oqovbjzu",
+    "sicilia-game-expo-2026"
    ]
   },
   {
@@ -363,7 +364,8 @@
    "cover": "",
    "links": {},
    "events": [
-    "perla-comix-2026"
+    "perla-comix-2026",
+    "sicilia-game-expo-2026"
    ]
   },
   {
@@ -411,7 +413,8 @@
     "perla-comix-2026",
     "trapani-comix-2026",
     "questa-casa-2026",
-    "emuy3oqovbjzu"
+    "emuy3oqovbjzu",
+    "sicilia-game-expo-2026"
    ]
   },
   {
