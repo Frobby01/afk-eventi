@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-13T15:47:27.809Z",
+ "updatedAt": "2026-11-13T15:48:05.724Z",
  "seed": 4,
  "events": [
   {
@@ -199,7 +199,9 @@
    "links": {
     "itch": "https://alexmarano-games.itch.io/a-jump-upon-the-big-wall"
    },
-   "events": []
+   "events": [
+    "sicilia-game-expo-2026"
+   ]
   },
   {
    "id": "bearly-in-time",
@@ -291,7 +293,8 @@
    },
    "events": [
     "perla-comix-2026",
-    "emuy3oqovbjzu"
+    "emuy3oqovbjzu",
+    "sicilia-game-expo-2026"
    ]
   },
   {
@@ -375,7 +378,8 @@
    "cover": "",
    "links": {},
    "events": [
-    "perla-comix-2026"
+    "perla-comix-2026",
+    "sicilia-game-expo-2026"
    ]
   },
   {
@@ -423,7 +427,8 @@
     "perla-comix-2026",
     "trapani-comix-2026",
     "questa-casa-2026",
-    "emuy3oqovbjzu"
+    "emuy3oqovbjzu",
+    "sicilia-game-expo-2026"
    ]
   },
   {
@@ -452,7 +457,9 @@
    "links": {
     "steam": "https://store.steampowered.com/app/5224530/MEAT_AND_FLOWERS/"
    },
-   "events": []
+   "events": [
+    "sicilia-game-expo-2026"
+   ]
   },
   {
    "id": "office-shift",
